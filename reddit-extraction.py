@@ -83,8 +83,6 @@ df = df.drop_duplicates(subset=["title"])
 df.to_csv("chicago_safety_reddit.csv", index=False)
 print(f"\nDone! Collected {len(df)} total posts")
 print(df.head())
-
-df = pd.read_csv("chicago_safety_reddit.csv")
 print("Total posts:", len(df))
 print("\nColumn names:", df.columns.tolist())
 print("\nSample titles:")
