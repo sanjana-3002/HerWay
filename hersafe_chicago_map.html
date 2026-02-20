@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6fb9ba0905b151480e0b18507f8497ab {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+     background-color: #1a1a1a; padding: 15px; border-radius: 8px;
+     color: white; font-family: Arial; font-size: 13px;">
+    <b>HerSafe - Chicago Safety Map</b><br>
+    <i>Based on Reddit community reports</i><br><br>
+    🔴 High concern<br>
+    🟠 Medium concern<br>
+    🟢 Low concern<br><br>
+    <small>Click circles for details</small>
+</div>
+    
+            <div class="folium-map" id="map_6fb9ba0905b151480e0b18507f8497ab" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6fb9ba0905b151480e0b18507f8497ab = L.map(
+                "map_6fb9ba0905b151480e0b18507f8497ab",
+                {
+                    center: [41.8827, -87.6278],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_011abba0e0092c51feefd6e7352f9967 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_011abba0e0092c51feefd6e7352f9967.addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+            var circle_marker_dcb63617119a55aee169dcf4146418b7 = L.circleMarker(
+                [41.8827, -87.6278],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_a9110c0f87f429bd5464fe4ff1bd9c29 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_fb63237eb2f68a19cceabdf5f473a306 = $(`<div id="html_fb63237eb2f68a19cceabdf5f473a306" style="width: 100.0%; height: 100.0%;"><b>Loop</b><br>Safety Concern Score: 22<br>Posts mentioning this area: 6</div>`)[0];
+                popup_a9110c0f87f429bd5464fe4ff1bd9c29.setContent(html_fb63237eb2f68a19cceabdf5f473a306);
+            
+        
+
+        circle_marker_dcb63617119a55aee169dcf4146418b7.bindPopup(popup_a9110c0f87f429bd5464fe4ff1bd9c29)
+        ;
+
+        
+    
+    
+            circle_marker_dcb63617119a55aee169dcf4146418b7.bindTooltip(
+                `<div>
+                     Loop
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_feb9f34a7ec749408cd4c49d55493ded = L.circleMarker(
+                [41.943, -87.6431],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.636363636363637, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_92a9e24ee6873361a15f4fdd74966ad4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ce21cde167040877becf127cf7b82c8a = $(`<div id="html_ce21cde167040877becf127cf7b82c8a" style="width: 100.0%; height: 100.0%;"><b>Lakeview</b><br>Safety Concern Score: 10<br>Posts mentioning this area: 4</div>`)[0];
+                popup_92a9e24ee6873361a15f4fdd74966ad4.setContent(html_ce21cde167040877becf127cf7b82c8a);
+            
+        
+
+        circle_marker_feb9f34a7ec749408cd4c49d55493ded.bindPopup(popup_92a9e24ee6873361a15f4fdd74966ad4)
+        ;
+
+        
+    
+    
+            circle_marker_feb9f34a7ec749408cd4c49d55493ded.bindTooltip(
+                `<div>
+                     Lakeview
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c2699b85fd3d8eff8367fc1296d217ec = L.circleMarker(
+                [41.9082, -87.6796],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.636363636363637, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_0a0eb6753f093ab16bfb5021df6ee615 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_752917ca1b2d91057aaab3060d0af787 = $(`<div id="html_752917ca1b2d91057aaab3060d0af787" style="width: 100.0%; height: 100.0%;"><b>Wicker Park</b><br>Safety Concern Score: 10<br>Posts mentioning this area: 5</div>`)[0];
+                popup_0a0eb6753f093ab16bfb5021df6ee615.setContent(html_752917ca1b2d91057aaab3060d0af787);
+            
+        
+
+        circle_marker_c2699b85fd3d8eff8367fc1296d217ec.bindPopup(popup_0a0eb6753f093ab16bfb5021df6ee615)
+        ;
+
+        
+    
+    
+            circle_marker_c2699b85fd3d8eff8367fc1296d217ec.bindTooltip(
+                `<div>
+                     Wicker Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d0d878b3da5e47adc0b54c61e8c18d5a = L.circleMarker(
+                [41.9214, -87.7068],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.636363636363637, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_93c5ae1ee0be0843977f9d9bfc673c59 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e64906893b4291c52a42412951ea0bd7 = $(`<div id="html_e64906893b4291c52a42412951ea0bd7" style="width: 100.0%; height: 100.0%;"><b>Logan Square</b><br>Safety Concern Score: 10<br>Posts mentioning this area: 5</div>`)[0];
+                popup_93c5ae1ee0be0843977f9d9bfc673c59.setContent(html_e64906893b4291c52a42412951ea0bd7);
+            
+        
+
+        circle_marker_d0d878b3da5e47adc0b54c61e8c18d5a.bindPopup(popup_93c5ae1ee0be0843977f9d9bfc673c59)
+        ;
+
+        
+    
+    
+            circle_marker_d0d878b3da5e47adc0b54c61e8c18d5a.bindTooltip(
+                `<div>
+                     Logan Square
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_09c0c8ffe162382f3e6cc2df86eaca18 = L.circleMarker(
+                [41.8557, -87.66],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_d88eb35ac25d21da04339f3948c3f357 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_71769fa5f3225e68a2c3d021d86f76e0 = $(`<div id="html_71769fa5f3225e68a2c3d021d86f76e0" style="width: 100.0%; height: 100.0%;"><b>Pilsen</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 3</div>`)[0];
+                popup_d88eb35ac25d21da04339f3948c3f357.setContent(html_71769fa5f3225e68a2c3d021d86f76e0);
+            
+        
+
+        circle_marker_09c0c8ffe162382f3e6cc2df86eaca18.bindPopup(popup_d88eb35ac25d21da04339f3948c3f357)
+        ;
+
+        
+    
+    
+            circle_marker_09c0c8ffe162382f3e6cc2df86eaca18.bindTooltip(
+                `<div>
+                     Pilsen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6b0c33b9b886d7bc5dceb454bc4c0d09 = L.circleMarker(
+                [41.9214, -87.6513],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_7be0f5575315292b9072ac0e7e580a79 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_743adfcdb41d10b7f510bb29770adebe = $(`<div id="html_743adfcdb41d10b7f510bb29770adebe" style="width: 100.0%; height: 100.0%;"><b>Lincoln Park</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 4</div>`)[0];
+                popup_7be0f5575315292b9072ac0e7e580a79.setContent(html_743adfcdb41d10b7f510bb29770adebe);
+            
+        
+
+        circle_marker_6b0c33b9b886d7bc5dceb454bc4c0d09.bindPopup(popup_7be0f5575315292b9072ac0e7e580a79)
+        ;
+
+        
+    
+    
+            circle_marker_6b0c33b9b886d7bc5dceb454bc4c0d09.bindTooltip(
+                `<div>
+                     Lincoln Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6274f2e6a76a363466a3c4e676b58def = L.circleMarker(
+                [41.9681, -87.7227],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_4a268bd8ca883f7cb92f4ba27259aeb7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ba404f8818973bb190e15e24bbdf2f00 = $(`<div id="html_ba404f8818973bb190e15e24bbdf2f00" style="width: 100.0%; height: 100.0%;"><b>Albany Park</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 3</div>`)[0];
+                popup_4a268bd8ca883f7cb92f4ba27259aeb7.setContent(html_ba404f8818973bb190e15e24bbdf2f00);
+            
+        
+
+        circle_marker_6274f2e6a76a363466a3c4e676b58def.bindPopup(popup_4a268bd8ca883f7cb92f4ba27259aeb7)
+        ;
+
+        
+    
+    
+            circle_marker_6274f2e6a76a363466a3c4e676b58def.bindTooltip(
+                `<div>
+                     Albany Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7d0ed8b1f86c21fc3fda4f9966691a6d = L.circleMarker(
+                [41.9651, -87.6572],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_b0f085191125c5e37faaee72775fbb5d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a7bc5901e44abeba60b0e1b4d986226e = $(`<div id="html_a7bc5901e44abeba60b0e1b4d986226e" style="width: 100.0%; height: 100.0%;"><b>Uptown</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 3</div>`)[0];
+                popup_b0f085191125c5e37faaee72775fbb5d.setContent(html_a7bc5901e44abeba60b0e1b4d986226e);
+            
+        
+
+        circle_marker_7d0ed8b1f86c21fc3fda4f9966691a6d.bindPopup(popup_b0f085191125c5e37faaee72775fbb5d)
+        ;
+
+        
+    
+    
+            circle_marker_7d0ed8b1f86c21fc3fda4f9966691a6d.bindTooltip(
+                `<div>
+                     Uptown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b492aa8dbde9b4ec55c562ef1c3d13f = L.circleMarker(
+                [41.7851, -87.765],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.909090909090909, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_22654c9514a2ee4cf3d6cc55992be16d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c54e610e72dc810168c668cd5f491101 = $(`<div id="html_c54e610e72dc810168c668cd5f491101" style="width: 100.0%; height: 100.0%;"><b>Clearing</b><br>Safety Concern Score: 8<br>Posts mentioning this area: 3</div>`)[0];
+                popup_22654c9514a2ee4cf3d6cc55992be16d.setContent(html_c54e610e72dc810168c668cd5f491101);
+            
+        
+
+        circle_marker_8b492aa8dbde9b4ec55c562ef1c3d13f.bindPopup(popup_22654c9514a2ee4cf3d6cc55992be16d)
+        ;
+
+        
+    
+    
+            circle_marker_8b492aa8dbde9b4ec55c562ef1c3d13f.bindTooltip(
+                `<div>
+                     Clearing
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7f59fb9682ffe56b0fe9a199a24d5dcd = L.circleMarker(
+                [42.0083, -87.6647],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.545454545454545, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_f9e25c789f3c5dc3b47832e247b3b14b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_30777ebefa6b7bd8d00e12eecb9f8c46 = $(`<div id="html_30777ebefa6b7bd8d00e12eecb9f8c46" style="width: 100.0%; height: 100.0%;"><b>Rogers Park</b><br>Safety Concern Score: 7<br>Posts mentioning this area: 3</div>`)[0];
+                popup_f9e25c789f3c5dc3b47832e247b3b14b.setContent(html_30777ebefa6b7bd8d00e12eecb9f8c46);
+            
+        
+
+        circle_marker_7f59fb9682ffe56b0fe9a199a24d5dcd.bindPopup(popup_f9e25c789f3c5dc3b47832e247b3b14b)
+        ;
+
+        
+    
+    
+            circle_marker_7f59fb9682ffe56b0fe9a199a24d5dcd.bindTooltip(
+                `<div>
+                     Rogers Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c7fcf2f195b9bcc0538af8387aac602b = L.circleMarker(
+                [41.8296, -87.6726],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_4e137140686c3d2aa75b100e3678a47c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f4530725766f993da238516d44fa7947 = $(`<div id="html_f4530725766f993da238516d44fa7947" style="width: 100.0%; height: 100.0%;"><b>McKinley Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_4e137140686c3d2aa75b100e3678a47c.setContent(html_f4530725766f993da238516d44fa7947);
+            
+        
+
+        circle_marker_c7fcf2f195b9bcc0538af8387aac602b.bindPopup(popup_4e137140686c3d2aa75b100e3678a47c)
+        ;
+
+        
+    
+    
+            circle_marker_c7fcf2f195b9bcc0538af8387aac602b.bindTooltip(
+                `<div>
+                     McKinley Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_79324024e277c33acaad5e4c7b2ffee7 = L.circleMarker(
+                [41.8799, -87.765],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_3d45d3236c65a0549ccad6b1db4d680c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9931173efb1ca58c65a4704b4af5bcd8 = $(`<div id="html_9931173efb1ca58c65a4704b4af5bcd8" style="width: 100.0%; height: 100.0%;"><b>Fulton Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_3d45d3236c65a0549ccad6b1db4d680c.setContent(html_9931173efb1ca58c65a4704b4af5bcd8);
+            
+        
+
+        circle_marker_79324024e277c33acaad5e4c7b2ffee7.bindPopup(popup_3d45d3236c65a0549ccad6b1db4d680c)
+        ;
+
+        
+    
+    
+            circle_marker_79324024e277c33acaad5e4c7b2ffee7.bindTooltip(
+                `<div>
+                     Fulton Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_90c960dd134f3f9e9c5f5d447eef5a1f = L.circleMarker(
+                [41.9196, -87.7227],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_d0179d4e1c99725d70adc7624b0ac59f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f2661d80208ccf859667bb0606835656 = $(`<div id="html_f2661d80208ccf859667bb0606835656" style="width: 100.0%; height: 100.0%;"><b>Hermosa</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_d0179d4e1c99725d70adc7624b0ac59f.setContent(html_f2661d80208ccf859667bb0606835656);
+            
+        
+
+        circle_marker_90c960dd134f3f9e9c5f5d447eef5a1f.bindPopup(popup_d0179d4e1c99725d70adc7624b0ac59f)
+        ;
+
+        
+    
+    
+            circle_marker_90c960dd134f3f9e9c5f5d447eef5a1f.bindTooltip(
+                `<div>
+                     Hermosa
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77c62167ec2c7450e4014b65f472bd07 = L.circleMarker(
+                [41.986, -87.8065],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_e73042394d502843e85178cb34d2bf24 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_cc067687a6ef81327f0ab81e4d3a713b = $(`<div id="html_cc067687a6ef81327f0ab81e4d3a713b" style="width: 100.0%; height: 100.0%;"><b>Norwood Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_e73042394d502843e85178cb34d2bf24.setContent(html_cc067687a6ef81327f0ab81e4d3a713b);
+            
+        
+
+        circle_marker_77c62167ec2c7450e4014b65f472bd07.bindPopup(popup_e73042394d502843e85178cb34d2bf24)
+        ;
+
+        
+    
+    
+            circle_marker_77c62167ec2c7450e4014b65f472bd07.bindTooltip(
+                `<div>
+                     Norwood Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6f006e516e937b8ad6ba20d8c90a4ee5 = L.circleMarker(
+                [41.9196, -87.765],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_122d32e78da9242542dfd95f3c54b955 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_8edf542700a25e6a1e2739031bc0c3cf = $(`<div id="html_8edf542700a25e6a1e2739031bc0c3cf" style="width: 100.0%; height: 100.0%;"><b>Cragin</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_122d32e78da9242542dfd95f3c54b955.setContent(html_8edf542700a25e6a1e2739031bc0c3cf);
+            
+        
+
+        circle_marker_6f006e516e937b8ad6ba20d8c90a4ee5.bindPopup(popup_122d32e78da9242542dfd95f3c54b955)
+        ;
+
+        
+    
+    
+            circle_marker_6f006e516e937b8ad6ba20d8c90a4ee5.bindTooltip(
+                `<div>
+                     Cragin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0856173ec23e72f017b710c2ae2130c2 = L.circleMarker(
+                [41.8932, -87.6763],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_f58cdc8d2437f5d32d91746976dc1e9d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5a8ff3d23fdcfd88396a0f9d021b849f = $(`<div id="html_5a8ff3d23fdcfd88396a0f9d021b849f" style="width: 100.0%; height: 100.0%;"><b>Ukrainian Village</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_f58cdc8d2437f5d32d91746976dc1e9d.setContent(html_5a8ff3d23fdcfd88396a0f9d021b849f);
+            
+        
+
+        circle_marker_0856173ec23e72f017b710c2ae2130c2.bindPopup(popup_f58cdc8d2437f5d32d91746976dc1e9d)
+        ;
+
+        
+    
+    
+            circle_marker_0856173ec23e72f017b710c2ae2130c2.bindTooltip(
+                `<div>
+                     Ukrainian Village
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5c8bcaea6349b927e393ba130fdcd9de = L.circleMarker(
+                [41.8799, -87.7227],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_3301e380b6581b02848640e942ea384a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_77e16b49f52d4d5f914dd84fea727f48 = $(`<div id="html_77e16b49f52d4d5f914dd84fea727f48" style="width: 100.0%; height: 100.0%;"><b>Garfield Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_3301e380b6581b02848640e942ea384a.setContent(html_77e16b49f52d4d5f914dd84fea727f48);
+            
+        
+
+        circle_marker_5c8bcaea6349b927e393ba130fdcd9de.bindPopup(popup_3301e380b6581b02848640e942ea384a)
+        ;
+
+        
+    
+    
+            circle_marker_5c8bcaea6349b927e393ba130fdcd9de.bindTooltip(
+                `<div>
+                     Garfield Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4cd2f04b286546b8ec837e1cc0a6541d = L.circleMarker(
+                [41.7006, -87.62],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_236665301c92aeb3cf08789bc4031719 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_174b5192c319df542c5941139f6ee11a = $(`<div id="html_174b5192c319df542c5941139f6ee11a" style="width: 100.0%; height: 100.0%;"><b>Roseland</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_236665301c92aeb3cf08789bc4031719.setContent(html_174b5192c319df542c5941139f6ee11a);
+            
+        
+
+        circle_marker_4cd2f04b286546b8ec837e1cc0a6541d.bindPopup(popup_236665301c92aeb3cf08789bc4031719)
+        ;
+
+        
+    
+    
+            circle_marker_4cd2f04b286546b8ec837e1cc0a6541d.bindTooltip(
+                `<div>
+                     Roseland
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8a441e3010b27ca5a018818e86706e54 = L.circleMarker(
+                [41.7617, -87.6062],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_bc075c9ce376ca2b2d8abc938983ce29 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_54bec539b5867d5a7a766b4016015eb5 = $(`<div id="html_54bec539b5867d5a7a766b4016015eb5" style="width: 100.0%; height: 100.0%;"><b>Grand Crossing</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_bc075c9ce376ca2b2d8abc938983ce29.setContent(html_54bec539b5867d5a7a766b4016015eb5);
+            
+        
+
+        circle_marker_8a441e3010b27ca5a018818e86706e54.bindPopup(popup_bc075c9ce376ca2b2d8abc938983ce29)
+        ;
+
+        
+    
+    
+            circle_marker_8a441e3010b27ca5a018818e86706e54.bindTooltip(
+                `<div>
+                     Grand Crossing
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5343f2062ca050e4eafe6e0ede81af03 = L.circleMarker(
+                [41.7895, -87.62],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_1a41378c5f5dd2c29fb06b96feadedd8 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9d11c484f923fb7fe2b7505357749b24 = $(`<div id="html_9d11c484f923fb7fe2b7505357749b24" style="width: 100.0%; height: 100.0%;"><b>Washington Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_1a41378c5f5dd2c29fb06b96feadedd8.setContent(html_9d11c484f923fb7fe2b7505357749b24);
+            
+        
+
+        circle_marker_5343f2062ca050e4eafe6e0ede81af03.bindPopup(popup_1a41378c5f5dd2c29fb06b96feadedd8)
+        ;
+
+        
+    
+    
+            circle_marker_5343f2062ca050e4eafe6e0ede81af03.bindTooltip(
+                `<div>
+                     Washington Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b4ef4e3fdb91071a08897ec87e5a0329 = L.circleMarker(
+                [41.7795, -87.6438],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_aaced43004b633f6664affd9ef58003d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_71e9373d818e4fad22c483097080470a = $(`<div id="html_71e9373d818e4fad22c483097080470a" style="width: 100.0%; height: 100.0%;"><b>Englewood</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_aaced43004b633f6664affd9ef58003d.setContent(html_71e9373d818e4fad22c483097080470a);
+            
+        
+
+        circle_marker_b4ef4e3fdb91071a08897ec87e5a0329.bindPopup(popup_aaced43004b633f6664affd9ef58003d)
+        ;
+
+        
+    
+    
+            circle_marker_b4ef4e3fdb91071a08897ec87e5a0329.bindTooltip(
+                `<div>
+                     Englewood
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_23f19a09d5b33c4f5f46353eafbcec01 = L.circleMarker(
+                [41.8799, -87.74],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_d406c97218f3986aaf5854d52b969571 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_27df50d2f810d927387747b428766b6f = $(`<div id="html_27df50d2f810d927387747b428766b6f" style="width: 100.0%; height: 100.0%;"><b>West Garfield Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
+                popup_d406c97218f3986aaf5854d52b969571.setContent(html_27df50d2f810d927387747b428766b6f);
+            
+        
+
+        circle_marker_23f19a09d5b33c4f5f46353eafbcec01.bindPopup(popup_d406c97218f3986aaf5854d52b969571)
+        ;
+
+        
+    
+    
+            circle_marker_23f19a09d5b33c4f5f46353eafbcec01.bindTooltip(
+                `<div>
+                     West Garfield Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_58dd6882c3cf771d630f60e2a47001c3 = L.circleMarker(
+                [41.8673, -87.6278],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.454545454545455, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_a68b677490d8bd5e3657bebe04f9c51e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_83b45bd8d95129019a8bda4acea8a3d2 = $(`<div id="html_83b45bd8d95129019a8bda4acea8a3d2" style="width: 100.0%; height: 100.0%;"><b>South Loop</b><br>Safety Concern Score: 4<br>Posts mentioning this area: 1</div>`)[0];
+                popup_a68b677490d8bd5e3657bebe04f9c51e.setContent(html_83b45bd8d95129019a8bda4acea8a3d2);
+            
+        
+
+        circle_marker_58dd6882c3cf771d630f60e2a47001c3.bindPopup(popup_a68b677490d8bd5e3657bebe04f9c51e)
+        ;
+
+        
+    
+    
+            circle_marker_58dd6882c3cf771d630f60e2a47001c3.bindTooltip(
+                `<div>
+                     South Loop
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_34782878d99884c07f16dbf281f5a9b7 = L.circleMarker(
+                [41.8757, -87.6278],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.454545454545455, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_f8fe8e420d6ad612f08bbea8950e9485 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_94930101fadad810e3d9f873eb435a76 = $(`<div id="html_94930101fadad810e3d9f873eb435a76" style="width: 100.0%; height: 100.0%;"><b>Printer's Row</b><br>Safety Concern Score: 4<br>Posts mentioning this area: 1</div>`)[0];
+                popup_f8fe8e420d6ad612f08bbea8950e9485.setContent(html_94930101fadad810e3d9f873eb435a76);
+            
+        
+
+        circle_marker_34782878d99884c07f16dbf281f5a9b7.bindPopup(popup_f8fe8e420d6ad612f08bbea8950e9485)
+        ;
+
+        
+    
+    
+            circle_marker_34782878d99884c07f16dbf281f5a9b7.bindTooltip(
+                `<div>
+                     Printer's Row
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_db1f905d6e24b40d73a0a5c176150a47 = L.circleMarker(
+                [41.7606, -87.5671],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.454545454545455, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_25f54801f0aa184832e59a4281318312 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_bba6556ab784409934bbf1719e55ab9f = $(`<div id="html_bba6556ab784409934bbf1719e55ab9f" style="width: 100.0%; height: 100.0%;"><b>South Shore</b><br>Safety Concern Score: 4<br>Posts mentioning this area: 1</div>`)[0];
+                popup_25f54801f0aa184832e59a4281318312.setContent(html_bba6556ab784409934bbf1719e55ab9f);
+            
+        
+
+        circle_marker_db1f905d6e24b40d73a0a5c176150a47.bindPopup(popup_25f54801f0aa184832e59a4281318312)
+        ;
+
+        
+    
+    
+            circle_marker_db1f905d6e24b40d73a0a5c176150a47.bindTooltip(
+                `<div>
+                     South Shore
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cb14bfa18692456a133af694db6d7667 = L.circleMarker(
+                [41.9031, -87.6285],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_6407c38fcf2f150f35796bc33271bd8b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_98166e88fa0a5b2eb779939de53f4548 = $(`<div id="html_98166e88fa0a5b2eb779939de53f4548" style="width: 100.0%; height: 100.0%;"><b>Gold Coast</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 2</div>`)[0];
+                popup_6407c38fcf2f150f35796bc33271bd8b.setContent(html_98166e88fa0a5b2eb779939de53f4548);
+            
+        
+
+        circle_marker_cb14bfa18692456a133af694db6d7667.bindPopup(popup_6407c38fcf2f150f35796bc33271bd8b)
+        ;
+
+        
+    
+    
+            circle_marker_cb14bfa18692456a133af694db6d7667.bindTooltip(
+                `<div>
+                     Gold Coast
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4eb8f9922e43a50320770993d20f717b = L.circleMarker(
+                [41.8287, -87.7178],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_b35b9d20d309186187f5f2cc40ec3b58 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c00d590b6e37bdb8aed703ea2a23e291 = $(`<div id="html_c00d590b6e37bdb8aed703ea2a23e291" style="width: 100.0%; height: 100.0%;"><b>Little Village</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 1</div>`)[0];
+                popup_b35b9d20d309186187f5f2cc40ec3b58.setContent(html_c00d590b6e37bdb8aed703ea2a23e291);
+            
+        
+
+        circle_marker_4eb8f9922e43a50320770993d20f717b.bindPopup(popup_b35b9d20d309186187f5f2cc40ec3b58)
+        ;
+
+        
+    
+    
+            circle_marker_4eb8f9922e43a50320770993d20f717b.bindTooltip(
+                `<div>
+                     Little Village
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ef0d0373eef01542473fa340aa95d0cb = L.circleMarker(
+                [41.9794, -87.6672],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_ae99f383744aa752a4d0f05985181eb7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4d7c4317235ebf8fef62b79fe3f05317 = $(`<div id="html_4d7c4317235ebf8fef62b79fe3f05317" style="width: 100.0%; height: 100.0%;"><b>Andersonville</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 2</div>`)[0];
+                popup_ae99f383744aa752a4d0f05985181eb7.setContent(html_4d7c4317235ebf8fef62b79fe3f05317);
+            
+        
+
+        circle_marker_ef0d0373eef01542473fa340aa95d0cb.bindPopup(popup_ae99f383744aa752a4d0f05985181eb7)
+        ;
+
+        
+    
+    
+            circle_marker_ef0d0373eef01542473fa340aa95d0cb.bindTooltip(
+                `<div>
+                     Andersonville
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4292de65db84f5de7bfab20122854dbc = L.circleMarker(
+                [41.9794, -87.6592],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_37fbbf57552789a3f95e5ec0dee502cf = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_96de3d8f0254e67831b75c17de62b349 = $(`<div id="html_96de3d8f0254e67831b75c17de62b349" style="width: 100.0%; height: 100.0%;"><b>Edgewater</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 2</div>`)[0];
+                popup_37fbbf57552789a3f95e5ec0dee502cf.setContent(html_96de3d8f0254e67831b75c17de62b349);
+            
+        
+
+        circle_marker_4292de65db84f5de7bfab20122854dbc.bindPopup(popup_37fbbf57552789a3f95e5ec0dee502cf)
+        ;
+
+        
+    
+    
+            circle_marker_4292de65db84f5de7bfab20122854dbc.bindTooltip(
+                `<div>
+                     Edgewater
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ff1ba24d485fd7968a9bdf68c0891623 = L.circleMarker(
+                [41.9399, -87.7133],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7272727272727275, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_d000bfa32e651a06a549e9f15de08c28 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d997075268ca80a668aafa85a455ca7b = $(`<div id="html_d997075268ca80a668aafa85a455ca7b" style="width: 100.0%; height: 100.0%;"><b>Avondale</b><br>Safety Concern Score: 2<br>Posts mentioning this area: 1</div>`)[0];
+                popup_d000bfa32e651a06a549e9f15de08c28.setContent(html_d997075268ca80a668aafa85a455ca7b);
+            
+        
+
+        circle_marker_ff1ba24d485fd7968a9bdf68c0891623.bindPopup(popup_d000bfa32e651a06a549e9f15de08c28)
+        ;
+
+        
+    
+    
+            circle_marker_ff1ba24d485fd7968a9bdf68c0891623.bindTooltip(
+                `<div>
+                     Avondale
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d1555663cba47d658af263f734d2e670 = L.circleMarker(
+                [41.8936, -87.6338],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7272727272727275, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_ba890850d026d4325abc8060dd7484d9 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b0d91fcdaef6e0f08076927741290649 = $(`<div id="html_b0d91fcdaef6e0f08076927741290649" style="width: 100.0%; height: 100.0%;"><b>River North</b><br>Safety Concern Score: 2<br>Posts mentioning this area: 1</div>`)[0];
+                popup_ba890850d026d4325abc8060dd7484d9.setContent(html_b0d91fcdaef6e0f08076927741290649);
+            
+        
+
+        circle_marker_d1555663cba47d658af263f734d2e670.bindPopup(popup_ba890850d026d4325abc8060dd7484d9)
+        ;
+
+        
+    
+    
+            circle_marker_d1555663cba47d658af263f734d2e670.bindTooltip(
+                `<div>
+                     River North
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cefc0c6c13ad99ef79dd35582f682cb2 = L.circleMarker(
+                [41.9178, -87.6827],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7272727272727275, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_0becf369c39d6a89d6ba9aa4fa63e846 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c67e26d2666b3aac16cc19205eaca3a9 = $(`<div id="html_c67e26d2666b3aac16cc19205eaca3a9" style="width: 100.0%; height: 100.0%;"><b>Bucktown</b><br>Safety Concern Score: 2<br>Posts mentioning this area: 1</div>`)[0];
+                popup_0becf369c39d6a89d6ba9aa4fa63e846.setContent(html_c67e26d2666b3aac16cc19205eaca3a9);
+            
+        
+
+        circle_marker_cefc0c6c13ad99ef79dd35582f682cb2.bindPopup(popup_0becf369c39d6a89d6ba9aa4fa63e846)
+        ;
+
+        
+    
+    
+            circle_marker_cefc0c6c13ad99ef79dd35582f682cb2.bindTooltip(
+                `<div>
+                     Bucktown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0f0a1af2ddcb5a967b37366aa7755d6e = L.circleMarker(
+                [41.8999, -87.77],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_1e9f70e64b2e1afd11dff5f2957b95e9 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_dcb0846cd38ed687bb18255f04320617 = $(`<div id="html_dcb0846cd38ed687bb18255f04320617" style="width: 100.0%; height: 100.0%;"><b>Austin</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
+                popup_1e9f70e64b2e1afd11dff5f2957b95e9.setContent(html_dcb0846cd38ed687bb18255f04320617);
+            
+        
+
+        circle_marker_0f0a1af2ddcb5a967b37366aa7755d6e.bindPopup(popup_1e9f70e64b2e1afd11dff5f2957b95e9)
+        ;
+
+        
+    
+    
+            circle_marker_0f0a1af2ddcb5a967b37366aa7755d6e.bindTooltip(
+                `<div>
+                     Austin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_22d9204d094115fa416174f9cdfd1b00 = L.circleMarker(
+                [41.8827, -87.6479],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_7f0218d2185cd23945e928171909d15c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d2af4665503eb856e77113a2a5754423 = $(`<div id="html_d2af4665503eb856e77113a2a5754423" style="width: 100.0%; height: 100.0%;"><b>West Loop</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
+                popup_7f0218d2185cd23945e928171909d15c.setContent(html_d2af4665503eb856e77113a2a5754423);
+            
+        
+
+        circle_marker_22d9204d094115fa416174f9cdfd1b00.bindPopup(popup_7f0218d2185cd23945e928171909d15c)
+        ;
+
+        
+    
+    
+            circle_marker_22d9204d094115fa416174f9cdfd1b00.bindTooltip(
+                `<div>
+                     West Loop
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_22c27c62823383e13970a41f0240b752 = L.circleMarker(
+                [41.7943, -87.5907],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_04933ff3a1459d989167e25226b6728b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d10d4c135e32f3beb53f6b936324f899 = $(`<div id="html_d10d4c135e32f3beb53f6b936324f899" style="width: 100.0%; height: 100.0%;"><b>Hyde Park</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
+                popup_04933ff3a1459d989167e25226b6728b.setContent(html_d10d4c135e32f3beb53f6b936324f899);
+            
+        
+
+        circle_marker_22c27c62823383e13970a41f0240b752.bindPopup(popup_04933ff3a1459d989167e25226b6728b)
+        ;
+
+        
+    
+    
+            circle_marker_22c27c62823383e13970a41f0240b752.bindTooltip(
+                `<div>
+                     Hyde Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cfe5e7f7ddcd402a9c10b85090153678 = L.circleMarker(
+                [41.8281, -87.6153],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_61d23855cc031f7b5cf40eb9e0bb3431 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4aaaa0ecbb4dc204a25752dd28f368db = $(`<div id="html_4aaaa0ecbb4dc204a25752dd28f368db" style="width: 100.0%; height: 100.0%;"><b>Bronzeville</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
+                popup_61d23855cc031f7b5cf40eb9e0bb3431.setContent(html_4aaaa0ecbb4dc204a25752dd28f368db);
+            
+        
+
+        circle_marker_cfe5e7f7ddcd402a9c10b85090153678.bindPopup(popup_61d23855cc031f7b5cf40eb9e0bb3431)
+        ;
+
+        
+    
+    
+            circle_marker_cfe5e7f7ddcd402a9c10b85090153678.bindTooltip(
+                `<div>
+                     Bronzeville
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ec4a9afcf582f14f6cc3a208af2e169a = L.circleMarker(
+                [41.8504, -87.6326],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
+            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+        
+    
+        var popup_cd38aabebca36869e2c3eead7c7d5c53 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_6c0d33b6c4d1f239500129519d245396 = $(`<div id="html_6c0d33b6c4d1f239500129519d245396" style="width: 100.0%; height: 100.0%;"><b>Chinatown</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 2</div>`)[0];
+                popup_cd38aabebca36869e2c3eead7c7d5c53.setContent(html_6c0d33b6c4d1f239500129519d245396);
+            
+        
+
+        circle_marker_ec4a9afcf582f14f6cc3a208af2e169a.bindPopup(popup_cd38aabebca36869e2c3eead7c7d5c53)
+        ;
+
+        
+    
+    
+            circle_marker_ec4a9afcf582f14f6cc3a208af2e169a.bindTooltip(
+                `<div>
+                     Chinatown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
