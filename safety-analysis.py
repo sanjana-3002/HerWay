@@ -1,5 +1,4 @@
-
-
+pip install folium
 import pandas as pd
 import folium
 import ast
