@@ -5,7 +5,7 @@ from collections import Counter
 
 df = pd.read_csv("chicago_safety_located.csv")
 
-# convert string lists back to actual lists
+# convert string lists back to actual lists-
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 
