@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_6fb9ba0905b151480e0b18507f8497ab {
+                #map_6b0bf0c2b33d1127aa28755e4bd52a11 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -55,24 +55,27 @@
     
     
 <div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
-     background-color: #1a1a1a; padding: 15px; border-radius: 8px;
-     color: white; font-family: Arial; font-size: 13px;">
-    <b>HerSafe - Chicago Safety Map</b><br>
-    <i>Based on Reddit community reports</i><br><br>
-    🔴 High concern<br>
-    🟠 Medium concern<br>
-    🟢 Low concern<br><br>
-    <small>Click circles for details</small>
+     background-color: #1a1a1a; padding: 15px; border-radius: 10px;
+     color: white; font-family: Arial; font-size: 13px; 
+     border: 1px solid #444;">
+    <b style="font-size:15px">HerSafe Chicago</b><br>
+    <i style="font-size:11px">Reddit Community Safety Signals</i><br><br>
+    🔴 High Risk (&gt;50% fearful posts)<br>
+    🟠 Medium Risk (30–50% fearful)<br>
+    🟢 Lower Risk (&lt;30% fearful)<br>
+    ⚫ Insufficient Data (&lt;3 posts)<br><br>
+    <i style="font-size:11px">Circle size = number of posts<br>
+    Click circles for details</i>
 </div>
     
-            <div class="folium-map" id="map_6fb9ba0905b151480e0b18507f8497ab" ></div>
+            <div class="folium-map" id="map_6b0bf0c2b33d1127aa28755e4bd52a11" ></div>
         
 </body>
 <script>
     
     
-            var map_6fb9ba0905b151480e0b18507f8497ab = L.map(
-                "map_6fb9ba0905b151480e0b18507f8497ab",
+            var map_6b0bf0c2b33d1127aa28755e4bd52a11 = L.map(
+                "map_6b0bf0c2b33d1127aa28755e4bd52a11",
                 {
                     center: [41.8827, -87.6278],
                     crs: L.CRS.EPSG3857,
@@ -89,7 +92,7 @@
 
         
     
-            var tile_layer_011abba0e0092c51feefd6e7352f9967 = L.tileLayer(
+            var tile_layer_7fc09c498aaf59ea274f486368a85db2 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -106,497 +109,35 @@
             );
         
     
-            tile_layer_011abba0e0092c51feefd6e7352f9967.addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            tile_layer_7fc09c498aaf59ea274f486368a85db2.addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-            var circle_marker_dcb63617119a55aee169dcf4146418b7 = L.circleMarker(
-                [41.8827, -87.6278],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_a9110c0f87f429bd5464fe4ff1bd9c29 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_fb63237eb2f68a19cceabdf5f473a306 = $(`<div id="html_fb63237eb2f68a19cceabdf5f473a306" style="width: 100.0%; height: 100.0%;"><b>Loop</b><br>Safety Concern Score: 22<br>Posts mentioning this area: 6</div>`)[0];
-                popup_a9110c0f87f429bd5464fe4ff1bd9c29.setContent(html_fb63237eb2f68a19cceabdf5f473a306);
-            
-        
-
-        circle_marker_dcb63617119a55aee169dcf4146418b7.bindPopup(popup_a9110c0f87f429bd5464fe4ff1bd9c29)
-        ;
-
-        
-    
-    
-            circle_marker_dcb63617119a55aee169dcf4146418b7.bindTooltip(
-                `<div>
-                     Loop
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_feb9f34a7ec749408cd4c49d55493ded = L.circleMarker(
-                [41.943, -87.6431],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.636363636363637, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_92a9e24ee6873361a15f4fdd74966ad4 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_ce21cde167040877becf127cf7b82c8a = $(`<div id="html_ce21cde167040877becf127cf7b82c8a" style="width: 100.0%; height: 100.0%;"><b>Lakeview</b><br>Safety Concern Score: 10<br>Posts mentioning this area: 4</div>`)[0];
-                popup_92a9e24ee6873361a15f4fdd74966ad4.setContent(html_ce21cde167040877becf127cf7b82c8a);
-            
-        
-
-        circle_marker_feb9f34a7ec749408cd4c49d55493ded.bindPopup(popup_92a9e24ee6873361a15f4fdd74966ad4)
-        ;
-
-        
-    
-    
-            circle_marker_feb9f34a7ec749408cd4c49d55493ded.bindTooltip(
-                `<div>
-                     Lakeview
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_c2699b85fd3d8eff8367fc1296d217ec = L.circleMarker(
-                [41.9082, -87.6796],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.636363636363637, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_0a0eb6753f093ab16bfb5021df6ee615 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_752917ca1b2d91057aaab3060d0af787 = $(`<div id="html_752917ca1b2d91057aaab3060d0af787" style="width: 100.0%; height: 100.0%;"><b>Wicker Park</b><br>Safety Concern Score: 10<br>Posts mentioning this area: 5</div>`)[0];
-                popup_0a0eb6753f093ab16bfb5021df6ee615.setContent(html_752917ca1b2d91057aaab3060d0af787);
-            
-        
-
-        circle_marker_c2699b85fd3d8eff8367fc1296d217ec.bindPopup(popup_0a0eb6753f093ab16bfb5021df6ee615)
-        ;
-
-        
-    
-    
-            circle_marker_c2699b85fd3d8eff8367fc1296d217ec.bindTooltip(
-                `<div>
-                     Wicker Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_d0d878b3da5e47adc0b54c61e8c18d5a = L.circleMarker(
-                [41.9214, -87.7068],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.636363636363637, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_93c5ae1ee0be0843977f9d9bfc673c59 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_e64906893b4291c52a42412951ea0bd7 = $(`<div id="html_e64906893b4291c52a42412951ea0bd7" style="width: 100.0%; height: 100.0%;"><b>Logan Square</b><br>Safety Concern Score: 10<br>Posts mentioning this area: 5</div>`)[0];
-                popup_93c5ae1ee0be0843977f9d9bfc673c59.setContent(html_e64906893b4291c52a42412951ea0bd7);
-            
-        
-
-        circle_marker_d0d878b3da5e47adc0b54c61e8c18d5a.bindPopup(popup_93c5ae1ee0be0843977f9d9bfc673c59)
-        ;
-
-        
-    
-    
-            circle_marker_d0d878b3da5e47adc0b54c61e8c18d5a.bindTooltip(
-                `<div>
-                     Logan Square
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_09c0c8ffe162382f3e6cc2df86eaca18 = L.circleMarker(
-                [41.8557, -87.66],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_d88eb35ac25d21da04339f3948c3f357 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_71769fa5f3225e68a2c3d021d86f76e0 = $(`<div id="html_71769fa5f3225e68a2c3d021d86f76e0" style="width: 100.0%; height: 100.0%;"><b>Pilsen</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 3</div>`)[0];
-                popup_d88eb35ac25d21da04339f3948c3f357.setContent(html_71769fa5f3225e68a2c3d021d86f76e0);
-            
-        
-
-        circle_marker_09c0c8ffe162382f3e6cc2df86eaca18.bindPopup(popup_d88eb35ac25d21da04339f3948c3f357)
-        ;
-
-        
-    
-    
-            circle_marker_09c0c8ffe162382f3e6cc2df86eaca18.bindTooltip(
-                `<div>
-                     Pilsen
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_6b0c33b9b886d7bc5dceb454bc4c0d09 = L.circleMarker(
-                [41.9214, -87.6513],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_7be0f5575315292b9072ac0e7e580a79 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_743adfcdb41d10b7f510bb29770adebe = $(`<div id="html_743adfcdb41d10b7f510bb29770adebe" style="width: 100.0%; height: 100.0%;"><b>Lincoln Park</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 4</div>`)[0];
-                popup_7be0f5575315292b9072ac0e7e580a79.setContent(html_743adfcdb41d10b7f510bb29770adebe);
-            
-        
-
-        circle_marker_6b0c33b9b886d7bc5dceb454bc4c0d09.bindPopup(popup_7be0f5575315292b9072ac0e7e580a79)
-        ;
-
-        
-    
-    
-            circle_marker_6b0c33b9b886d7bc5dceb454bc4c0d09.bindTooltip(
-                `<div>
-                     Lincoln Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_6274f2e6a76a363466a3c4e676b58def = L.circleMarker(
-                [41.9681, -87.7227],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_4a268bd8ca883f7cb92f4ba27259aeb7 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_ba404f8818973bb190e15e24bbdf2f00 = $(`<div id="html_ba404f8818973bb190e15e24bbdf2f00" style="width: 100.0%; height: 100.0%;"><b>Albany Park</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 3</div>`)[0];
-                popup_4a268bd8ca883f7cb92f4ba27259aeb7.setContent(html_ba404f8818973bb190e15e24bbdf2f00);
-            
-        
-
-        circle_marker_6274f2e6a76a363466a3c4e676b58def.bindPopup(popup_4a268bd8ca883f7cb92f4ba27259aeb7)
-        ;
-
-        
-    
-    
-            circle_marker_6274f2e6a76a363466a3c4e676b58def.bindTooltip(
-                `<div>
-                     Albany Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_7d0ed8b1f86c21fc3fda4f9966691a6d = L.circleMarker(
-                [41.9651, -87.6572],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2727272727272725, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_b0f085191125c5e37faaee72775fbb5d = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_a7bc5901e44abeba60b0e1b4d986226e = $(`<div id="html_a7bc5901e44abeba60b0e1b4d986226e" style="width: 100.0%; height: 100.0%;"><b>Uptown</b><br>Safety Concern Score: 9<br>Posts mentioning this area: 3</div>`)[0];
-                popup_b0f085191125c5e37faaee72775fbb5d.setContent(html_a7bc5901e44abeba60b0e1b4d986226e);
-            
-        
-
-        circle_marker_7d0ed8b1f86c21fc3fda4f9966691a6d.bindPopup(popup_b0f085191125c5e37faaee72775fbb5d)
-        ;
-
-        
-    
-    
-            circle_marker_7d0ed8b1f86c21fc3fda4f9966691a6d.bindTooltip(
-                `<div>
-                     Uptown
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_8b492aa8dbde9b4ec55c562ef1c3d13f = L.circleMarker(
-                [41.7851, -87.765],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.909090909090909, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_22654c9514a2ee4cf3d6cc55992be16d = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_c54e610e72dc810168c668cd5f491101 = $(`<div id="html_c54e610e72dc810168c668cd5f491101" style="width: 100.0%; height: 100.0%;"><b>Clearing</b><br>Safety Concern Score: 8<br>Posts mentioning this area: 3</div>`)[0];
-                popup_22654c9514a2ee4cf3d6cc55992be16d.setContent(html_c54e610e72dc810168c668cd5f491101);
-            
-        
-
-        circle_marker_8b492aa8dbde9b4ec55c562ef1c3d13f.bindPopup(popup_22654c9514a2ee4cf3d6cc55992be16d)
-        ;
-
-        
-    
-    
-            circle_marker_8b492aa8dbde9b4ec55c562ef1c3d13f.bindTooltip(
-                `<div>
-                     Clearing
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_7f59fb9682ffe56b0fe9a199a24d5dcd = L.circleMarker(
-                [42.0083, -87.6647],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.545454545454545, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_f9e25c789f3c5dc3b47832e247b3b14b = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_30777ebefa6b7bd8d00e12eecb9f8c46 = $(`<div id="html_30777ebefa6b7bd8d00e12eecb9f8c46" style="width: 100.0%; height: 100.0%;"><b>Rogers Park</b><br>Safety Concern Score: 7<br>Posts mentioning this area: 3</div>`)[0];
-                popup_f9e25c789f3c5dc3b47832e247b3b14b.setContent(html_30777ebefa6b7bd8d00e12eecb9f8c46);
-            
-        
-
-        circle_marker_7f59fb9682ffe56b0fe9a199a24d5dcd.bindPopup(popup_f9e25c789f3c5dc3b47832e247b3b14b)
-        ;
-
-        
-    
-    
-            circle_marker_7f59fb9682ffe56b0fe9a199a24d5dcd.bindTooltip(
-                `<div>
-                     Rogers Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_c7fcf2f195b9bcc0538af8387aac602b = L.circleMarker(
-                [41.8296, -87.6726],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_4e137140686c3d2aa75b100e3678a47c = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_f4530725766f993da238516d44fa7947 = $(`<div id="html_f4530725766f993da238516d44fa7947" style="width: 100.0%; height: 100.0%;"><b>McKinley Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_4e137140686c3d2aa75b100e3678a47c.setContent(html_f4530725766f993da238516d44fa7947);
-            
-        
-
-        circle_marker_c7fcf2f195b9bcc0538af8387aac602b.bindPopup(popup_4e137140686c3d2aa75b100e3678a47c)
-        ;
-
-        
-    
-    
-            circle_marker_c7fcf2f195b9bcc0538af8387aac602b.bindTooltip(
-                `<div>
-                     McKinley Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_79324024e277c33acaad5e4c7b2ffee7 = L.circleMarker(
-                [41.8799, -87.765],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_3d45d3236c65a0549ccad6b1db4d680c = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_9931173efb1ca58c65a4704b4af5bcd8 = $(`<div id="html_9931173efb1ca58c65a4704b4af5bcd8" style="width: 100.0%; height: 100.0%;"><b>Fulton Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_3d45d3236c65a0549ccad6b1db4d680c.setContent(html_9931173efb1ca58c65a4704b4af5bcd8);
-            
-        
-
-        circle_marker_79324024e277c33acaad5e4c7b2ffee7.bindPopup(popup_3d45d3236c65a0549ccad6b1db4d680c)
-        ;
-
-        
-    
-    
-            circle_marker_79324024e277c33acaad5e4c7b2ffee7.bindTooltip(
-                `<div>
-                     Fulton Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_90c960dd134f3f9e9c5f5d447eef5a1f = L.circleMarker(
-                [41.9196, -87.7227],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_d0179d4e1c99725d70adc7624b0ac59f = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_f2661d80208ccf859667bb0606835656 = $(`<div id="html_f2661d80208ccf859667bb0606835656" style="width: 100.0%; height: 100.0%;"><b>Hermosa</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_d0179d4e1c99725d70adc7624b0ac59f.setContent(html_f2661d80208ccf859667bb0606835656);
-            
-        
-
-        circle_marker_90c960dd134f3f9e9c5f5d447eef5a1f.bindPopup(popup_d0179d4e1c99725d70adc7624b0ac59f)
-        ;
-
-        
-    
-    
-            circle_marker_90c960dd134f3f9e9c5f5d447eef5a1f.bindTooltip(
-                `<div>
-                     Hermosa
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_77c62167ec2c7450e4014b65f472bd07 = L.circleMarker(
-                [41.986, -87.8065],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
-        
-    
-        var popup_e73042394d502843e85178cb34d2bf24 = L.popup({
-  "maxWidth": 200,
-});
-
-        
-            
-                var html_cc067687a6ef81327f0ab81e4d3a713b = $(`<div id="html_cc067687a6ef81327f0ab81e4d3a713b" style="width: 100.0%; height: 100.0%;"><b>Norwood Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_e73042394d502843e85178cb34d2bf24.setContent(html_cc067687a6ef81327f0ab81e4d3a713b);
-            
-        
-
-        circle_marker_77c62167ec2c7450e4014b65f472bd07.bindPopup(popup_e73042394d502843e85178cb34d2bf24)
-        ;
-
-        
-    
-    
-            circle_marker_77c62167ec2c7450e4014b65f472bd07.bindTooltip(
-                `<div>
-                     Norwood Park
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_6f006e516e937b8ad6ba20d8c90a4ee5 = L.circleMarker(
+            var circle_marker_fbbf0ebb14f0e4eadff069d6af8111ca = L.circleMarker(
                 [41.9196, -87.765],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_122d32e78da9242542dfd95f3c54b955 = L.popup({
-  "maxWidth": 200,
+        var popup_ab43ccf78e0717718e780b36cea5f5b5 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_8edf542700a25e6a1e2739031bc0c3cf = $(`<div id="html_8edf542700a25e6a1e2739031bc0c3cf" style="width: 100.0%; height: 100.0%;"><b>Cragin</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_122d32e78da9242542dfd95f3c54b955.setContent(html_8edf542700a25e6a1e2739031bc0c3cf);
+                var html_c63fff16c7ce373b6b990f9fec82c192 = $(`<div id="html_c63fff16c7ce373b6b990f9fec82c192" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Cragin</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 2<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_ab43ccf78e0717718e780b36cea5f5b5.setContent(html_c63fff16c7ce373b6b990f9fec82c192);
             
         
 
-        circle_marker_6f006e516e937b8ad6ba20d8c90a4ee5.bindPopup(popup_122d32e78da9242542dfd95f3c54b955)
+        circle_marker_fbbf0ebb14f0e4eadff069d6af8111ca.bindPopup(popup_ab43ccf78e0717718e780b36cea5f5b5)
         ;
 
         
     
     
-            circle_marker_6f006e516e937b8ad6ba20d8c90a4ee5.bindTooltip(
+            circle_marker_fbbf0ebb14f0e4eadff069d6af8111ca.bindTooltip(
                 `<div>
-                     Cragin
+                     Cragin — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -604,32 +145,32 @@
             );
         
     
-            var circle_marker_0856173ec23e72f017b710c2ae2130c2 = L.circleMarker(
-                [41.8932, -87.6763],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_e232f64777a80e61d81741d3183fbdaf = L.circleMarker(
+                [41.7762, -87.664],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_f58cdc8d2437f5d32d91746976dc1e9d = L.popup({
-  "maxWidth": 200,
+        var popup_2c5b073ad100d223d021970535148798 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_5a8ff3d23fdcfd88396a0f9d021b849f = $(`<div id="html_5a8ff3d23fdcfd88396a0f9d021b849f" style="width: 100.0%; height: 100.0%;"><b>Ukrainian Village</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_f58cdc8d2437f5d32d91746976dc1e9d.setContent(html_5a8ff3d23fdcfd88396a0f9d021b849f);
+                var html_5051862fab0057efdeae73a2a7e17b3e = $(`<div id="html_5051862fab0057efdeae73a2a7e17b3e" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>West Englewood</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 2<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_2c5b073ad100d223d021970535148798.setContent(html_5051862fab0057efdeae73a2a7e17b3e);
             
         
 
-        circle_marker_0856173ec23e72f017b710c2ae2130c2.bindPopup(popup_f58cdc8d2437f5d32d91746976dc1e9d)
+        circle_marker_e232f64777a80e61d81741d3183fbdaf.bindPopup(popup_2c5b073ad100d223d021970535148798)
         ;
 
         
     
     
-            circle_marker_0856173ec23e72f017b710c2ae2130c2.bindTooltip(
+            circle_marker_e232f64777a80e61d81741d3183fbdaf.bindTooltip(
                 `<div>
-                     Ukrainian Village
+                     West Englewood — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -637,32 +178,32 @@
             );
         
     
-            var circle_marker_5c8bcaea6349b927e393ba130fdcd9de = L.circleMarker(
-                [41.8799, -87.7227],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_bc84f8b7f6a7d37a2bc37cd7db98af67 = L.circleMarker(
+                [41.9399, -87.765],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_3301e380b6581b02848640e942ea384a = L.popup({
-  "maxWidth": 200,
+        var popup_27d888c18672017d6fe18126e1d46d64 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_77e16b49f52d4d5f914dd84fea727f48 = $(`<div id="html_77e16b49f52d4d5f914dd84fea727f48" style="width: 100.0%; height: 100.0%;"><b>Garfield Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_3301e380b6581b02848640e942ea384a.setContent(html_77e16b49f52d4d5f914dd84fea727f48);
+                var html_3982d20316992bd980f349700e1165ee = $(`<div id="html_3982d20316992bd980f349700e1165ee" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Belmont Cragin</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 1<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_27d888c18672017d6fe18126e1d46d64.setContent(html_3982d20316992bd980f349700e1165ee);
             
         
 
-        circle_marker_5c8bcaea6349b927e393ba130fdcd9de.bindPopup(popup_3301e380b6581b02848640e942ea384a)
+        circle_marker_bc84f8b7f6a7d37a2bc37cd7db98af67.bindPopup(popup_27d888c18672017d6fe18126e1d46d64)
         ;
 
         
     
     
-            circle_marker_5c8bcaea6349b927e393ba130fdcd9de.bindTooltip(
+            circle_marker_bc84f8b7f6a7d37a2bc37cd7db98af67.bindTooltip(
                 `<div>
-                     Garfield Park
+                     Belmont Cragin — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -670,32 +211,32 @@
             );
         
     
-            var circle_marker_4cd2f04b286546b8ec837e1cc0a6541d = L.circleMarker(
-                [41.7006, -87.62],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_33a79008cc0ffbd3fa082fd430d89bdc = L.circleMarker(
+                [41.8107, -87.6153],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_236665301c92aeb3cf08789bc4031719 = L.popup({
-  "maxWidth": 200,
+        var popup_5a46806551c8b99f620df7551f2c234d = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_174b5192c319df542c5941139f6ee11a = $(`<div id="html_174b5192c319df542c5941139f6ee11a" style="width: 100.0%; height: 100.0%;"><b>Roseland</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_236665301c92aeb3cf08789bc4031719.setContent(html_174b5192c319df542c5941139f6ee11a);
+                var html_5b52df598173f55e82eac36b72928345 = $(`<div id="html_5b52df598173f55e82eac36b72928345" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Grand Boulevard</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 1<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_5a46806551c8b99f620df7551f2c234d.setContent(html_5b52df598173f55e82eac36b72928345);
             
         
 
-        circle_marker_4cd2f04b286546b8ec837e1cc0a6541d.bindPopup(popup_236665301c92aeb3cf08789bc4031719)
+        circle_marker_33a79008cc0ffbd3fa082fd430d89bdc.bindPopup(popup_5a46806551c8b99f620df7551f2c234d)
         ;
 
         
     
     
-            circle_marker_4cd2f04b286546b8ec837e1cc0a6541d.bindTooltip(
+            circle_marker_33a79008cc0ffbd3fa082fd430d89bdc.bindTooltip(
                 `<div>
-                     Roseland
+                     Grand Boulevard — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -703,32 +244,32 @@
             );
         
     
-            var circle_marker_8a441e3010b27ca5a018818e86706e54 = L.circleMarker(
-                [41.7617, -87.6062],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_5606fd4e905af79ff5606ba404ed91a5 = L.circleMarker(
+                [41.9, -87.6338],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_bc075c9ce376ca2b2d8abc938983ce29 = L.popup({
-  "maxWidth": 200,
+        var popup_69b2e2bcd65c8e23f280da44e72db5db = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_54bec539b5867d5a7a766b4016015eb5 = $(`<div id="html_54bec539b5867d5a7a766b4016015eb5" style="width: 100.0%; height: 100.0%;"><b>Grand Crossing</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_bc075c9ce376ca2b2d8abc938983ce29.setContent(html_54bec539b5867d5a7a766b4016015eb5);
+                var html_3c41c0e938e0a998064c7c745c67a5ae = $(`<div id="html_3c41c0e938e0a998064c7c745c67a5ae" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Near North Side</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 1<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_69b2e2bcd65c8e23f280da44e72db5db.setContent(html_3c41c0e938e0a998064c7c745c67a5ae);
             
         
 
-        circle_marker_8a441e3010b27ca5a018818e86706e54.bindPopup(popup_bc075c9ce376ca2b2d8abc938983ce29)
+        circle_marker_5606fd4e905af79ff5606ba404ed91a5.bindPopup(popup_69b2e2bcd65c8e23f280da44e72db5db)
         ;
 
         
     
     
-            circle_marker_8a441e3010b27ca5a018818e86706e54.bindTooltip(
+            circle_marker_5606fd4e905af79ff5606ba404ed91a5.bindTooltip(
                 `<div>
-                     Grand Crossing
+                     Near North Side — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -736,32 +277,32 @@
             );
         
     
-            var circle_marker_5343f2062ca050e4eafe6e0ede81af03 = L.circleMarker(
-                [41.7895, -87.62],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_ad1cb253e1e6f57eaa4d76461ab363d1 = L.circleMarker(
+                [41.72, -87.64],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_1a41378c5f5dd2c29fb06b96feadedd8 = L.popup({
-  "maxWidth": 200,
+        var popup_1f603ca2abeab09018a3d868f53245c3 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_9d11c484f923fb7fe2b7505357749b24 = $(`<div id="html_9d11c484f923fb7fe2b7505357749b24" style="width: 100.0%; height: 100.0%;"><b>Washington Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_1a41378c5f5dd2c29fb06b96feadedd8.setContent(html_9d11c484f923fb7fe2b7505357749b24);
+                var html_b894a7118691d2fb65b5bcb059605e23 = $(`<div id="html_b894a7118691d2fb65b5bcb059605e23" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Washington Heights</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 1<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_1f603ca2abeab09018a3d868f53245c3.setContent(html_b894a7118691d2fb65b5bcb059605e23);
             
         
 
-        circle_marker_5343f2062ca050e4eafe6e0ede81af03.bindPopup(popup_1a41378c5f5dd2c29fb06b96feadedd8)
+        circle_marker_ad1cb253e1e6f57eaa4d76461ab363d1.bindPopup(popup_1f603ca2abeab09018a3d868f53245c3)
         ;
 
         
     
     
-            circle_marker_5343f2062ca050e4eafe6e0ede81af03.bindTooltip(
+            circle_marker_ad1cb253e1e6f57eaa4d76461ab363d1.bindTooltip(
                 `<div>
-                     Washington Park
+                     Washington Heights — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -769,32 +310,32 @@
             );
         
     
-            var circle_marker_b4ef4e3fdb91071a08897ec87e5a0329 = L.circleMarker(
-                [41.7795, -87.6438],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_49c161e5d8b0a97208c74d3296a428db = L.circleMarker(
+                [41.8799, -87.765],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_aaced43004b633f6664affd9ef58003d = L.popup({
-  "maxWidth": 200,
+        var popup_4033a510acc257d0a39b50b7fae3f240 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_71e9373d818e4fad22c483097080470a = $(`<div id="html_71e9373d818e4fad22c483097080470a" style="width: 100.0%; height: 100.0%;"><b>Englewood</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_aaced43004b633f6664affd9ef58003d.setContent(html_71e9373d818e4fad22c483097080470a);
+                var html_68a11d7dddf864bb225f173dcb8198b5 = $(`<div id="html_68a11d7dddf864bb225f173dcb8198b5" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Fulton Park</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 1<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_4033a510acc257d0a39b50b7fae3f240.setContent(html_68a11d7dddf864bb225f173dcb8198b5);
             
         
 
-        circle_marker_b4ef4e3fdb91071a08897ec87e5a0329.bindPopup(popup_aaced43004b633f6664affd9ef58003d)
+        circle_marker_49c161e5d8b0a97208c74d3296a428db.bindPopup(popup_4033a510acc257d0a39b50b7fae3f240)
         ;
 
         
     
     
-            circle_marker_b4ef4e3fdb91071a08897ec87e5a0329.bindTooltip(
+            circle_marker_49c161e5d8b0a97208c74d3296a428db.bindTooltip(
                 `<div>
-                     Englewood
+                     Fulton Park — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -802,32 +343,65 @@
             );
         
     
-            var circle_marker_23f19a09d5b33c4f5f46353eafbcec01 = L.circleMarker(
+            var circle_marker_5e340c3a8eddec66232facb8b481bf77 = L.circleMarker(
+                [41.7442, -87.6513],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_21fa86a8fd1cb4a4860fa3a3c153dec7 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_a0946445711b6b42080b5dbb1edcc150 = $(`<div id="html_a0946445711b6b42080b5dbb1edcc150" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Auburn Gresham</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_21fa86a8fd1cb4a4860fa3a3c153dec7.setContent(html_a0946445711b6b42080b5dbb1edcc150);
+            
+        
+
+        circle_marker_5e340c3a8eddec66232facb8b481bf77.bindPopup(popup_21fa86a8fd1cb4a4860fa3a3c153dec7)
+        ;
+
+        
+    
+    
+            circle_marker_5e340c3a8eddec66232facb8b481bf77.bindTooltip(
+                `<div>
+                     Auburn Gresham — High Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c1daf936c0648cc21a90d51da692dc66 = L.circleMarker(
                 [41.8799, -87.74],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8181818181818183, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_d406c97218f3986aaf5854d52b969571 = L.popup({
-  "maxWidth": 200,
+        var popup_5ab36b258c4cf6930e5725d3de425a86 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_27df50d2f810d927387747b428766b6f = $(`<div id="html_27df50d2f810d927387747b428766b6f" style="width: 100.0%; height: 100.0%;"><b>West Garfield Park</b><br>Safety Concern Score: 5<br>Posts mentioning this area: 1</div>`)[0];
-                popup_d406c97218f3986aaf5854d52b969571.setContent(html_27df50d2f810d927387747b428766b6f);
+                var html_db35514152262cd8595df72cbe4d9a5d = $(`<div id="html_db35514152262cd8595df72cbe4d9a5d" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>West Garfield Park</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_5ab36b258c4cf6930e5725d3de425a86.setContent(html_db35514152262cd8595df72cbe4d9a5d);
             
         
 
-        circle_marker_23f19a09d5b33c4f5f46353eafbcec01.bindPopup(popup_d406c97218f3986aaf5854d52b969571)
+        circle_marker_c1daf936c0648cc21a90d51da692dc66.bindPopup(popup_5ab36b258c4cf6930e5725d3de425a86)
         ;
 
         
     
     
-            circle_marker_23f19a09d5b33c4f5f46353eafbcec01.bindTooltip(
+            circle_marker_c1daf936c0648cc21a90d51da692dc66.bindTooltip(
                 `<div>
-                     West Garfield Park
+                     West Garfield Park — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -835,32 +409,32 @@
             );
         
     
-            var circle_marker_58dd6882c3cf771d630f60e2a47001c3 = L.circleMarker(
-                [41.8673, -87.6278],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.454545454545455, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_35301e554ca1fd534daa8d8afbf7f9f5 = L.circleMarker(
+                [41.7851, -87.765],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_a68b677490d8bd5e3657bebe04f9c51e = L.popup({
-  "maxWidth": 200,
+        var popup_f980fe329be9d8ba5c6750a2d9807b98 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_83b45bd8d95129019a8bda4acea8a3d2 = $(`<div id="html_83b45bd8d95129019a8bda4acea8a3d2" style="width: 100.0%; height: 100.0%;"><b>South Loop</b><br>Safety Concern Score: 4<br>Posts mentioning this area: 1</div>`)[0];
-                popup_a68b677490d8bd5e3657bebe04f9c51e.setContent(html_83b45bd8d95129019a8bda4acea8a3d2);
+                var html_a1ee6df3f74523494b0b1d77b71447c5 = $(`<div id="html_a1ee6df3f74523494b0b1d77b71447c5" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Clearing</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 2<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_f980fe329be9d8ba5c6750a2d9807b98.setContent(html_a1ee6df3f74523494b0b1d77b71447c5);
             
         
 
-        circle_marker_58dd6882c3cf771d630f60e2a47001c3.bindPopup(popup_a68b677490d8bd5e3657bebe04f9c51e)
+        circle_marker_35301e554ca1fd534daa8d8afbf7f9f5.bindPopup(popup_f980fe329be9d8ba5c6750a2d9807b98)
         ;
 
         
     
     
-            circle_marker_58dd6882c3cf771d630f60e2a47001c3.bindTooltip(
+            circle_marker_35301e554ca1fd534daa8d8afbf7f9f5.bindTooltip(
                 `<div>
-                     South Loop
+                     Clearing — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -868,32 +442,32 @@
             );
         
     
-            var circle_marker_34782878d99884c07f16dbf281f5a9b7 = L.circleMarker(
-                [41.8757, -87.6278],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.454545454545455, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_07867a5656290023e43dcb4238a3c664 = L.circleMarker(
+                [41.7895, -87.62],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_f8fe8e420d6ad612f08bbea8950e9485 = L.popup({
-  "maxWidth": 200,
+        var popup_b527460e6117edda2e43ed58f05bc41b = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_94930101fadad810e3d9f873eb435a76 = $(`<div id="html_94930101fadad810e3d9f873eb435a76" style="width: 100.0%; height: 100.0%;"><b>Printer's Row</b><br>Safety Concern Score: 4<br>Posts mentioning this area: 1</div>`)[0];
-                popup_f8fe8e420d6ad612f08bbea8950e9485.setContent(html_94930101fadad810e3d9f873eb435a76);
+                var html_a1c6ac2543c77563a7bbb2089707296a = $(`<div id="html_a1c6ac2543c77563a7bbb2089707296a" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Washington Park</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_b527460e6117edda2e43ed58f05bc41b.setContent(html_a1c6ac2543c77563a7bbb2089707296a);
             
         
 
-        circle_marker_34782878d99884c07f16dbf281f5a9b7.bindPopup(popup_f8fe8e420d6ad612f08bbea8950e9485)
+        circle_marker_07867a5656290023e43dcb4238a3c664.bindPopup(popup_b527460e6117edda2e43ed58f05bc41b)
         ;
 
         
     
     
-            circle_marker_34782878d99884c07f16dbf281f5a9b7.bindTooltip(
+            circle_marker_07867a5656290023e43dcb4238a3c664.bindTooltip(
                 `<div>
-                     Printer's Row
+                     Washington Park — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -901,32 +475,197 @@
             );
         
     
-            var circle_marker_db1f905d6e24b40d73a0a5c176150a47 = L.circleMarker(
+            var circle_marker_6a81bfa29f27256ccb47fb0752825014 = L.circleMarker(
+                [41.7617, -87.6062],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_e5a32706c58430e5154101f5813a0e3e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_0292a59a07b07cbfff9c402f7a2354ec = $(`<div id="html_0292a59a07b07cbfff9c402f7a2354ec" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Grand Crossing</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 1.0</div>`)[0];
+                popup_e5a32706c58430e5154101f5813a0e3e.setContent(html_0292a59a07b07cbfff9c402f7a2354ec);
+            
+        
+
+        circle_marker_6a81bfa29f27256ccb47fb0752825014.bindPopup(popup_e5a32706c58430e5154101f5813a0e3e)
+        ;
+
+        
+    
+    
+            circle_marker_6a81bfa29f27256ccb47fb0752825014.bindTooltip(
+                `<div>
+                     Grand Crossing — High Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_06bf0b652b6c6692c0aab10de3a706e8 = L.circleMarker(
+                [41.986, -87.8065],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_68f9528f1b52b505960b59efbebd364b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_4ca6a66bb4d3b848d381c83c4ca56643 = $(`<div id="html_4ca6a66bb4d3b848d381c83c4ca56643" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Norwood Park</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.75</div>`)[0];
+                popup_68f9528f1b52b505960b59efbebd364b.setContent(html_4ca6a66bb4d3b848d381c83c4ca56643);
+            
+        
+
+        circle_marker_06bf0b652b6c6692c0aab10de3a706e8.bindPopup(popup_68f9528f1b52b505960b59efbebd364b)
+        ;
+
+        
+    
+    
+            circle_marker_06bf0b652b6c6692c0aab10de3a706e8.bindTooltip(
+                `<div>
+                     Norwood Park — High Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f1da4234b6442b4d9268b54e8aa1ca96 = L.circleMarker(
+                [41.7006, -87.62],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_e5c93bcc2d44a289bd2dabe758d2d09a = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d4d659ba905e06e6c0904f8e2cce3dc1 = $(`<div id="html_d4d659ba905e06e6c0904f8e2cce3dc1" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Roseland</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.75</div>`)[0];
+                popup_e5c93bcc2d44a289bd2dabe758d2d09a.setContent(html_d4d659ba905e06e6c0904f8e2cce3dc1);
+            
+        
+
+        circle_marker_f1da4234b6442b4d9268b54e8aa1ca96.bindPopup(popup_e5c93bcc2d44a289bd2dabe758d2d09a)
+        ;
+
+        
+    
+    
+            circle_marker_f1da4234b6442b4d9268b54e8aa1ca96.bindTooltip(
+                `<div>
+                     Roseland — High Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d8b0bbe793b8cbec0450e29401fb7362 = L.circleMarker(
+                [41.9196, -87.7227],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_5536b356b280fb82fa9e089325e6880f = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_603b23711938c2d8ca0d2d053c36c4b8 = $(`<div id="html_603b23711938c2d8ca0d2d053c36c4b8" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Hermosa</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.67</div>`)[0];
+                popup_5536b356b280fb82fa9e089325e6880f.setContent(html_603b23711938c2d8ca0d2d053c36c4b8);
+            
+        
+
+        circle_marker_d8b0bbe793b8cbec0450e29401fb7362.bindPopup(popup_5536b356b280fb82fa9e089325e6880f)
+        ;
+
+        
+    
+    
+            circle_marker_d8b0bbe793b8cbec0450e29401fb7362.bindTooltip(
+                `<div>
+                     Hermosa — High Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3d85c88118318dd1892c504c996e3aa9 = L.circleMarker(
+                [41.7795, -87.6438],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_b043c7ffb4503ee6f82e995d3d6fa2d4 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_9fce03da10ce836def73af0a0960faee = $(`<div id="html_9fce03da10ce836def73af0a0960faee" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Englewood</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 13<br>😨 Fearful: 8 posts<br>⚠️ Concerned: 3 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.62</div>`)[0];
+                popup_b043c7ffb4503ee6f82e995d3d6fa2d4.setContent(html_9fce03da10ce836def73af0a0960faee);
+            
+        
+
+        circle_marker_3d85c88118318dd1892c504c996e3aa9.bindPopup(popup_b043c7ffb4503ee6f82e995d3d6fa2d4)
+        ;
+
+        
+    
+    
+            circle_marker_3d85c88118318dd1892c504c996e3aa9.bindTooltip(
+                `<div>
+                     Englewood — High Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9ac0ebf2dc85671491cf6ff6dda94f20 = L.circleMarker(
                 [41.7606, -87.5671],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.454545454545455, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_25f54801f0aa184832e59a4281318312 = L.popup({
-  "maxWidth": 200,
+        var popup_dd166dbdef8a65b64f17695453fa7c93 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_bba6556ab784409934bbf1719e55ab9f = $(`<div id="html_bba6556ab784409934bbf1719e55ab9f" style="width: 100.0%; height: 100.0%;"><b>South Shore</b><br>Safety Concern Score: 4<br>Posts mentioning this area: 1</div>`)[0];
-                popup_25f54801f0aa184832e59a4281318312.setContent(html_bba6556ab784409934bbf1719e55ab9f);
+                var html_0ac98d8880259233c9c3b06b3c7eef2a = $(`<div id="html_0ac98d8880259233c9c3b06b3c7eef2a" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>South Shore</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 10<br>😨 Fearful: 5 posts<br>⚠️ Concerned: 4 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.5</div>`)[0];
+                popup_dd166dbdef8a65b64f17695453fa7c93.setContent(html_0ac98d8880259233c9c3b06b3c7eef2a);
             
         
 
-        circle_marker_db1f905d6e24b40d73a0a5c176150a47.bindPopup(popup_25f54801f0aa184832e59a4281318312)
+        circle_marker_9ac0ebf2dc85671491cf6ff6dda94f20.bindPopup(popup_dd166dbdef8a65b64f17695453fa7c93)
         ;
 
         
     
     
-            circle_marker_db1f905d6e24b40d73a0a5c176150a47.bindTooltip(
+            circle_marker_9ac0ebf2dc85671491cf6ff6dda94f20.bindTooltip(
                 `<div>
-                     South Shore
+                     South Shore — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -934,32 +673,32 @@
             );
         
     
-            var circle_marker_cb14bfa18692456a133af694db6d7667 = L.circleMarker(
-                [41.9031, -87.6285],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_6f9df85401befedf76db9e3c7c3bd0ee = L.circleMarker(
+                [41.8799, -87.7133],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_6407c38fcf2f150f35796bc33271bd8b = L.popup({
-  "maxWidth": 200,
+        var popup_cdab4f79b6cb2635bc119e1aa5b4b0de = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_98166e88fa0a5b2eb779939de53f4548 = $(`<div id="html_98166e88fa0a5b2eb779939de53f4548" style="width: 100.0%; height: 100.0%;"><b>Gold Coast</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 2</div>`)[0];
-                popup_6407c38fcf2f150f35796bc33271bd8b.setContent(html_98166e88fa0a5b2eb779939de53f4548);
+                var html_f0ea19400e7b356e3233ae1d09d7adfa = $(`<div id="html_f0ea19400e7b356e3233ae1d09d7adfa" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>East Garfield Park</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 1 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.5</div>`)[0];
+                popup_cdab4f79b6cb2635bc119e1aa5b4b0de.setContent(html_f0ea19400e7b356e3233ae1d09d7adfa);
             
         
 
-        circle_marker_cb14bfa18692456a133af694db6d7667.bindPopup(popup_6407c38fcf2f150f35796bc33271bd8b)
+        circle_marker_6f9df85401befedf76db9e3c7c3bd0ee.bindPopup(popup_cdab4f79b6cb2635bc119e1aa5b4b0de)
         ;
 
         
     
     
-            circle_marker_cb14bfa18692456a133af694db6d7667.bindTooltip(
+            circle_marker_6f9df85401befedf76db9e3c7c3bd0ee.bindTooltip(
                 `<div>
-                     Gold Coast
+                     East Garfield Park — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -967,32 +706,32 @@
             );
         
     
-            var circle_marker_4eb8f9922e43a50320770993d20f717b = L.circleMarker(
-                [41.8287, -87.7178],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_db6c13b50f45b3e2b82743e320180be0 = L.circleMarker(
+                [41.9794, -87.7133],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_b35b9d20d309186187f5f2cc40ec3b58 = L.popup({
-  "maxWidth": 200,
+        var popup_50bac527877cb7977487b742563286ae = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_c00d590b6e37bdb8aed703ea2a23e291 = $(`<div id="html_c00d590b6e37bdb8aed703ea2a23e291" style="width: 100.0%; height: 100.0%;"><b>Little Village</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 1</div>`)[0];
-                popup_b35b9d20d309186187f5f2cc40ec3b58.setContent(html_c00d590b6e37bdb8aed703ea2a23e291);
+                var html_895dea445acf73c2477f7e5f05d603d8 = $(`<div id="html_895dea445acf73c2477f7e5f05d603d8" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>North Park</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 2<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.5</div>`)[0];
+                popup_50bac527877cb7977487b742563286ae.setContent(html_895dea445acf73c2477f7e5f05d603d8);
             
         
 
-        circle_marker_4eb8f9922e43a50320770993d20f717b.bindPopup(popup_b35b9d20d309186187f5f2cc40ec3b58)
+        circle_marker_db6c13b50f45b3e2b82743e320180be0.bindPopup(popup_50bac527877cb7977487b742563286ae)
         ;
 
         
     
     
-            circle_marker_4eb8f9922e43a50320770993d20f717b.bindTooltip(
+            circle_marker_db6c13b50f45b3e2b82743e320180be0.bindTooltip(
                 `<div>
-                     Little Village
+                     North Park — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
@@ -1000,32 +739,32 @@
             );
         
     
-            var circle_marker_ef0d0373eef01542473fa340aa95d0cb = L.circleMarker(
-                [41.9794, -87.6672],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_c2063d2c8ddd2a5d2e39e5e875cab02f = L.circleMarker(
+                [41.8296, -87.6726],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_ae99f383744aa752a4d0f05985181eb7 = L.popup({
-  "maxWidth": 200,
+        var popup_ed9bcd695da0c5be0bb11ffeab9dd47e = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_4d7c4317235ebf8fef62b79fe3f05317 = $(`<div id="html_4d7c4317235ebf8fef62b79fe3f05317" style="width: 100.0%; height: 100.0%;"><b>Andersonville</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 2</div>`)[0];
-                popup_ae99f383744aa752a4d0f05985181eb7.setContent(html_4d7c4317235ebf8fef62b79fe3f05317);
+                var html_bfd1fcfd939aec8baf4ded18f3260bc9 = $(`<div id="html_bfd1fcfd939aec8baf4ded18f3260bc9" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>McKinley Park</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 2 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 0.5</div>`)[0];
+                popup_ed9bcd695da0c5be0bb11ffeab9dd47e.setContent(html_bfd1fcfd939aec8baf4ded18f3260bc9);
             
         
 
-        circle_marker_ef0d0373eef01542473fa340aa95d0cb.bindPopup(popup_ae99f383744aa752a4d0f05985181eb7)
+        circle_marker_c2063d2c8ddd2a5d2e39e5e875cab02f.bindPopup(popup_ed9bcd695da0c5be0bb11ffeab9dd47e)
         ;
 
         
     
     
-            circle_marker_ef0d0373eef01542473fa340aa95d0cb.bindTooltip(
+            circle_marker_c2063d2c8ddd2a5d2e39e5e875cab02f.bindTooltip(
                 `<div>
-                     Andersonville
+                     McKinley Park — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1033,32 +772,32 @@
             );
         
     
-            var circle_marker_4292de65db84f5de7bfab20122854dbc = L.circleMarker(
-                [41.9794, -87.6592],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.090909090909091, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_4a87aa4756faaac7b44e2719af38bfde = L.circleMarker(
+                [41.7484, -87.6125],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_37fbbf57552789a3f95e5ec0dee502cf = L.popup({
-  "maxWidth": 200,
+        var popup_758fedf85e61ef3517cc2bc3f2cc8f01 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_96de3d8f0254e67831b75c17de62b349 = $(`<div id="html_96de3d8f0254e67831b75c17de62b349" style="width: 100.0%; height: 100.0%;"><b>Edgewater</b><br>Safety Concern Score: 3<br>Posts mentioning this area: 2</div>`)[0];
-                popup_37fbbf57552789a3f95e5ec0dee502cf.setContent(html_96de3d8f0254e67831b75c17de62b349);
+                var html_5534faaeb191ba9abc10affb4ddb72b3 = $(`<div id="html_5534faaeb191ba9abc10affb4ddb72b3" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Chatham</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 1 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.5</div>`)[0];
+                popup_758fedf85e61ef3517cc2bc3f2cc8f01.setContent(html_5534faaeb191ba9abc10affb4ddb72b3);
             
         
 
-        circle_marker_4292de65db84f5de7bfab20122854dbc.bindPopup(popup_37fbbf57552789a3f95e5ec0dee502cf)
+        circle_marker_4a87aa4756faaac7b44e2719af38bfde.bindPopup(popup_758fedf85e61ef3517cc2bc3f2cc8f01)
         ;
 
         
     
     
-            circle_marker_4292de65db84f5de7bfab20122854dbc.bindTooltip(
+            circle_marker_4a87aa4756faaac7b44e2719af38bfde.bindTooltip(
                 `<div>
-                     Edgewater
+                     Chatham — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1066,32 +805,32 @@
             );
         
     
-            var circle_marker_ff1ba24d485fd7968a9bdf68c0891623 = L.circleMarker(
-                [41.9399, -87.7133],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7272727272727275, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_4d849a6fa38846ef5ccaca8eea7a6197 = L.circleMarker(
+                [41.8057, -87.6572],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_d000bfa32e651a06a549e9f15de08c28 = L.popup({
-  "maxWidth": 200,
+        var popup_21f850f410776cde9ceed2d4e0b30fd0 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_d997075268ca80a668aafa85a455ca7b = $(`<div id="html_d997075268ca80a668aafa85a455ca7b" style="width: 100.0%; height: 100.0%;"><b>Avondale</b><br>Safety Concern Score: 2<br>Posts mentioning this area: 1</div>`)[0];
-                popup_d000bfa32e651a06a549e9f15de08c28.setContent(html_d997075268ca80a668aafa85a455ca7b);
+                var html_0ca47a2895de8eb578215ca68f7b9036 = $(`<div id="html_0ca47a2895de8eb578215ca68f7b9036" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Back of the Yards</b><br><br><b>Risk Rating:</b> High Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 2 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 0.5</div>`)[0];
+                popup_21f850f410776cde9ceed2d4e0b30fd0.setContent(html_0ca47a2895de8eb578215ca68f7b9036);
             
         
 
-        circle_marker_ff1ba24d485fd7968a9bdf68c0891623.bindPopup(popup_d000bfa32e651a06a549e9f15de08c28)
+        circle_marker_4d849a6fa38846ef5ccaca8eea7a6197.bindPopup(popup_21f850f410776cde9ceed2d4e0b30fd0)
         ;
 
         
     
     
-            circle_marker_ff1ba24d485fd7968a9bdf68c0891623.bindTooltip(
+            circle_marker_4d849a6fa38846ef5ccaca8eea7a6197.bindTooltip(
                 `<div>
-                     Avondale
+                     Back of the Yards — High Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1099,32 +838,32 @@
             );
         
     
-            var circle_marker_d1555663cba47d658af263f734d2e670 = L.circleMarker(
-                [41.8936, -87.6338],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7272727272727275, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_b9c4e0820d3a61e29020ac9a2aaa7862 = L.circleMarker(
+                [41.9538, -87.7133],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.7, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_ba890850d026d4325abc8060dd7484d9 = L.popup({
-  "maxWidth": 200,
+        var popup_0ef5cd74847242b92631d68c2f21a775 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_b0d91fcdaef6e0f08076927741290649 = $(`<div id="html_b0d91fcdaef6e0f08076927741290649" style="width: 100.0%; height: 100.0%;"><b>River North</b><br>Safety Concern Score: 2<br>Posts mentioning this area: 1</div>`)[0];
-                popup_ba890850d026d4325abc8060dd7484d9.setContent(html_b0d91fcdaef6e0f08076927741290649);
+                var html_f9e652d0b80abb91ca42b31ae2c0b83a = $(`<div id="html_f9e652d0b80abb91ca42b31ae2c0b83a" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Irving Park</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 7<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 4 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 0.43</div>`)[0];
+                popup_0ef5cd74847242b92631d68c2f21a775.setContent(html_f9e652d0b80abb91ca42b31ae2c0b83a);
             
         
 
-        circle_marker_d1555663cba47d658af263f734d2e670.bindPopup(popup_ba890850d026d4325abc8060dd7484d9)
+        circle_marker_b9c4e0820d3a61e29020ac9a2aaa7862.bindPopup(popup_0ef5cd74847242b92631d68c2f21a775)
         ;
 
         
     
     
-            circle_marker_d1555663cba47d658af263f734d2e670.bindTooltip(
+            circle_marker_b9c4e0820d3a61e29020ac9a2aaa7862.bindTooltip(
                 `<div>
-                     River North
+                     Irving Park — Medium Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1132,32 +871,32 @@
             );
         
     
-            var circle_marker_cefc0c6c13ad99ef79dd35582f682cb2 = L.circleMarker(
-                [41.9178, -87.6827],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7272727272727275, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_e27d336c040cc5c593818a81edb2bc21 = L.circleMarker(
+                [41.7317, -87.5671],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_0becf369c39d6a89d6ba9aa4fa63e846 = L.popup({
-  "maxWidth": 200,
+        var popup_b3a61f7b9833aa6b8a0362649e1ba4c4 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_c67e26d2666b3aac16cc19205eaca3a9 = $(`<div id="html_c67e26d2666b3aac16cc19205eaca3a9" style="width: 100.0%; height: 100.0%;"><b>Bucktown</b><br>Safety Concern Score: 2<br>Posts mentioning this area: 1</div>`)[0];
-                popup_0becf369c39d6a89d6ba9aa4fa63e846.setContent(html_c67e26d2666b3aac16cc19205eaca3a9);
+                var html_5b58051adc782b0addd8bf019bf56f57 = $(`<div id="html_5b58051adc782b0addd8bf019bf56f57" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>South Chicago</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 5<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 2 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.4</div>`)[0];
+                popup_b3a61f7b9833aa6b8a0362649e1ba4c4.setContent(html_5b58051adc782b0addd8bf019bf56f57);
             
         
 
-        circle_marker_cefc0c6c13ad99ef79dd35582f682cb2.bindPopup(popup_0becf369c39d6a89d6ba9aa4fa63e846)
+        circle_marker_e27d336c040cc5c593818a81edb2bc21.bindPopup(popup_b3a61f7b9833aa6b8a0362649e1ba4c4)
         ;
 
         
     
     
-            circle_marker_cefc0c6c13ad99ef79dd35582f682cb2.bindTooltip(
+            circle_marker_e27d336c040cc5c593818a81edb2bc21.bindTooltip(
                 `<div>
-                     Bucktown
+                     South Chicago — Medium Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1165,32 +904,32 @@
             );
         
     
-            var circle_marker_0f0a1af2ddcb5a967b37366aa7755d6e = L.circleMarker(
+            var circle_marker_a0f28a817d2588498b98759294b9aea5 = L.circleMarker(
                 [41.8999, -87.77],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_1e9f70e64b2e1afd11dff5f2957b95e9 = L.popup({
-  "maxWidth": 200,
+        var popup_59223df654cfaf0b2ed1546e84da0013 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_dcb0846cd38ed687bb18255f04320617 = $(`<div id="html_dcb0846cd38ed687bb18255f04320617" style="width: 100.0%; height: 100.0%;"><b>Austin</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
-                popup_1e9f70e64b2e1afd11dff5f2957b95e9.setContent(html_dcb0846cd38ed687bb18255f04320617);
+                var html_c1fcee0d98614db1495326a32ddda195 = $(`<div id="html_c1fcee0d98614db1495326a32ddda195" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Austin</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 23<br>😨 Fearful: 8 posts<br>⚠️ Concerned: 9 posts<br>✅ Reassuring: 6 posts<br><b>Fear Ratio:</b> 0.35</div>`)[0];
+                popup_59223df654cfaf0b2ed1546e84da0013.setContent(html_c1fcee0d98614db1495326a32ddda195);
             
         
 
-        circle_marker_0f0a1af2ddcb5a967b37366aa7755d6e.bindPopup(popup_1e9f70e64b2e1afd11dff5f2957b95e9)
+        circle_marker_a0f28a817d2588498b98759294b9aea5.bindPopup(popup_59223df654cfaf0b2ed1546e84da0013)
         ;
 
         
     
     
-            circle_marker_0f0a1af2ddcb5a967b37366aa7755d6e.bindTooltip(
+            circle_marker_a0f28a817d2588498b98759294b9aea5.bindTooltip(
                 `<div>
-                     Austin
+                     Austin — Medium Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1198,32 +937,32 @@
             );
         
     
-            var circle_marker_22d9204d094115fa416174f9cdfd1b00 = L.circleMarker(
-                [41.8827, -87.6479],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_048b692df1813c6b5a032c427e24cec0 = L.circleMarker(
+                [41.8799, -87.7227],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_7f0218d2185cd23945e928171909d15c = L.popup({
-  "maxWidth": 200,
+        var popup_30eb0f8b3fc77e6622f8e52e6100b28b = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_d2af4665503eb856e77113a2a5754423 = $(`<div id="html_d2af4665503eb856e77113a2a5754423" style="width: 100.0%; height: 100.0%;"><b>West Loop</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
-                popup_7f0218d2185cd23945e928171909d15c.setContent(html_d2af4665503eb856e77113a2a5754423);
+                var html_0c0d2918a533b376e15cbb559603924d = $(`<div id="html_0c0d2918a533b376e15cbb559603924d" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Garfield Park</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 15<br>😨 Fearful: 5 posts<br>⚠️ Concerned: 4 posts<br>✅ Reassuring: 6 posts<br><b>Fear Ratio:</b> 0.33</div>`)[0];
+                popup_30eb0f8b3fc77e6622f8e52e6100b28b.setContent(html_0c0d2918a533b376e15cbb559603924d);
             
         
 
-        circle_marker_22d9204d094115fa416174f9cdfd1b00.bindPopup(popup_7f0218d2185cd23945e928171909d15c)
+        circle_marker_048b692df1813c6b5a032c427e24cec0.bindPopup(popup_30eb0f8b3fc77e6622f8e52e6100b28b)
         ;
 
         
     
     
-            circle_marker_22d9204d094115fa416174f9cdfd1b00.bindTooltip(
+            circle_marker_048b692df1813c6b5a032c427e24cec0.bindTooltip(
                 `<div>
-                     West Loop
+                     Garfield Park — Medium Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1231,32 +970,659 @@
             );
         
     
-            var circle_marker_22c27c62823383e13970a41f0240b752 = L.circleMarker(
+            var circle_marker_78d22fe927ac2e2f6b2cd4849c15e854 = L.circleMarker(
+                [41.9586, -87.765],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_35f7519e7ef8c39221781f650262ff19 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c07e1a19c0561daf34f05efa76c64682 = $(`<div id="html_c07e1a19c0561daf34f05efa76c64682" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Portage Park</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 2 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 0.33</div>`)[0];
+                popup_35f7519e7ef8c39221781f650262ff19.setContent(html_c07e1a19c0561daf34f05efa76c64682);
+            
+        
+
+        circle_marker_78d22fe927ac2e2f6b2cd4849c15e854.bindPopup(popup_35f7519e7ef8c39221781f650262ff19)
+        ;
+
+        
+    
+    
+            circle_marker_78d22fe927ac2e2f6b2cd4849c15e854.bindTooltip(
+                `<div>
+                     Portage Park — Medium Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b9eac4120a14ce2fdfa4ada4532f8f36 = L.circleMarker(
+                [41.8746, -87.66],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_f9760d11fe353b784f6d3a24085da62c = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_b61e0c3a0762bcc11c6dda602eed7a91 = $(`<div id="html_b61e0c3a0762bcc11c6dda602eed7a91" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Little Italy</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 1 posts<br>✅ Reassuring: 1 posts<br><b>Fear Ratio:</b> 0.33</div>`)[0];
+                popup_f9760d11fe353b784f6d3a24085da62c.setContent(html_b61e0c3a0762bcc11c6dda602eed7a91);
+            
+        
+
+        circle_marker_b9eac4120a14ce2fdfa4ada4532f8f36.bindPopup(popup_f9760d11fe353b784f6d3a24085da62c)
+        ;
+
+        
+    
+    
+            circle_marker_b9eac4120a14ce2fdfa4ada4532f8f36.bindTooltip(
+                `<div>
+                     Little Italy — Medium Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_48bbd01e1e1139a30492e46e574fc4b3 = L.circleMarker(
+                [41.8746, -87.6672],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_364993074fd15b4d0e0972cc1cbcfb46 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_04a23fa8d5fbcd2b80cfdcfe0de65814 = $(`<div id="html_04a23fa8d5fbcd2b80cfdcfe0de65814" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Near West Side</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 3<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 0 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.33</div>`)[0];
+                popup_364993074fd15b4d0e0972cc1cbcfb46.setContent(html_04a23fa8d5fbcd2b80cfdcfe0de65814);
+            
+        
+
+        circle_marker_48bbd01e1e1139a30492e46e574fc4b3.bindPopup(popup_364993074fd15b4d0e0972cc1cbcfb46)
+        ;
+
+        
+    
+    
+            circle_marker_48bbd01e1e1139a30492e46e574fc4b3.bindTooltip(
+                `<div>
+                     Near West Side — Medium Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_54f261d5c483a4a919effbb30b20a3c5 = L.circleMarker(
+                [41.8287, -87.7178],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_a14cf43170b73fa34fb1b51db67c88c2 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ae7b5c2fa496d15fc002523c75532d5a = $(`<div id="html_ae7b5c2fa496d15fc002523c75532d5a" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Little Village</b><br><br><b>Risk Rating:</b> Medium Risk<br><b>Total Posts:</b> 12<br>😨 Fearful: 4 posts<br>⚠️ Concerned: 6 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.33</div>`)[0];
+                popup_a14cf43170b73fa34fb1b51db67c88c2.setContent(html_ae7b5c2fa496d15fc002523c75532d5a);
+            
+        
+
+        circle_marker_54f261d5c483a4a919effbb30b20a3c5.bindPopup(popup_a14cf43170b73fa34fb1b51db67c88c2)
+        ;
+
+        
+    
+    
+            circle_marker_54f261d5c483a4a919effbb30b20a3c5.bindTooltip(
+                `<div>
+                     Little Village — Medium Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e3aa43b12f57157a2d34c92f3987de7e = L.circleMarker(
+                [41.8557, -87.66],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_6a9b4c15e6fa0819323b3923a17287ee = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ad4fb0db8422293e244f6ffb89faed3a = $(`<div id="html_ad4fb0db8422293e244f6ffb89faed3a" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Pilsen</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 25<br>😨 Fearful: 7 posts<br>⚠️ Concerned: 12 posts<br>✅ Reassuring: 6 posts<br><b>Fear Ratio:</b> 0.28</div>`)[0];
+                popup_6a9b4c15e6fa0819323b3923a17287ee.setContent(html_ad4fb0db8422293e244f6ffb89faed3a);
+            
+        
+
+        circle_marker_e3aa43b12f57157a2d34c92f3987de7e.bindPopup(popup_6a9b4c15e6fa0819323b3923a17287ee)
+        ;
+
+        
+    
+    
+            circle_marker_e3aa43b12f57157a2d34c92f3987de7e.bindTooltip(
+                `<div>
+                     Pilsen — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1193dba3525a3bcfc6a2aaa6dfa08aa4 = L.circleMarker(
+                [41.9681, -87.7227],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_ca52f3446f741ff39381acfc80fe4205 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_1b66a693ec78b6feafafb1fa9961961b = $(`<div id="html_1b66a693ec78b6feafafb1fa9961961b" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Albany Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 11<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 3 posts<br>✅ Reassuring: 5 posts<br><b>Fear Ratio:</b> 0.27</div>`)[0];
+                popup_ca52f3446f741ff39381acfc80fe4205.setContent(html_1b66a693ec78b6feafafb1fa9961961b);
+            
+        
+
+        circle_marker_1193dba3525a3bcfc6a2aaa6dfa08aa4.bindPopup(popup_ca52f3446f741ff39381acfc80fe4205)
+        ;
+
+        
+    
+    
+            circle_marker_1193dba3525a3bcfc6a2aaa6dfa08aa4.bindTooltip(
+                `<div>
+                     Albany Park — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_af26e8c0453b5304b51cc8dbd6cdff71 = L.circleMarker(
+                [41.9794, -87.6672],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.9, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_f6f434d8c578caf1b09053895470f1d2 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_f9de87770ab5cbf4a18a100a46251074 = $(`<div id="html_f9de87770ab5cbf4a18a100a46251074" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Andersonville</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 19<br>😨 Fearful: 5 posts<br>⚠️ Concerned: 8 posts<br>✅ Reassuring: 6 posts<br><b>Fear Ratio:</b> 0.26</div>`)[0];
+                popup_f6f434d8c578caf1b09053895470f1d2.setContent(html_f9de87770ab5cbf4a18a100a46251074);
+            
+        
+
+        circle_marker_af26e8c0453b5304b51cc8dbd6cdff71.bindPopup(popup_f6f434d8c578caf1b09053895470f1d2)
+        ;
+
+        
+    
+    
+            circle_marker_af26e8c0453b5304b51cc8dbd6cdff71.bindTooltip(
+                `<div>
+                     Andersonville — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3e362eab03b41fafd0ec484a26524317 = L.circleMarker(
+                [42.0083, -87.6647],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_a11d3e2f716309460fc1d8e4b4dd6b99 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_e13bd7fae4d6d4372cf8c399270bb3b9 = $(`<div id="html_e13bd7fae4d6d4372cf8c399270bb3b9" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Rogers Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 31<br>😨 Fearful: 8 posts<br>⚠️ Concerned: 8 posts<br>✅ Reassuring: 15 posts<br><b>Fear Ratio:</b> 0.26</div>`)[0];
+                popup_a11d3e2f716309460fc1d8e4b4dd6b99.setContent(html_e13bd7fae4d6d4372cf8c399270bb3b9);
+            
+        
+
+        circle_marker_3e362eab03b41fafd0ec484a26524317.bindPopup(popup_a11d3e2f716309460fc1d8e4b4dd6b99)
+        ;
+
+        
+    
+    
+            circle_marker_3e362eab03b41fafd0ec484a26524317.bindTooltip(
+                `<div>
+                     Rogers Park — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_53af860bdb030023d1c24bd76ffa33fc = L.circleMarker(
+                [41.9538, -87.6726],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_c995bfb4db709a3d9226fa0b80e4d917 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_fccb8abee4f113113e66de7248874562 = $(`<div id="html_fccb8abee4f113113e66de7248874562" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>North Center</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 4<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 1 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.25</div>`)[0];
+                popup_c995bfb4db709a3d9226fa0b80e4d917.setContent(html_fccb8abee4f113113e66de7248874562);
+            
+        
+
+        circle_marker_53af860bdb030023d1c24bd76ffa33fc.bindPopup(popup_c995bfb4db709a3d9226fa0b80e4d917)
+        ;
+
+        
+    
+    
+            circle_marker_53af860bdb030023d1c24bd76ffa33fc.bindTooltip(
+                `<div>
+                     North Center — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_755649fb1eefa461d2db79a4ea58c45c = L.circleMarker(
+                [41.9731, -87.6741],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_387c3c545401fc47ffc73500dc371b9d = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_b93552d604d30bdcacdeb2b49098b44d = $(`<div id="html_b93552d604d30bdcacdeb2b49098b44d" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Ravenswood</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 12<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 6 posts<br>✅ Reassuring: 3 posts<br><b>Fear Ratio:</b> 0.25</div>`)[0];
+                popup_387c3c545401fc47ffc73500dc371b9d.setContent(html_b93552d604d30bdcacdeb2b49098b44d);
+            
+        
+
+        circle_marker_755649fb1eefa461d2db79a4ea58c45c.bindPopup(popup_387c3c545401fc47ffc73500dc371b9d)
+        ;
+
+        
+    
+    
+            circle_marker_755649fb1eefa461d2db79a4ea58c45c.bindTooltip(
+                `<div>
+                     Ravenswood — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b57fc27564b4172985f3e7dc2fe38a6e = L.circleMarker(
+                [41.9031, -87.6285],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_4b88ebc3a6e3fc03197ea01a81fd5554 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_7c7fe142a97f51d4f3a3a68c7b1033fc = $(`<div id="html_7c7fe142a97f51d4f3a3a68c7b1033fc" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Gold Coast</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 12<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 3 posts<br>✅ Reassuring: 6 posts<br><b>Fear Ratio:</b> 0.25</div>`)[0];
+                popup_4b88ebc3a6e3fc03197ea01a81fd5554.setContent(html_7c7fe142a97f51d4f3a3a68c7b1033fc);
+            
+        
+
+        circle_marker_b57fc27564b4172985f3e7dc2fe38a6e.bindPopup(popup_4b88ebc3a6e3fc03197ea01a81fd5554)
+        ;
+
+        
+    
+    
+            circle_marker_b57fc27564b4172985f3e7dc2fe38a6e.bindTooltip(
+                `<div>
+                     Gold Coast — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_41e20f6a333d6533ca6dc4c7495b32b7 = L.circleMarker(
+                [41.944, -87.649],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.8, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_1cbddf4794abba596af270d05ab35a8c = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_2e8db71f1206c6dd982af5296945a13c = $(`<div id="html_2e8db71f1206c6dd982af5296945a13c" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Boystown</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 8<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 4 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.25</div>`)[0];
+                popup_1cbddf4794abba596af270d05ab35a8c.setContent(html_2e8db71f1206c6dd982af5296945a13c);
+            
+        
+
+        circle_marker_41e20f6a333d6533ca6dc4c7495b32b7.bindPopup(popup_1cbddf4794abba596af270d05ab35a8c)
+        ;
+
+        
+    
+    
+            circle_marker_41e20f6a333d6533ca6dc4c7495b32b7.bindTooltip(
+                `<div>
+                     Boystown — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0cf9d9aa73d515e311505ae80db47672 = L.circleMarker(
+                [41.9651, -87.6572],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.9, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_74ee22e3b89ef39eddfc030c592d40cc = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d0cf29667e7238f79a94037d8245a57f = $(`<div id="html_d0cf29667e7238f79a94037d8245a57f" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Uptown</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 39<br>😨 Fearful: 9 posts<br>⚠️ Concerned: 14 posts<br>✅ Reassuring: 16 posts<br><b>Fear Ratio:</b> 0.23</div>`)[0];
+                popup_74ee22e3b89ef39eddfc030c592d40cc.setContent(html_d0cf29667e7238f79a94037d8245a57f);
+            
+        
+
+        circle_marker_0cf9d9aa73d515e311505ae80db47672.bindPopup(popup_74ee22e3b89ef39eddfc030c592d40cc)
+        ;
+
+        
+    
+    
+            circle_marker_0cf9d9aa73d515e311505ae80db47672.bindTooltip(
+                `<div>
+                     Uptown — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8ed09bfbc0186dc6846d9d5d23e9021c = L.circleMarker(
+                [41.8827, -87.6278],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_56f51954a5233dbf3b527f28c8d5cb3b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_809cf561ff56f24733b1bf439269e2f6 = $(`<div id="html_809cf561ff56f24733b1bf439269e2f6" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Loop</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 135<br>😨 Fearful: 30 posts<br>⚠️ Concerned: 66 posts<br>✅ Reassuring: 39 posts<br><b>Fear Ratio:</b> 0.22</div>`)[0];
+                popup_56f51954a5233dbf3b527f28c8d5cb3b.setContent(html_809cf561ff56f24733b1bf439269e2f6);
+            
+        
+
+        circle_marker_8ed09bfbc0186dc6846d9d5d23e9021c.bindPopup(popup_56f51954a5233dbf3b527f28c8d5cb3b)
+        ;
+
+        
+    
+    
+            circle_marker_8ed09bfbc0186dc6846d9d5d23e9021c.bindTooltip(
+                `<div>
+                     Loop — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f65294a079d09f7a90d50897e727f223 = L.circleMarker(
+                [41.9399, -87.7133],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_4ac4c1fce8ebb34c4608091a0241e975 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_edaa50aa433464de6f4f5a3880585cdf = $(`<div id="html_edaa50aa433464de6f4f5a3880585cdf" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Avondale</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 14<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 5 posts<br>✅ Reassuring: 6 posts<br><b>Fear Ratio:</b> 0.21</div>`)[0];
+                popup_4ac4c1fce8ebb34c4608091a0241e975.setContent(html_edaa50aa433464de6f4f5a3880585cdf);
+            
+        
+
+        circle_marker_f65294a079d09f7a90d50897e727f223.bindPopup(popup_4ac4c1fce8ebb34c4608091a0241e975)
+        ;
+
+        
+    
+    
+            circle_marker_f65294a079d09f7a90d50897e727f223.bindTooltip(
+                `<div>
+                     Avondale — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5c3856a578c12e8b4588a26ed02c8889 = L.circleMarker(
+                [41.8345, -87.644],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_41d5472bcf4878f53e0958a596320e54 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_9ec6e7c79b24a1f946ecb7b51397fa1a = $(`<div id="html_9ec6e7c79b24a1f946ecb7b51397fa1a" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Bridgeport</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 10<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 4 posts<br>✅ Reassuring: 4 posts<br><b>Fear Ratio:</b> 0.2</div>`)[0];
+                popup_41d5472bcf4878f53e0958a596320e54.setContent(html_9ec6e7c79b24a1f946ecb7b51397fa1a);
+            
+        
+
+        circle_marker_5c3856a578c12e8b4588a26ed02c8889.bindPopup(popup_41d5472bcf4878f53e0958a596320e54)
+        ;
+
+        
+    
+    
+            circle_marker_5c3856a578c12e8b4588a26ed02c8889.bindTooltip(
+                `<div>
+                     Bridgeport — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_41f0a9794559b24c8fe0ecc8c12a3a87 = L.circleMarker(
+                [41.8956, -87.6243],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.0, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_e8f527e9408b61a1f76c9426c4538de6 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_56c227d56f618e379f09a098b1b83456 = $(`<div id="html_56c227d56f618e379f09a098b1b83456" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Magnificent Mile</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 20<br>😨 Fearful: 4 posts<br>⚠️ Concerned: 7 posts<br>✅ Reassuring: 9 posts<br><b>Fear Ratio:</b> 0.2</div>`)[0];
+                popup_e8f527e9408b61a1f76c9426c4538de6.setContent(html_56c227d56f618e379f09a098b1b83456);
+            
+        
+
+        circle_marker_41f0a9794559b24c8fe0ecc8c12a3a87.bindPopup(popup_e8f527e9408b61a1f76c9426c4538de6)
+        ;
+
+        
+    
+    
+            circle_marker_41f0a9794559b24c8fe0ecc8c12a3a87.bindTooltip(
+                `<div>
+                     Magnificent Mile — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd858adf954edb8c4fb6f285bfa12703 = L.circleMarker(
+                [41.943, -87.6431],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_12aa093ba7f5411ae9f7ebb285da3e0b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_7c28aed1dec3b4992e483f57a1ee4ea9 = $(`<div id="html_7c28aed1dec3b4992e483f57a1ee4ea9" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Lakeview</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 54<br>😨 Fearful: 10 posts<br>⚠️ Concerned: 17 posts<br>✅ Reassuring: 27 posts<br><b>Fear Ratio:</b> 0.19</div>`)[0];
+                popup_12aa093ba7f5411ae9f7ebb285da3e0b.setContent(html_7c28aed1dec3b4992e483f57a1ee4ea9);
+            
+        
+
+        circle_marker_dd858adf954edb8c4fb6f285bfa12703.bindPopup(popup_12aa093ba7f5411ae9f7ebb285da3e0b)
+        ;
+
+        
+    
+    
+            circle_marker_dd858adf954edb8c4fb6f285bfa12703.bindTooltip(
+                `<div>
+                     Lakeview — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_872157340d792f40ed90cc6ce570ce5e = L.circleMarker(
+                [41.8932, -87.6763],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_bd850ca1dc03027f5fecdc0408877cc9 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_cab754d0186920cfd1d9e297a6e7b5f7 = $(`<div id="html_cab754d0186920cfd1d9e297a6e7b5f7" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Ukrainian Village</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 11<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 7 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.18</div>`)[0];
+                popup_bd850ca1dc03027f5fecdc0408877cc9.setContent(html_cab754d0186920cfd1d9e297a6e7b5f7);
+            
+        
+
+        circle_marker_872157340d792f40ed90cc6ce570ce5e.bindPopup(popup_bd850ca1dc03027f5fecdc0408877cc9)
+        ;
+
+        
+    
+    
+            circle_marker_872157340d792f40ed90cc6ce570ce5e.bindTooltip(
+                `<div>
+                     Ukrainian Village — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3f1bb2488227078dd842338641711cb9 = L.circleMarker(
                 [41.7943, -87.5907],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_04933ff3a1459d989167e25226b6728b = L.popup({
-  "maxWidth": 200,
+        var popup_db8ed6be723d004c668e92b05bc67558 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_d10d4c135e32f3beb53f6b936324f899 = $(`<div id="html_d10d4c135e32f3beb53f6b936324f899" style="width: 100.0%; height: 100.0%;"><b>Hyde Park</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
-                popup_04933ff3a1459d989167e25226b6728b.setContent(html_d10d4c135e32f3beb53f6b936324f899);
+                var html_f2d63b161be7e402c0a582dd1d881c7d = $(`<div id="html_f2d63b161be7e402c0a582dd1d881c7d" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Hyde Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 35<br>😨 Fearful: 6 posts<br>⚠️ Concerned: 18 posts<br>✅ Reassuring: 11 posts<br><b>Fear Ratio:</b> 0.17</div>`)[0];
+                popup_db8ed6be723d004c668e92b05bc67558.setContent(html_f2d63b161be7e402c0a582dd1d881c7d);
             
         
 
-        circle_marker_22c27c62823383e13970a41f0240b752.bindPopup(popup_04933ff3a1459d989167e25226b6728b)
+        circle_marker_3f1bb2488227078dd842338641711cb9.bindPopup(popup_db8ed6be723d004c668e92b05bc67558)
         ;
 
         
     
     
-            circle_marker_22c27c62823383e13970a41f0240b752.bindTooltip(
+            circle_marker_3f1bb2488227078dd842338641711cb9.bindTooltip(
                 `<div>
-                     Hyde Park
+                     Hyde Park — Lower Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1264,32 +1630,230 @@
             );
         
     
-            var circle_marker_cfe5e7f7ddcd402a9c10b85090153678 = L.circleMarker(
+            var circle_marker_f26e0bfcd63f86ef25b2b8a93aa33ea4 = L.circleMarker(
+                [41.7734, -87.596],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.6, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_b1049d18a1fd2f94970c952781e0337e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_2635df8a0c1fc1cbfc0d1c060f11aac8 = $(`<div id="html_2635df8a0c1fc1cbfc0d1c060f11aac8" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Woodlawn</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 6<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 3 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.17</div>`)[0];
+                popup_b1049d18a1fd2f94970c952781e0337e.setContent(html_2635df8a0c1fc1cbfc0d1c060f11aac8);
+            
+        
+
+        circle_marker_f26e0bfcd63f86ef25b2b8a93aa33ea4.bindPopup(popup_b1049d18a1fd2f94970c952781e0337e)
+        ;
+
+        
+    
+    
+            circle_marker_f26e0bfcd63f86ef25b2b8a93aa33ea4.bindTooltip(
+                `<div>
+                     Woodlawn — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aecd2a4e968f5468b931e6e5e66aede7 = L.circleMarker(
+                [41.9794, -87.6592],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.9, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_31690c406b5a89feff6a66fa2e5cf73c = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_3841530808b3b1b8092bc14a1c1bd0e9 = $(`<div id="html_3841530808b3b1b8092bc14a1c1bd0e9" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Edgewater</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 29<br>😨 Fearful: 5 posts<br>⚠️ Concerned: 12 posts<br>✅ Reassuring: 12 posts<br><b>Fear Ratio:</b> 0.17</div>`)[0];
+                popup_31690c406b5a89feff6a66fa2e5cf73c.setContent(html_3841530808b3b1b8092bc14a1c1bd0e9);
+            
+        
+
+        circle_marker_aecd2a4e968f5468b931e6e5e66aede7.bindPopup(popup_31690c406b5a89feff6a66fa2e5cf73c)
+        ;
+
+        
+    
+    
+            circle_marker_aecd2a4e968f5468b931e6e5e66aede7.bindTooltip(
+                `<div>
+                     Edgewater — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_89f17c719c117f6630c906baedcb584b = L.circleMarker(
+                [41.8936, -87.6338],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_6518ba19d13a3311932fc8c04f108df0 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_29ac223901f8af2854fef01b5b851b14 = $(`<div id="html_29ac223901f8af2854fef01b5b851b14" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>River North</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 45<br>😨 Fearful: 7 posts<br>⚠️ Concerned: 14 posts<br>✅ Reassuring: 24 posts<br><b>Fear Ratio:</b> 0.16</div>`)[0];
+                popup_6518ba19d13a3311932fc8c04f108df0.setContent(html_29ac223901f8af2854fef01b5b851b14);
+            
+        
+
+        circle_marker_89f17c719c117f6630c906baedcb584b.bindPopup(popup_6518ba19d13a3311932fc8c04f108df0)
+        ;
+
+        
+    
+    
+            circle_marker_89f17c719c117f6630c906baedcb584b.bindTooltip(
+                `<div>
+                     River North — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b1d01d59bcb1f955dd6a0ef6d566e138 = L.circleMarker(
+                [41.9214, -87.7068],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_7d7683ab1a96d203a573fa230392e19d = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_75de67b4e4fb75aa4935f2198ef6ce98 = $(`<div id="html_75de67b4e4fb75aa4935f2198ef6ce98" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Logan Square</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 54<br>😨 Fearful: 8 posts<br>⚠️ Concerned: 30 posts<br>✅ Reassuring: 16 posts<br><b>Fear Ratio:</b> 0.15</div>`)[0];
+                popup_7d7683ab1a96d203a573fa230392e19d.setContent(html_75de67b4e4fb75aa4935f2198ef6ce98);
+            
+        
+
+        circle_marker_b1d01d59bcb1f955dd6a0ef6d566e138.bindPopup(popup_7d7683ab1a96d203a573fa230392e19d)
+        ;
+
+        
+    
+    
+            circle_marker_b1d01d59bcb1f955dd6a0ef6d566e138.bindTooltip(
+                `<div>
+                     Logan Square — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e47fe035c2b77a04400ecd1a1359f0d6 = L.circleMarker(
+                [41.9214, -87.6513],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.7, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_fcfbc36b384e060b0583208ddfb0aa49 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_cc023e40f9e5dfc024075480ae125c17 = $(`<div id="html_cc023e40f9e5dfc024075480ae125c17" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Lincoln Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 67<br>😨 Fearful: 10 posts<br>⚠️ Concerned: 24 posts<br>✅ Reassuring: 33 posts<br><b>Fear Ratio:</b> 0.15</div>`)[0];
+                popup_fcfbc36b384e060b0583208ddfb0aa49.setContent(html_cc023e40f9e5dfc024075480ae125c17);
+            
+        
+
+        circle_marker_e47fe035c2b77a04400ecd1a1359f0d6.bindPopup(popup_fcfbc36b384e060b0583208ddfb0aa49)
+        ;
+
+        
+    
+    
+            circle_marker_e47fe035c2b77a04400ecd1a1359f0d6.bindTooltip(
+                `<div>
+                     Lincoln Park — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_569349ef9c6baa7c82e14c09938f3259 = L.circleMarker(
+                [41.8827, -87.6479],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_500e2feef73a18201c9476c0d1a5a7b6 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_e501675e342d9d917a2cada59cd46d48 = $(`<div id="html_e501675e342d9d917a2cada59cd46d48" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>West Loop</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 41<br>😨 Fearful: 6 posts<br>⚠️ Concerned: 18 posts<br>✅ Reassuring: 17 posts<br><b>Fear Ratio:</b> 0.15</div>`)[0];
+                popup_500e2feef73a18201c9476c0d1a5a7b6.setContent(html_e501675e342d9d917a2cada59cd46d48);
+            
+        
+
+        circle_marker_569349ef9c6baa7c82e14c09938f3259.bindPopup(popup_500e2feef73a18201c9476c0d1a5a7b6)
+        ;
+
+        
+    
+    
+            circle_marker_569349ef9c6baa7c82e14c09938f3259.bindTooltip(
+                `<div>
+                     West Loop — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fc402320fb6aef78efc728f08e5c1ccd = L.circleMarker(
                 [41.8281, -87.6153],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.7, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_61d23855cc031f7b5cf40eb9e0bb3431 = L.popup({
-  "maxWidth": 200,
+        var popup_58459f582b7ca7afba0edcb680824f33 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_4aaaa0ecbb4dc204a25752dd28f368db = $(`<div id="html_4aaaa0ecbb4dc204a25752dd28f368db" style="width: 100.0%; height: 100.0%;"><b>Bronzeville</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 1</div>`)[0];
-                popup_61d23855cc031f7b5cf40eb9e0bb3431.setContent(html_4aaaa0ecbb4dc204a25752dd28f368db);
+                var html_98edf4c729c778f4baa0d61c0c2e9855 = $(`<div id="html_98edf4c729c778f4baa0d61c0c2e9855" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Bronzeville</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 7<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 4 posts<br>✅ Reassuring: 2 posts<br><b>Fear Ratio:</b> 0.14</div>`)[0];
+                popup_58459f582b7ca7afba0edcb680824f33.setContent(html_98edf4c729c778f4baa0d61c0c2e9855);
             
         
 
-        circle_marker_cfe5e7f7ddcd402a9c10b85090153678.bindPopup(popup_61d23855cc031f7b5cf40eb9e0bb3431)
+        circle_marker_fc402320fb6aef78efc728f08e5c1ccd.bindPopup(popup_58459f582b7ca7afba0edcb680824f33)
         ;
 
         
     
     
-            circle_marker_cfe5e7f7ddcd402a9c10b85090153678.bindTooltip(
+            circle_marker_fc402320fb6aef78efc728f08e5c1ccd.bindTooltip(
                 `<div>
-                     Bronzeville
+                     Bronzeville — Lower Risk
                  </div>`,
                 {
   "sticky": true,
@@ -1297,32 +1861,362 @@
             );
         
     
-            var circle_marker_ec4a9afcf582f14f6cc3a208af2e169a = L.circleMarker(
-                [41.8504, -87.6326],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3636363636363638, "stroke": true, "weight": 3}
-            ).addTo(map_6fb9ba0905b151480e0b18507f8497ab);
+            var circle_marker_647976c67d35b342a017e416d9d340d2 = L.circleMarker(
+                [41.8963, -87.6672],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.4, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
         
     
-        var popup_cd38aabebca36869e2c3eead7c7d5c53 = L.popup({
-  "maxWidth": 200,
+        var popup_3d04116d8f33b80a2dbe24052aa4d1d7 = L.popup({
+  "maxWidth": 220,
 });
 
         
             
-                var html_6c0d33b6c4d1f239500129519d245396 = $(`<div id="html_6c0d33b6c4d1f239500129519d245396" style="width: 100.0%; height: 100.0%;"><b>Chinatown</b><br>Safety Concern Score: 1<br>Posts mentioning this area: 2</div>`)[0];
-                popup_cd38aabebca36869e2c3eead7c7d5c53.setContent(html_6c0d33b6c4d1f239500129519d245396);
+                var html_238c49df38df1b5116b2ee892198585e = $(`<div id="html_238c49df38df1b5116b2ee892198585e" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>West Town</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 14<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 8 posts<br>✅ Reassuring: 4 posts<br><b>Fear Ratio:</b> 0.14</div>`)[0];
+                popup_3d04116d8f33b80a2dbe24052aa4d1d7.setContent(html_238c49df38df1b5116b2ee892198585e);
             
         
 
-        circle_marker_ec4a9afcf582f14f6cc3a208af2e169a.bindPopup(popup_cd38aabebca36869e2c3eead7c7d5c53)
+        circle_marker_647976c67d35b342a017e416d9d340d2.bindPopup(popup_3d04116d8f33b80a2dbe24052aa4d1d7)
         ;
 
         
     
     
-            circle_marker_ec4a9afcf582f14f6cc3a208af2e169a.bindTooltip(
+            circle_marker_647976c67d35b342a017e416d9d340d2.bindTooltip(
                 `<div>
-                     Chinatown
+                     West Town — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a39356d603a3792e361dab90259fae68 = L.circleMarker(
+                [41.8826, -87.6226],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_dd9a1d99a83ef955869cccadfbd84a9c = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_805981f6e111b75dbf719fc43785295f = $(`<div id="html_805981f6e111b75dbf719fc43785295f" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Millennium Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 22<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 9 posts<br>✅ Reassuring: 10 posts<br><b>Fear Ratio:</b> 0.14</div>`)[0];
+                popup_dd9a1d99a83ef955869cccadfbd84a9c.setContent(html_805981f6e111b75dbf719fc43785295f);
+            
+        
+
+        circle_marker_a39356d603a3792e361dab90259fae68.bindPopup(popup_dd9a1d99a83ef955869cccadfbd84a9c)
+        ;
+
+        
+    
+    
+            circle_marker_a39356d603a3792e361dab90259fae68.bindTooltip(
+                `<div>
+                     Millennium Park — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_42d2bedef3d3f6024789c2fd0c3e05bf = L.circleMarker(
+                [41.8999, -87.7227],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.3, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_3bcebc4e54f81b6e8386b1e4c02133cb = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ba7795ecae71a1eecf41a661fb62e6e4 = $(`<div id="html_ba7795ecae71a1eecf41a661fb62e6e4" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Humboldt Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 23<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 13 posts<br>✅ Reassuring: 7 posts<br><b>Fear Ratio:</b> 0.13</div>`)[0];
+                popup_3bcebc4e54f81b6e8386b1e4c02133cb.setContent(html_ba7795ecae71a1eecf41a661fb62e6e4);
+            
+        
+
+        circle_marker_42d2bedef3d3f6024789c2fd0c3e05bf.bindPopup(popup_3bcebc4e54f81b6e8386b1e4c02133cb)
+        ;
+
+        
+    
+    
+            circle_marker_42d2bedef3d3f6024789c2fd0c3e05bf.bindTooltip(
+                `<div>
+                     Humboldt Park — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d0f8f7da4e984df908d33cd067494f19 = L.circleMarker(
+                [41.8919, -87.6051],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_9047f3f7ebc102f54fe03599ca0ae756 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_728544bd592213b462fca3d02605bb3f = $(`<div id="html_728544bd592213b462fca3d02605bb3f" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Navy Pier</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 25<br>😨 Fearful: 3 posts<br>⚠️ Concerned: 10 posts<br>✅ Reassuring: 12 posts<br><b>Fear Ratio:</b> 0.12</div>`)[0];
+                popup_9047f3f7ebc102f54fe03599ca0ae756.setContent(html_728544bd592213b462fca3d02605bb3f);
+            
+        
+
+        circle_marker_d0f8f7da4e984df908d33cd067494f19.bindPopup(popup_9047f3f7ebc102f54fe03599ca0ae756)
+        ;
+
+        
+    
+    
+            circle_marker_d0f8f7da4e984df908d33cd067494f19.bindTooltip(
+                `<div>
+                     Navy Pier — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_530a2ab117ef78c675fc899ca121069d = L.circleMarker(
+                [41.9178, -87.6827],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.8, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_f3a43e1eb0006c937d79f99bc845c908 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_61472e8a60b8b1809197eaa9ec148685 = $(`<div id="html_61472e8a60b8b1809197eaa9ec148685" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Bucktown</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 18<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 9 posts<br>✅ Reassuring: 7 posts<br><b>Fear Ratio:</b> 0.11</div>`)[0];
+                popup_f3a43e1eb0006c937d79f99bc845c908.setContent(html_61472e8a60b8b1809197eaa9ec148685);
+            
+        
+
+        circle_marker_530a2ab117ef78c675fc899ca121069d.bindPopup(popup_f3a43e1eb0006c937d79f99bc845c908)
+        ;
+
+        
+    
+    
+            circle_marker_530a2ab117ef78c675fc899ca121069d.bindTooltip(
+                `<div>
+                     Bucktown — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_285655958ca0d5b1bd8d620fc6290877 = L.circleMarker(
+                [41.8673, -87.6278],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.6, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_3630816627bd3506ed65db9e33d9673d = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_be43da2b7b8280afc4ad27b5df3517bc = $(`<div id="html_be43da2b7b8280afc4ad27b5df3517bc" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>South Loop</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 26<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 15 posts<br>✅ Reassuring: 9 posts<br><b>Fear Ratio:</b> 0.08</div>`)[0];
+                popup_3630816627bd3506ed65db9e33d9673d.setContent(html_be43da2b7b8280afc4ad27b5df3517bc);
+            
+        
+
+        circle_marker_285655958ca0d5b1bd8d620fc6290877.bindPopup(popup_3630816627bd3506ed65db9e33d9673d)
+        ;
+
+        
+    
+    
+            circle_marker_285655958ca0d5b1bd8d620fc6290877.bindTooltip(
+                `<div>
+                     South Loop — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_53de3df4f048144a77b844f9102aead4 = L.circleMarker(
+                [41.892, -87.62],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.2, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_955d07979a3db07ecc66572100eaf57b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ad1f8aac5968cbae4052e5cff3bb5d77 = $(`<div id="html_ad1f8aac5968cbae4052e5cff3bb5d77" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Streeterville</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 12<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 6 posts<br>✅ Reassuring: 5 posts<br><b>Fear Ratio:</b> 0.08</div>`)[0];
+                popup_955d07979a3db07ecc66572100eaf57b.setContent(html_ad1f8aac5968cbae4052e5cff3bb5d77);
+            
+        
+
+        circle_marker_53de3df4f048144a77b844f9102aead4.bindPopup(popup_955d07979a3db07ecc66572100eaf57b)
+        ;
+
+        
+    
+    
+            circle_marker_53de3df4f048144a77b844f9102aead4.bindTooltip(
+                `<div>
+                     Streeterville — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fd64b59328d2282855b50fb7c04d97b3 = L.circleMarker(
+                [41.8868, -87.6513],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.5, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_c7fe8c846e36f4b37c78dafb8874ff15 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_0adbfeeb8bd20662b11d4bc0ca3855e1 = $(`<div id="html_0adbfeeb8bd20662b11d4bc0ca3855e1" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Fulton Market</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 15<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 6 posts<br>✅ Reassuring: 8 posts<br><b>Fear Ratio:</b> 0.07</div>`)[0];
+                popup_c7fe8c846e36f4b37c78dafb8874ff15.setContent(html_0adbfeeb8bd20662b11d4bc0ca3855e1);
+            
+        
+
+        circle_marker_fd64b59328d2282855b50fb7c04d97b3.bindPopup(popup_c7fe8c846e36f4b37c78dafb8874ff15)
+        ;
+
+        
+    
+    
+            circle_marker_fd64b59328d2282855b50fb7c04d97b3.bindTooltip(
+                `<div>
+                     Fulton Market — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b414d4f4405a508462d516e391a729cc = L.circleMarker(
+                [41.8504, -87.6326],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.8, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_67199116e19bb82212c25ebb020814a2 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c257bc392d03727623818f2ee8560373 = $(`<div id="html_c257bc392d03727623818f2ee8560373" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Chinatown</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 18<br>😨 Fearful: 1 posts<br>⚠️ Concerned: 9 posts<br>✅ Reassuring: 8 posts<br><b>Fear Ratio:</b> 0.06</div>`)[0];
+                popup_67199116e19bb82212c25ebb020814a2.setContent(html_c257bc392d03727623818f2ee8560373);
+            
+        
+
+        circle_marker_b414d4f4405a508462d516e391a729cc.bindPopup(popup_67199116e19bb82212c25ebb020814a2)
+        ;
+
+        
+    
+    
+            circle_marker_b414d4f4405a508462d516e391a729cc.bindTooltip(
+                `<div>
+                     Chinatown — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b7fc869f6a3e5db29c8f1f190b2cf46 = L.circleMarker(
+                [41.9082, -87.6796],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.7, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_f0e1560f36ffeb1d4f0640b3956b5c37 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c50656f22c4e7d81fe6385398e138ec2 = $(`<div id="html_c50656f22c4e7d81fe6385398e138ec2" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Wicker Park</b><br><br><b>Risk Rating:</b> Lower Risk<br><b>Total Posts:</b> 37<br>😨 Fearful: 2 posts<br>⚠️ Concerned: 21 posts<br>✅ Reassuring: 14 posts<br><b>Fear Ratio:</b> 0.05</div>`)[0];
+                popup_f0e1560f36ffeb1d4f0640b3956b5c37.setContent(html_c50656f22c4e7d81fe6385398e138ec2);
+            
+        
+
+        circle_marker_9b7fc869f6a3e5db29c8f1f190b2cf46.bindPopup(popup_f0e1560f36ffeb1d4f0640b3956b5c37)
+        ;
+
+        
+    
+    
+            circle_marker_9b7fc869f6a3e5db29c8f1f190b2cf46.bindTooltip(
+                `<div>
+                     Wicker Park — Lower Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_59b0add535f3d35f2e5a9891945acc6e = L.circleMarker(
+                [41.8757, -87.6278],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1, "stroke": true, "weight": 3}
+            ).addTo(map_6b0bf0c2b33d1127aa28755e4bd52a11);
+        
+    
+        var popup_30c5bd919d7c1e18024f70a04ec031e7 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ddfd82bee34154679b1941b53e94e9ab = $(`<div id="html_ddfd82bee34154679b1941b53e94e9ab" style="width: 100.0%; height: 100.0%;"><b style='font-size:14px'>Printer's Row</b><br><br><b>Risk Rating:</b> Insufficient Data<br><b>Total Posts:</b> 1<br>😨 Fearful: 0 posts<br>⚠️ Concerned: 1 posts<br>✅ Reassuring: 0 posts<br><b>Fear Ratio:</b> 0.0</div>`)[0];
+                popup_30c5bd919d7c1e18024f70a04ec031e7.setContent(html_ddfd82bee34154679b1941b53e94e9ab);
+            
+        
+
+        circle_marker_59b0add535f3d35f2e5a9891945acc6e.bindPopup(popup_30c5bd919d7c1e18024f70a04ec031e7)
+        ;
+
+        
+    
+    
+            circle_marker_59b0add535f3d35f2e5a9891945acc6e.bindTooltip(
+                `<div>
+                     Printer's Row — Insufficient Data
                  </div>`,
                 {
   "sticky": true,
