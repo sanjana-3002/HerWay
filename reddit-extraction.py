@@ -4,13 +4,12 @@ import time
 
 headers = {"User-Agent": "HerSafe-Research/1.0"}
 
-def scrape_subreddit(subreddit, keywords, pages=3):
+def scrape_subreddit(subreddit, keywords, pages=5):
     posts = []
     after = None
     
     for page in range(pages):
-        print(f"  Scraping r/{subreddit} - page {page+1}...")
-        
+        print(f"  r/{subreddit} - page {page+1}...")
         url = f"https://www.reddit.com/r/{subreddit}/search.json"
         params = {
             "q": keywords,
@@ -19,20 +18,14 @@ def scrape_subreddit(subreddit, keywords, pages=3):
             "limit": 100,
             "after": after
         }
-        
         res = requests.get(url, headers=headers, params=params)
-        
         if res.status_code != 200:
-            print(f"  Error {res.status_code} on r/{subreddit}, skipping...")
+            print(f"  Error {res.status_code}, skipping...")
             break
-        
         data = res.json()
         children = data["data"]["children"]
-        
         if not children:
-            print(f"  No more posts in r/{subreddit}")
             break
-        
         for post in children:
             p = post["data"]
             posts.append({
@@ -44,43 +37,44 @@ def scrape_subreddit(subreddit, keywords, pages=3):
                 "num_comments": p.get("num_comments", 0),
                 "url": "https://reddit.com" + p.get("permalink", "")
             })
-        
         after = data["data"]["after"]
         time.sleep(2)
-    
     return posts
 
-# ---- CHICAGO SPECIFIC SUBREDDITS ----
-subreddits = [
-    "chicago",
-    "AskChicago", 
-    "ChicagoSports",      # sometimes has neighborhood discussions
-    "TwoXChromosomes",    # women sharing safety experiences
-    "AskWomen",
-    "femalefashionadvice" # surprisingly active safety discussion thread
+# ---- MORE SUBREDDITS + MORE KEYWORD VARIATIONS ----
+searches = [
+    ("chicago", "street safety night alone woman"),
+    ("chicago", "neighborhood avoid dangerous"),
+    ("chicago", "harassment followed scared"),
+    ("chicago", "safe walk alone night"),
+    ("chicago", "crime mugged attacked"),
+    ("AskChicago", "safe neighborhood"),
+    ("AskChicago", "avoid dangerous area"),
+    ("AskChicago", "walking alone night"),
+    ("TwoXChromosomes", "chicago street unsafe"),
+    ("AskWomen", "chicago safety alone"),
 ]
 
-# ---- KEYWORDS RELEVANT TO HERSAFE ----
-keywords = "street unsafe harassment followed scared avoid dark alone night walking"
-
-# ---- RUN THE SCRAPER ----
 all_posts = []
-
-for sub in subreddits:
-    print(f"\nScraping r/{sub}...")
-    posts = scrape_subreddit(sub, keywords, pages=3)
+for subreddit, keywords in searches:
+    print(f"\nScraping r/{subreddit} with: '{keywords}'")
+    posts = scrape_subreddit(subreddit, keywords, pages=5)
     all_posts.extend(posts)
-    print(f"  Got {len(posts)} posts from r/{sub}")
-    time.sleep(3)  # pause between subreddits
+    print(f"  Got {len(posts)} posts")
+    time.sleep(3)
 
-# ---- SAVE TO CSV ----
 df = pd.DataFrame(all_posts)
-
-# Remove empty posts
 df = df[df["title"].str.strip() != ""]
 df = df.drop_duplicates(subset=["title"])
 
-df.to_csv("chicago_safety_reddit.csv", index=False)
+# load existing data and combine
+existing = pd.read_csv("chicago_safety_reddit.csv")
+combined = pd.concat([existing, df], ignore_index=True)
+combined = combined.drop_duplicates(subset=["title"])
+
+combined.to_csv("chicago_safety_reddit.csv", index=False)
+print(f"\nDone! Total posts now: {len(combined)}")
+
 print(f"\nDone! Collected {len(df)} total posts")
 print(df.head())
 print("Total posts:", len(df))

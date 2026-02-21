@@ -1,0 +1,41 @@
+neighborhood,total_posts,negative_fear,neutral_concern,positive_reassuring,negative_ratio,risk_rating
+Cragin,1,1,0,0,1.0,🔴 High Risk
+Roseland,1,1,0,0,1.0,🔴 High Risk
+Norwood Park,1,1,0,0,1.0,🔴 High Risk
+South Shore,1,1,0,0,1.0,🔴 High Risk
+McKinley Park,1,1,0,0,1.0,🔴 High Risk
+Ukrainian Village,1,1,0,0,1.0,🔴 High Risk
+West Garfield Park,1,1,0,0,1.0,🔴 High Risk
+Garfield Park,1,1,0,0,1.0,🔴 High Risk
+Fulton Park,1,1,0,0,1.0,🔴 High Risk
+Little Village,1,1,0,0,1.0,🔴 High Risk
+Grand Crossing,1,1,0,0,1.0,🔴 High Risk
+Washington Park,1,1,0,0,1.0,🔴 High Risk
+Englewood,1,1,0,0,1.0,🔴 High Risk
+River North,1,1,0,0,1.0,🔴 High Risk
+Austin,1,1,0,0,1.0,🔴 High Risk
+Hermosa,1,1,0,0,1.0,🔴 High Risk
+Pilsen,3,2,1,0,0.67,🔴 High Risk
+Albany Park,3,2,0,1,0.67,🔴 High Risk
+Gold Coast,2,1,1,0,0.5,🔴 High Risk
+Andersonville,2,1,0,1,0.5,🔴 High Risk
+Loop,6,3,2,1,0.5,🔴 High Risk
+Lakeview,4,2,1,1,0.5,🔴 High Risk
+Clearing,3,1,1,1,0.33,🟠 Medium Risk
+Uptown,3,1,1,1,0.33,🟠 Medium Risk
+Rogers Park,3,1,0,2,0.33,🟠 Medium Risk
+Lincoln Park,4,1,0,3,0.25,🟢 Lower Risk
+Logan Square,5,1,4,0,0.2,🟢 Lower Risk
+Wicker Park,5,1,4,0,0.2,🟢 Lower Risk
+Chinatown,2,0,1,1,0.0,🟢 Lower Risk
+Millenium Park,1,0,0,1,0.0,🟢 Lower Risk
+Bronzeville,1,0,1,0,0.0,🟢 Lower Risk
+Hyde Park,1,0,1,0,0.0,🟢 Lower Risk
+West Loop,1,0,0,1,0.0,🟢 Lower Risk
+Edgewater,2,0,1,1,0.0,🟢 Lower Risk
+Jefferson Park,1,0,1,0,0.0,🟢 Lower Risk
+Avondale,1,0,1,0,0.0,🟢 Lower Risk
+South Loop,1,0,1,0,0.0,🟢 Lower Risk
+Bucktown,1,0,1,0,0.0,🟢 Lower Risk
+Printer's Row,1,0,1,0,0.0,🟢 Lower Risk
+Navy Pier,1,0,1,0,0.0,🟢 Lower Risk
