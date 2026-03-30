@@ -166,7 +166,7 @@ def is_primary(row, neighborhood):
         return False
 
     return True
-    
+
 # ---- DATA RELIABILITY BADGE ----
 def reliability_badge(total_posts):
     if total_posts >= 20:
@@ -239,17 +239,16 @@ keyword_phrases = {
     def keywords_to_phrase(keywords):
         phrases = [keyword_phrases.get(k, k) for k in keywords[:2]]
         return " and ".join(phrases) if phrases else "safety concerns"
-
-    if fear_pct >= 50:
-        phrase = keywords_to_phrase(top_safety_keywords)
-        summary_text = f"Community posts show significant concern — people mention {phrase} in this area."
-    elif fear_pct >= 25:
-        phrase = keywords_to_phrase(top_safety_keywords)
-        summary_text = f"Mixed signals — some posts mention {phrase}, alongside positive experiences."
-    elif fear_pct >= 10:
-        summary_text = "Mostly positive community experiences with occasional isolated concerns."
-    else:
-        summary_text = "Community posts are largely positive and reassuring about this area."
+        if fear_pct >= 50:
+            phrase = keywords_to_phrase(top_safety_keywords)
+            summary_text = f"Community posts show significant concern — people mention {phrase} in this area."
+        elif fear_pct >= 25:
+            phrase = keywords_to_phrase(top_safety_keywords)
+            summary_text = f"Mixed signals — some posts mention {phrase}, alongside positive experiences."
+        elif fear_pct >= 10:
+            summary_text = "Mostly positive community experiences with occasional isolated concerns."
+        else:
+            summary_text = "Community posts are largely positive and reassuring about this area."
 
     # peak concern time
     if night_fear_pct > day_fear_pct + 15:
