@@ -1,14 +1,20 @@
 import pandas as pd
 import ast
 import folium
+import re
 from collections import Counter
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # ---- LOAD DATA ----
 df = pd.read_csv("chicago_safety_sentiment.csv")
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 df["hour"] = pd.to_datetime(df["date"], unit="s").dt.hour
+df["day_of_week"] = pd.to_datetime(df["date"], unit="s").dt.day_name()
 df["is_night"] = df["hour"].apply(lambda h: True if (h >= 20 or h < 4) else False)
+df["title"] = df["title"].fillna("")
+df["text"] = df["text"].fillna("")
+df["combined"] = df["title"] + " " + df["text"]
 
 summary = pd.read_csv("neighborhood_sentiment_summary.csv")
 summary = summary[summary["risk_rating"] != "Insufficient Data"]
@@ -80,33 +86,91 @@ neighborhood_coords = {
     "Boystown": (41.9440, -87.6490),
     "Greektown": (41.8785, -87.6490),
     "Little Italy": (41.8746, -87.6600),
-    "Humboldt Park": (41.8999, -87.7227),
     "Douglas": (41.8281, -87.6200),
     "East Side": (41.7317, -87.5500),
-    "South Chicago": (41.7317, -87.5671),
     "Morgan Park": (41.6894, -87.6672),
     "Brighton Park": (41.8200, -87.6950),
     "East Garfield Park": (41.8799, -87.7133),
-    "Irving Park": (41.9538, -87.7133),
 }
 
-# ---- NOISE TITLES TO FILTER ----
-# posts that mention many neighborhoods and pollute summaries
-noise_titles = [
-    "Why do people say the city is more dangerous than it is",
-    "Please help me become street-smart",
-    "Questions about my safety in Chicago"
-]
+# ---- TFIDF UNIQUE KEYWORDS PER NEIGHBORHOOD ----
+print("Computing TF-IDF keywords per neighborhood...")
 
-def is_noise(title):
-    return any(n.lower() in str(title).lower() for n in noise_titles)
+stopwords = set([
+    "chicago", "the", "a", "an", "and", "or", "but", "in", "on", "at",
+    "to", "for", "of", "with", "is", "it", "this", "that", "was", "are",
+    "be", "have", "has", "had", "do", "did", "will", "would", "could",
+    "should", "i", "my", "me", "we", "you", "your", "he", "she", "they",
+    "just", "like", "really", "very", "so", "not", "no", "if", "from",
+    "by", "about", "as", "up", "out", "there", "when", "what", "which",
+    "who", "how", "one", "any", "all", "more", "also", "get", "go",
+    "been", "than", "then", "some", "can", "into", "re", "ve", "ll",
+    "don", "doesn", "didn", "isn", "aren", "wasn", "weren", "much",
+    "even", "never", "always", "still", "now", "here", "see", "going",
+    "want", "know", "think", "feel", "people", "area", "neighborhood",
+    "place", "street", "city", "chicago", "block", "south", "north",
+    "east", "west", "near", "around", "back", "good", "great", "bad",
+    "time", "year", "day", "night", "pretty", "sure", "thing", "lot",
+    "look", "come", "need", "make", "say", "take", "walk", "live",
+    "move", "way", "side", "part", "right", "left", "new", "old"
+])
+
+def clean_for_tfidf(text):
+    text = re.sub(r'http\S+', '', str(text))
+    text = re.sub(r'[^a-zA-Z\s]', ' ', text)
+    words = text.lower().split()
+    return " ".join([w for w in words if w not in stopwords and len(w) > 3])
+
+# build one document per neighborhood
+neighborhood_docs = {}
+all_neighborhoods = summary["neighborhood"].tolist()
+
+for n in all_neighborhoods:
+    n_df = df[df["neighborhoods_mentioned"].apply(lambda x: n in x)]
+    if len(n_df) > 0:
+        combined_text = " ".join(n_df["combined"].tolist())
+        neighborhood_docs[n] = clean_for_tfidf(combined_text)
+
+# run tfidf
+if len(neighborhood_docs) > 1:
+    tfidf = TfidfVectorizer(max_features=500, ngram_range=(1, 2))
+    doc_list = list(neighborhood_docs.values())
+    doc_names = list(neighborhood_docs.keys())
+    tfidf_matrix = tfidf.fit_transform(doc_list)
+    feature_names = tfidf.get_feature_names_out()
+
+    tfidf_keywords = {}
+    for i, n in enumerate(doc_names):
+        scores = tfidf_matrix[i].toarray()[0]
+        top_indices = scores.argsort()[-5:][::-1]
+        tfidf_keywords[n] = [feature_names[j] for j in top_indices if scores[j] > 0]
+else:
+    tfidf_keywords = {}
+
+print(f"  TF-IDF done for {len(tfidf_keywords)} neighborhoods")
+
+# ---- PRIMARY NEIGHBORHOOD FILTER ----
+def is_primary(row, neighborhood):
+    """Only use post if neighborhood is the only or first mentioned"""
+    mentioned = row["neighborhoods_mentioned"]
+    if len(mentioned) == 1:
+        return True
+    if len(mentioned) <= 3 and mentioned[0] == neighborhood:
+        return True
+    return False
+
+# ---- DATA RELIABILITY BADGE ----
+def reliability_badge(total_posts):
+    if total_posts >= 20:
+        return ("Strong", "#6bcb77", "&#9679;&#9679;&#9679;")
+    elif total_posts >= 8:
+        return ("Moderate", "#ffd93d", "&#9679;&#9679;&#9675;")
+    else:
+        return ("Limited", "#ff6b6b", "&#9679;&#9675;&#9675;")
 
 # ---- SUMMARY GENERATOR ----
 def generate_popup_data(neighborhood, df):
-    n_df = df[
-        df["neighborhoods_mentioned"].apply(lambda x: neighborhood in x) &
-        ~df["title"].apply(is_noise)
-    ]
+    n_df = df[df["neighborhoods_mentioned"].apply(lambda x: neighborhood in x)]
 
     if len(n_df) == 0:
         return None
@@ -114,71 +178,105 @@ def generate_popup_data(neighborhood, df):
     total = len(n_df)
     fearful = n_df[n_df["sentiment"] == "Negative/Fear"]
     reassuring = n_df[n_df["sentiment"] == "Positive/Reassuring"]
+    neutral = n_df[n_df["sentiment"] == "Neutral/Concern"]
     night_df = n_df[n_df["is_night"]]
+    day_df = n_df[~n_df["is_night"]]
     night_fear = fearful[fearful["is_night"]]
+    day_fear = fearful[~fearful["is_night"]]
 
     fear_pct = round(len(fearful) / total * 100) if total > 0 else 0
-    night_pct = round(len(night_df) / total * 100) if total > 0 else 0
+    neutral_pct = round(len(neutral) / total * 100) if total > 0 else 0
+    reassuring_pct = round(len(reassuring) / total * 100) if total > 0 else 0
     night_fear_pct = round(len(night_fear) / len(night_df) * 100) if len(night_df) > 0 else 0
+    day_fear_pct = round(len(day_fear) / len(day_df) * 100) if len(day_df) > 0 else 0
 
-    # top keywords from fearful posts
+    # primary posts only for community voice
+    primary_df = n_df[n_df.apply(lambda r: is_primary(r, neighborhood), axis=1)]
+    primary_fearful = primary_df[primary_df["sentiment"] == "Negative/Fear"]
+    primary_reassuring = primary_df[primary_df["sentiment"] == "Positive/Reassuring"]
+
+    fearful_titles = primary_fearful["title"].head(2).tolist() if len(primary_fearful) > 0 else []
+    reassuring_titles = primary_reassuring["title"].head(1).tolist() if len(primary_reassuring) > 0 else []
+
+    # safety keywords from lexicon
     all_flags = []
     for flags in fearful["safety_flags"]:
         all_flags.extend(flags)
-    top_keywords = [k for k, _ in Counter(all_flags).most_common(4)]
+    top_safety_keywords = [k for k, _ in Counter(all_flags).most_common(4)]
 
-    # real post titles (exclude noise, pick most relevant)
-    fearful_titles = []
-    if len(fearful) > 0 and "title" in fearful.columns:
-        fearful_titles = fearful[~fearful["title"].apply(is_noise)]["title"].head(2).tolist()
+    # tfidf unique keywords
+    unique_keywords = tfidf_keywords.get(neighborhood, [])[:4]
 
-    reassuring_titles = []
-    if len(reassuring) > 0 and "title" in reassuring.columns:
-        reassuring_titles = reassuring[~reassuring["title"].apply(is_noise)]["title"].head(1).tolist()  
-
-    # auto generate text summary
-    if len(fearful) == 0:
-        summary_text = "Community posts are mostly positive about this area."
-    elif fear_pct >= 50:
-        kw_text = ", ".join(top_keywords[:3]) if top_keywords else "safety concerns"
-        summary_text = f"Community frequently mentions {kw_text} in this area."
+    # auto summary text
+    if fear_pct >= 50:
+        kw = ", ".join(top_safety_keywords[:2]) if top_safety_keywords else "safety concerns"
+        summary_text = f"Community frequently raises concerns about {kw} in this area."
     elif fear_pct >= 25:
-        kw_text = ", ".join(top_keywords[:2]) if top_keywords else "some concerns"
-        summary_text = f"Some community concern around {kw_text}, mixed with positive experiences."
+        kw = ", ".join(top_safety_keywords[:2]) if top_safety_keywords else "some concerns"
+        summary_text = f"Mixed community signals — some concerns around {kw}, alongside positive experiences."
+    elif fear_pct >= 10:
+        summary_text = "Mostly positive community experiences with occasional isolated concerns."
     else:
-        summary_text = "Mostly positive community experiences with some isolated concerns."
+        summary_text = "Community posts are largely positive and reassuring about this area."
+
+    # peak concern time
+    if night_fear_pct > day_fear_pct + 15:
+        time_signal = f"Concerns spike at night ({night_fear_pct}% of night posts are fearful)"
+    elif day_fear_pct > night_fear_pct + 15:
+        time_signal = f"Concerns more common during the day ({day_fear_pct}% of day posts fearful)"
+    else:
+        time_signal = f"Concerns spread evenly across day and night"
 
     return {
         "total": total,
         "fear_pct": fear_pct,
-        "night_pct": night_pct,
+        "neutral_pct": neutral_pct,
+        "reassuring_pct": reassuring_pct,
         "night_fear_pct": night_fear_pct,
-        "top_keywords": top_keywords,
+        "day_fear_pct": day_fear_pct,
+        "top_safety_keywords": top_safety_keywords,
+        "unique_keywords": unique_keywords,
         "fearful_titles": fearful_titles,
         "reassuring_titles": reassuring_titles,
         "summary_text": summary_text,
+        "time_signal": time_signal,
         "n_fearful": len(fearful),
         "n_reassuring": len(reassuring),
-        "n_neutral": len(n_df[n_df["sentiment"] == "Neutral/Concern"])
+        "n_neutral": len(neutral),
+        "reliability": reliability_badge(total)
     }
 
 # ---- BUILD MAP ----
-print("Building upgraded map...")
+print("Building upgraded map v2...")
+
 m = folium.Map(
     location=[41.8827, -87.6278],
     zoom_start=11,
     tiles="CartoDB dark_matter"
 )
 
-# color and risk config
+# pulsing animation CSS for high risk circles
+pulse_css = """
+<style>
+@keyframes pulse {
+    0%   { stroke-opacity: 1; stroke-width: 2; }
+    50%  { stroke-opacity: 0.3; stroke-width: 8; }
+    100% { stroke-opacity: 1; stroke-width: 2; }
+}
+.high-risk-pulse {
+    animation: pulse 2s infinite;
+}
+</style>
+"""
+m.get_root().html.add_child(folium.Element(pulse_css))
+
 color_map = {
-    "High Risk": "#ff6b6b",
+    "High Risk":   "#ff6b6b",
     "Medium Risk": "#ffa94d",
-    "Lower Risk": "#6bcb77",
+    "Lower Risk":  "#6bcb77",
 }
 
 processed = 0
-skipped = 0
 
 for _, row in summary.iterrows():
     neighborhood = row["neighborhood"]
@@ -186,153 +284,236 @@ for _, row in summary.iterrows():
     color = color_map.get(risk, "gray")
 
     if neighborhood not in neighborhood_coords:
-        skipped += 1
         continue
 
     lat, lon = neighborhood_coords[neighborhood]
-    popup_data = generate_popup_data(neighborhood, df)
+    pd_data = generate_popup_data(neighborhood, df)
 
-    if popup_data is None:
-        skipped += 1
+    if pd_data is None:
         continue
 
-    # scale circle by post count
-    radius = 6 + (popup_data["total"] / 8)
+    reliability_label, reliability_color, reliability_dots = pd_data["reliability"]
 
-    # build fearful titles html
-    fearful_titles_html = ""
-    for title in popup_data["fearful_titles"]:
-        fearful_titles_html += f"""
-        <div style='background:#ff6b6b22; border-left:3px solid #ff6b6b;
-                    padding:6px 8px; margin:4px 0; border-radius:4px;
-                    font-size:11px; color:#ddd;'>
-            "{title}"
-        </div>"""
+    # sentiment bar widths
+    fear_w = pd_data["fear_pct"]
+    neutral_w = pd_data["neutral_pct"]
+    reassuring_w = pd_data["reassuring_pct"]
 
-    reassuring_titles_html = ""
-    for title in popup_data["reassuring_titles"]:
-        reassuring_titles_html += f"""
-        <div style='background:#6bcb7722; border-left:3px solid #6bcb77;
-                    padding:6px 8px; margin:4px 0; border-radius:4px;
-                    font-size:11px; color:#ddd;'>
-            "{title}"
-        </div>"""
+    # keywords html — safety lexicon
+    safety_kw_html = ""
+    for kw in pd_data["top_safety_keywords"]:
+        safety_kw_html += f"""<span style='background:#ff6b6b22; border:1px solid #ff6b6b55;
+            padding:2px 8px; border-radius:10px; font-size:11px;
+            margin:2px; display:inline-block; color:#ffaaaa;'>{kw}</span>"""
 
-    keywords_html = ""
-    for kw in popup_data["top_keywords"]:
-        keywords_html += f"""
-        <span style='background:#ffffff15; padding:2px 8px;
-                     border-radius:10px; font-size:11px;
-                     margin:2px; display:inline-block;
-                     color:#eee;'>{kw}</span>"""
+    # keywords html — tfidf unique
+    tfidf_kw_html = ""
+    for kw in pd_data["unique_keywords"]:
+        tfidf_kw_html += f"""<span style='background:#4a9eff22; border:1px solid #4a9eff55;
+            padding:2px 8px; border-radius:10px; font-size:11px;
+            margin:2px; display:inline-block; color:#aaccff;'>{kw}</span>"""
 
-    # full popup html
+    # community voice html
+    fearful_html = ""
+    for title in pd_data["fearful_titles"]:
+        fearful_html += f"""
+        <div style='background:#ff6b6b18; border-left:3px solid #ff6b6b;
+                    padding:6px 8px; margin:3px 0; border-radius:0 6px 6px 0;
+                    font-size:11px; color:#ddd;'>"{title}"</div>"""
+
+    reassuring_html = ""
+    for title in pd_data["reassuring_titles"]:
+        reassuring_html += f"""
+        <div style='background:#6bcb7718; border-left:3px solid #6bcb77;
+                    padding:6px 8px; margin:3px 0; border-radius:0 6px 6px 0;
+                    font-size:11px; color:#ddd;'>"{title}"</div>"""
+
+    if not fearful_html and not reassuring_html:
+        voice_html = "<div style='color:#666; font-size:11px;'>No primary posts found</div>"
+    else:
+        voice_html = fearful_html + reassuring_html
+
     popup_html = f"""
-    <div style='width:300px; font-family:Arial, sans-serif;
-                background:#1a1a2e; color:#eee;
-                padding:16px; border-radius:12px;'>
+    <div style='width:320px; font-family:Arial, sans-serif;
+                background:#0f0f1a; color:#eee;
+                padding:16px; border-radius:12px;
+                border:1px solid #333;'>
 
-        <h3 style='margin:0 0 4px 0; color:white;
-                   font-size:16px;'>{neighborhood}</h3>
-
-        <div style='background:{color}33; border:1px solid {color};
-                    padding:5px 10px; border-radius:6px;
-                    margin-bottom:12px; display:inline-block;
-                    font-size:12px; color:{color}; font-weight:bold;'>
-            {risk}
+        <!-- HEADER -->
+        <div style='display:flex; justify-content:space-between;
+                    align-items:flex-start; margin-bottom:10px;'>
+            <h3 style='margin:0; color:white; font-size:17px;'>{neighborhood}</h3>
+            <div style='text-align:right;'>
+                <div style='background:{color}33; border:1px solid {color};
+                            padding:3px 10px; border-radius:6px;
+                            font-size:11px; color:{color}; font-weight:bold;
+                            margin-bottom:4px;'>{risk}</div>
+                <div style='font-size:10px; color:{reliability_color};'>
+                    {reliability_dots} {reliability_label} data</div>
+            </div>
         </div>
 
-        <div style='background:#ffffff08; padding:10px;
+        <!-- SUMMARY TEXT -->
+        <div style='background:#ffffff08; padding:10px 12px;
                     border-radius:8px; margin-bottom:12px;
-                    font-size:12px; color:#ccc; font-style:italic;'>
-            {popup_data["summary_text"]}
+                    font-size:12px; color:#ccc; font-style:italic;
+                    border-left:3px solid {color};'>
+            {pd_data["summary_text"]}
         </div>
 
-        <div style='display:flex; gap:8px; margin-bottom:12px;'>
-            <div style='flex:1; background:#ff6b6b22; padding:8px;
-                        border-radius:8px; text-align:center;'>
-                <div style='font-size:18px; font-weight:bold;
-                            color:#ff6b6b;'>{popup_data["fear_pct"]}%</div>
-                <div style='font-size:10px; color:#aaa;'>Fearful</div>
+        <!-- STAT BOXES -->
+        <div style='display:flex; gap:6px; margin-bottom:12px;'>
+            <div style='flex:1; background:#ff6b6b18; padding:8px 4px;
+                        border-radius:8px; text-align:center;
+                        border:1px solid #ff6b6b33;'>
+                <div style='font-size:20px; font-weight:bold;
+                            color:#ff6b6b;'>{pd_data["fear_pct"]}%</div>
+                <div style='font-size:9px; color:#aaa; margin-top:2px;'>FEARFUL</div>
             </div>
-            <div style='flex:1; background:#ffd93d22; padding:8px;
-                        border-radius:8px; text-align:center;'>
-                <div style='font-size:18px; font-weight:bold;
-                            color:#ffd93d;'>{popup_data["total"]}</div>
-                <div style='font-size:10px; color:#aaa;'>Total Posts</div>
+            <div style='flex:1; background:#ffffff0a; padding:8px 4px;
+                        border-radius:8px; text-align:center;
+                        border:1px solid #ffffff15;'>
+                <div style='font-size:20px; font-weight:bold;
+                            color:#fff;'>{pd_data["total"]}</div>
+                <div style='font-size:9px; color:#aaa; margin-top:2px;'>POSTS</div>
             </div>
-            <div style='flex:1; background:#4a9eff22; padding:8px;
-                        border-radius:8px; text-align:center;'>
-                <div style='font-size:18px; font-weight:bold;
-                            color:#4a9eff;'>{popup_data["night_fear_pct"]}%</div>
-                <div style='font-size:10px; color:#aaa;'>Night Fear</div>
+            <div style='flex:1; background:#4a9eff18; padding:8px 4px;
+                        border-radius:8px; text-align:center;
+                        border:1px solid #4a9eff33;'>
+                <div style='font-size:20px; font-weight:bold;
+                            color:#4a9eff;'>{pd_data["night_fear_pct"]}%</div>
+                <div style='font-size:9px; color:#aaa; margin-top:2px;'>NIGHT FEAR</div>
             </div>
+            <div style='flex:1; background:#6bcb7718; padding:8px 4px;
+                        border-radius:8px; text-align:center;
+                        border:1px solid #6bcb7733;'>
+                <div style='font-size:20px; font-weight:bold;
+                            color:#6bcb77;'>{pd_data["reassuring_pct"]}%</div>
+                <div style='font-size:9px; color:#aaa; margin-top:2px;'>POSITIVE</div>
+            </div>
+        </div>
+
+        <!-- SENTIMENT BAR -->
+        <div style='margin-bottom:12px;'>
+            <div style='font-size:10px; color:#888;
+                        margin-bottom:5px; text-transform:uppercase;
+                        letter-spacing:1px;'>Sentiment Distribution</div>
+            <div style='display:flex; height:8px; border-radius:4px;
+                        overflow:hidden; background:#ffffff10;'>
+                <div style='width:{fear_w}%; background:#ff6b6b;'></div>
+                <div style='width:{neutral_w}%; background:#ffd93d;'></div>
+                <div style='width:{reassuring_w}%; background:#6bcb77;'></div>
+            </div>
+            <div style='display:flex; justify-content:space-between;
+                        font-size:9px; color:#666; margin-top:3px;'>
+                <span style='color:#ff6b6b;'>Fearful {fear_w}%</span>
+                <span style='color:#ffd93d;'>Neutral {neutral_w}%</span>
+                <span style='color:#6bcb77;'>Positive {reassuring_w}%</span>
+            </div>
+        </div>
+
+        <!-- TIME SIGNAL -->
+        <div style='background:#ffffff08; padding:7px 10px;
+                    border-radius:6px; margin-bottom:10px;
+                    font-size:11px; color:#bbb;'>
+            &#128337; {pd_data["time_signal"]}
+        </div>
+
+        <!-- KEYWORDS -->
+        <div style='margin-bottom:10px;'>
+            <div style='font-size:10px; color:#888; margin-bottom:4px;
+                        text-transform:uppercase; letter-spacing:1px;'>
+                Safety Signals</div>
+            {safety_kw_html if safety_kw_html else
+             "<span style='color:#555; font-size:11px;'>None detected</span>"}
         </div>
 
         <div style='margin-bottom:10px;'>
-            <div style='font-size:11px; color:#888;
-                        margin-bottom:5px;'>TOP KEYWORDS</div>
-            {keywords_html if keywords_html else
-             "<span style='color:#666; font-size:11px;'>None detected</span>"}
+            <div style='font-size:10px; color:#888; margin-bottom:4px;
+                        text-transform:uppercase; letter-spacing:1px;'>
+                Unique to this area</div>
+            {tfidf_kw_html if tfidf_kw_html else
+             "<span style='color:#555; font-size:11px;'>Insufficient data</span>"}
         </div>
 
-        <div style='margin-bottom:8px;'>
-            <div style='font-size:11px; color:#888;
-                        margin-bottom:4px;'>COMMUNITY VOICE</div>
-            {fearful_titles_html if fearful_titles_html else
-             "<div style='color:#666; font-size:11px;'>No fearful posts</div>"}
-            {reassuring_titles_html}
+        <!-- COMMUNITY VOICE -->
+        <div style='margin-bottom:10px;'>
+            <div style='font-size:10px; color:#888; margin-bottom:4px;
+                        text-transform:uppercase; letter-spacing:1px;'>
+                Community Voice</div>
+            {voice_html}
         </div>
 
-        <div style='border-top:1px solid #333; padding-top:8px;
-                    margin-top:8px; font-size:10px; color:#666;'>
-            Reddit data only · Crime + 311 data coming soon
+        <!-- FOOTER -->
+        <div style='border-top:1px solid #222; padding-top:8px;
+                    font-size:10px; color:#555; display:flex;
+                    justify-content:space-between;'>
+            <span>Reddit data only</span>
+            <span>Crime + 311 coming soon</span>
         </div>
     </div>
     """
 
-    folium.CircleMarker(
+    # pulsing effect for high risk via JS
+    radius = 6 + (pd_data["total"] / 8)
+
+    circle = folium.CircleMarker(
         location=[lat, lon],
         radius=radius,
         color=color,
         fill=True,
         fill_color=color,
         fill_opacity=0.65,
-        popup=folium.Popup(popup_html, max_width=320),
+        weight=2,
+        popup=folium.Popup(popup_html, max_width=340),
         tooltip=folium.Tooltip(
-            f"<b style='color:white'>{neighborhood}</b>"
-            f"<br><span style='color:{color}'>{risk}</span>"
-            f"<br><span style='color:#aaa; font-size:11px'>"
-            f"{popup_data['total']} posts · {popup_data['fear_pct']}% fearful</span>",
-            style="background:#1a1a2e; border:none; color:white;"
-                  "padding:8px; border-radius:6px;"
+            f"<div style='background:#1a1a2e; padding:8px 12px; "
+            f"border-radius:8px; border:1px solid #333;'>"
+            f"<b style='color:white; font-size:13px;'>{neighborhood}</b><br>"
+            f"<span style='color:{color}; font-size:11px;'>{risk}</span><br>"
+            f"<span style='color:#aaa; font-size:11px;'>"
+            f"{pd_data['total']} posts &nbsp;|&nbsp; "
+            f"{pd_data['fear_pct']}% fearful</span></div>",
+            sticky=False
         )
-    ).add_to(m)
-
+    )
+    circle.add_to(m)
     processed += 1
 
 # ---- LEGEND ----
 legend_html = """
 <div style='position:fixed; bottom:30px; left:30px; z-index:1000;
-            background:#1a1a2e; padding:16px; border-radius:12px;
+            background:#0f0f1a; padding:18px; border-radius:12px;
             color:white; font-family:Arial; font-size:13px;
-            border:1px solid #333;'>
-    <b style='font-size:15px'>HerSafe Chicago</b><br>
-    <span style='color:#888; font-size:11px'>
-        Reddit Community Safety Signals
-    </span><br><br>
-    <span style='color:#ff6b6b'>&#9679;</span> High Risk<br>
-    <span style='color:#ffa94d'>&#9679;</span> Medium Risk<br>
-    <span style='color:#6bcb77'>&#9679;</span> Lower Risk<br><br>
-    <span style='color:#888; font-size:11px'>
-        Circle size = post count<br>
-        Hover to preview · Click for details
-    </span>
+            border:1px solid #333; min-width:200px;'>
+    <div style='font-size:16px; font-weight:bold;
+                margin-bottom:3px;'>HerSafe Chicago</div>
+    <div style='color:#666; font-size:11px;
+                margin-bottom:14px;'>Reddit Community Safety Signals</div>
+
+    <div style='margin-bottom:6px;'>
+        <span style='color:#ff6b6b; font-size:16px;'>&#9679;</span>
+        <span style='margin-left:6px;'>High Risk</span>
+    </div>
+    <div style='margin-bottom:6px;'>
+        <span style='color:#ffa94d; font-size:16px;'>&#9679;</span>
+        <span style='margin-left:6px;'>Medium Risk</span>
+    </div>
+    <div style='margin-bottom:14px;'>
+        <span style='color:#6bcb77; font-size:16px;'>&#9679;</span>
+        <span style='margin-left:6px;'>Lower Risk</span>
+    </div>
+
+    <div style='border-top:1px solid #333; padding-top:10px;
+                font-size:10px; color:#666; line-height:1.8;'>
+        Circle size = post volume<br>
+        Hover to preview<br>
+        Click for full analysis
+    </div>
 </div>
 """
 m.get_root().html.add_child(folium.Element(legend_html))
 
-m.save("hersafe_upgraded_map.html")
-
-print(f"Done! {processed} neighborhoods mapped, {skipped} skipped")
-print("Open hersafe_upgraded_map.html in your browser!")
+m.save("hersafe_upgraded_map_v2.html")
+print(f"\nDone! {processed} neighborhoods mapped")
+print("Open hersafe_upgraded_map_v2.html in your browser!")
