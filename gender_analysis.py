@@ -144,6 +144,10 @@ fig = make_subplots(
         "Top Neighborhoods — Female Perspective",
         "Night vs Day Fear by Perspective"
     ],
+    specs=[
+        [{"type": "xy"}, {"type": "domain"}],
+        [{"type": "xy"}, {"type": "xy"}]
+    ],
     vertical_spacing=0.15,
     horizontal_spacing=0.1
 )
