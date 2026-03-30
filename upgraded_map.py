@@ -128,8 +128,13 @@ def generate_popup_data(neighborhood, df):
     top_keywords = [k for k, _ in Counter(all_flags).most_common(4)]
 
     # real post titles (exclude noise, pick most relevant)
-    fearful_titles = fearful[~fearful["title"].apply(is_noise)]["title"].head(2).tolist()
-    reassuring_titles = reassuring[~reassuring["title"].apply(is_noise)]["title"].head(1).tolist()
+    fearful_titles = []
+    if len(fearful) > 0 and "title" in fearful.columns:
+        fearful_titles = fearful[~fearful["title"].apply(is_noise)]["title"].head(2).tolist()
+
+    reassuring_titles = []
+    if len(reassuring) > 0 and "title" in reassuring.columns:
+        reassuring_titles = reassuring[~reassuring["title"].apply(is_noise)]["title"].head(1).tolist()  
 
     # auto generate text summary
     if len(fearful) == 0:
