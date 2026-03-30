@@ -101,13 +101,13 @@ fig.add_trace(go.Scatter(
 # add COVID annotation
 fig.add_vline(
     x=2020, line_dash="dash",
-    line_color="#ffffff30",
+    line_color="rgba(255,255,255,0.2)",
     row=1, col=1
 )
 fig.add_annotation(
     x=2020, y=yearly_grouped["fear_ratio"].max(),
     text="COVID", showarrow=False,
-    font=dict(color="#ffffff50", size=10),
+    font=dict(color="rgba(255,255,255,0.4)", size=10),
     row=1, col=1
 )
 
