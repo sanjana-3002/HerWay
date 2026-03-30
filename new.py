@@ -1,12 +1,11 @@
 import pandas as pd
 
 df = pd.read_csv("chicago_safety_sentiment.csv")
-df["date_parsed"] = pd.to_datetime(df["date"], unit="s")
-df["year"] = df["date_parsed"].dt.year
-df["month"] = df["date_parsed"].dt.month
+df["year"] = pd.to_datetime(df["date"], unit="s").dt.year
 
-print("Date range:", df["date_parsed"].min(), "to", df["date_parsed"].max())
-print("\nPosts per year:")
-print(df["year"].value_counts().sort_index())
-print("\nSentiment by year:")
-print(df.groupby(["year", "sentiment"]).size().unstack(fill_value=0))
+for year in [2023, 2024, 2025]:
+    y = df[df["year"] == year]
+    total = len(y)
+    fear = len(y[y["sentiment"] == "Negative/Fear"])
+    pos = len(y[y["sentiment"] == "Positive/Reassuring"])
+    print(f"{year}: {total} posts | Fear: {fear} ({round(fear/total*100)}%) | Positive: {pos} ({round(pos/total*100)}%)")
