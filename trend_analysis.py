@@ -1,18 +1,14 @@
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import plotly.express as px
+import ast
 
 # ---- LOAD DATA ----
 df = pd.read_csv("chicago_safety_sentiment.csv")
 df["date_parsed"] = pd.to_datetime(df["date"], unit="s")
 df["year"] = df["date_parsed"].dt.year
 df["month"] = df["date_parsed"].dt.month
-df["month_name"] = df["date_parsed"].dt.strftime("%b")
 df["year_month"] = df["date_parsed"].dt.strftime("%Y-%m")
-df["quarter"] = df["date_parsed"].dt.to_period("Q").astype(str)
-
-import ast
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 
 print("Building trend analysis...")
@@ -41,9 +37,8 @@ monthly["fear_ratio"] = (
 ).round(1)
 monthly = monthly.reset_index().sort_values("year_month")
 
-# ---- NEIGHBORHOOD TREND (top 5 neighborhoods) ----
+# ---- NEIGHBORHOOD TREND ----
 top_neighborhoods = ["Loop", "Logan Square", "Uptown", "Rogers Park", "Hyde Park"]
-
 neighborhood_yearly = []
 for n in top_neighborhoods:
     n_df = df[
@@ -63,7 +58,13 @@ for n in top_neighborhoods:
 
 neighborhood_trend_df = pd.concat(neighborhood_yearly, ignore_index=True) if neighborhood_yearly else pd.DataFrame()
 
-# ---- BUILD INTERACTIVE CHARTS ----
+colors = {
+    "Negative/Fear": "#ff6b6b",
+    "Neutral/Concern": "#ffd93d",
+    "Positive/Reassuring": "#6bcb77"
+}
+
+# ---- BUILD FIGURE ----
 fig = make_subplots(
     rows=3, cols=2,
     subplot_titles=[
@@ -72,17 +73,11 @@ fig = make_subplots(
         "Monthly Fear Trend (2023-2026)",
         "Post Volume by Year",
         "Neighborhood Fear Trends (2020-2026)",
-        "2025 vs 2024 — Sentiment Comparison"
+        "2024 vs 2025 — Sentiment Comparison"
     ],
     vertical_spacing=0.12,
     horizontal_spacing=0.1
 )
-
-colors = {
-    "Negative/Fear": "#ff6b6b",
-    "Neutral/Concern": "#ffd93d",
-    "Positive/Reassuring": "#6bcb77"
-}
 
 # ---- CHART 1: Fear ratio trend line ----
 fig.add_trace(go.Scatter(
@@ -98,34 +93,33 @@ fig.add_trace(go.Scatter(
     showlegend=False
 ), row=1, col=1)
 
-# add COVID annotation
 fig.add_vline(
-    x=2020, line_dash="dash",
+    x=2020,
+    line_dash="dash",
     line_color="rgba(255,255,255,0.2)",
     row=1, col=1
 )
 fig.add_annotation(
-    x=2020, y=yearly_grouped["fear_ratio"].max(),
-    text="COVID", showarrow=False,
-    font=dict(color="rgba(255,255,255,0.4)", size=10),
+    x=2020,
+    y=yearly_grouped["fear_ratio"].max() + 2,
+    text="COVID",
+    showarrow=False,
+    font=dict(color="rgba(255,255,255,0.5)", size=10),
     row=1, col=1
 )
 
 # ---- CHART 2: Stacked sentiment by year ----
 for sentiment, color in colors.items():
-    col_name = sentiment
-    if col_name in yearly_grouped.columns:
+    if sentiment in yearly_grouped.columns:
         fig.add_trace(go.Bar(
             x=yearly_grouped["year"],
-            y=yearly_grouped[col_name],
+            y=yearly_grouped[sentiment],
             name=sentiment.split("/")[1],
             marker_color=color,
             showlegend=True
         ), row=1, col=2)
 
-fig.update_layout(barmode="stack")
-
-# ---- CHART 3: Monthly fear trend 2023-2026 ----
+# ---- CHART 3: Monthly fear trend ----
 fig.add_trace(go.Scatter(
     x=monthly["year_month"],
     y=monthly["fear_ratio"],
@@ -138,18 +132,21 @@ fig.add_trace(go.Scatter(
     showlegend=False
 ), row=2, col=1)
 
-# add threshold line
 fig.add_hline(
-    y=30, line_dash="dash",
-    line_color="#ff6b6b50",
-    annotation_text="High risk threshold",
-    annotation_font_color="#ff6b6b80",
+    y=30,
+    line_dash="dash",
+    line_color="rgba(255,107,107,0.4)",
+    annotation_text="High risk threshold (30%)",
+    annotation_font_color="rgba(255,107,107,0.8)",
+    annotation_font_size=10,
     row=2, col=1
 )
 
 # ---- CHART 4: Post volume by year ----
 bar_colors = [
-    "#ff6b6b" if y == 2020 else "#6bcb77" if y >= 2023 else "#4a9eff"
+    "#ff6b6b" if y == 2020
+    else "#6bcb77" if y >= 2023
+    else "#4a9eff"
     for y in yearly_grouped["year"]
 ]
 fig.add_trace(go.Bar(
@@ -183,15 +180,13 @@ if not neighborhood_trend_df.empty:
 # ---- CHART 6: 2024 vs 2025 comparison ----
 comparison_years = [2024, 2025]
 comparison_data = yearly_grouped[yearly_grouped["year"].isin(comparison_years)]
-
-sentiments_to_compare = ["Negative/Fear", "Neutral/Concern", "Positive/Reassuring"]
-for sentiment in sentiments_to_compare:
+for sentiment, color in colors.items():
     if sentiment in comparison_data.columns:
         fig.add_trace(go.Bar(
             name=f"{sentiment.split('/')[1]}",
             x=comparison_data["year"].astype(str),
             y=comparison_data[sentiment],
-            marker_color=colors[sentiment],
+            marker_color=color,
             showlegend=False,
             text=comparison_data[sentiment],
             textposition="inside",
@@ -217,19 +212,10 @@ fig.update_layout(
     barmode="stack"
 )
 
-# axis styling
 for i in range(1, 4):
     for j in range(1, 3):
-        fig.update_xaxes(
-            gridcolor="#ffffff10",
-            linecolor="#333",
-            row=i, col=j
-        )
-        fig.update_yaxes(
-            gridcolor="#ffffff10",
-            linecolor="#333",
-            row=i, col=j
-        )
+        fig.update_xaxes(gridcolor="#333333", linecolor="#333", row=i, col=j)
+        fig.update_yaxes(gridcolor="#333333", linecolor="#333", row=i, col=j)
 
 fig.write_html("trend_analysis.html")
 print("Saved trend_analysis.html!")
@@ -237,14 +223,11 @@ print("Saved trend_analysis.html!")
 # ---- KEY INSIGHTS ----
 print("\n========== KEY INSIGHTS ==========\n")
 
-# year with highest fear ratio
 max_year = yearly_grouped.loc[yearly_grouped["fear_ratio"].idxmax()]
-print(f"Highest fear ratio year: {int(max_year['year'])} ({max_year['fear_ratio']}%)")
-
 min_year = yearly_grouped.loc[yearly_grouped["fear_ratio"].idxmin()]
-print(f"Lowest fear ratio year:  {int(min_year['year'])} ({min_year['fear_ratio']}%)")
+print(f"Highest fear ratio: {int(max_year['year'])} ({max_year['fear_ratio']}%)")
+print(f"Lowest fear ratio:  {int(min_year['year'])} ({min_year['fear_ratio']}%)")
 
-# 2024 vs 2025
 y2024 = yearly_grouped[yearly_grouped["year"] == 2024]["fear_ratio"].values
 y2025 = yearly_grouped[yearly_grouped["year"] == 2025]["fear_ratio"].values
 if len(y2024) > 0 and len(y2025) > 0:
