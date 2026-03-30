@@ -208,12 +208,36 @@ def generate_popup_data(neighborhood, df):
     unique_keywords = tfidf_keywords.get(neighborhood, [])[:4]
 
     # auto summary text
+    # map keywords to readable phrases
+keyword_phrases = {
+    "avoid": "areas people suggest avoiding",
+    "dangerous": "perceived danger",
+    "unsafe": "feelings of unsafety",
+    "alone": "concerns about walking alone",
+    "dark": "poor lighting at night",
+    "mugged": "robbery incidents",
+    "harassed": "street harassment",
+    "scared": "feeling scared",
+    "sketchy": "sketchy conditions",
+    "shooting": "gun violence",
+    "followed": "being followed",
+    "creepy": "threatening behavior",
+    "knife": "weapon-related incidents",
+    "fear": "general fear",
+    "threat": "threatening situations",
+    "aggressive": "aggressive behavior"
+}
+
+    def keywords_to_phrase(keywords):
+        phrases = [keyword_phrases.get(k, k) for k in keywords[:2]]
+        return " and ".join(phrases) if phrases else "safety concerns"
+
     if fear_pct >= 50:
-        kw = ", ".join(top_safety_keywords[:2]) if top_safety_keywords else "safety concerns"
-        summary_text = f"Community frequently raises concerns about {kw} in this area."
+        phrase = keywords_to_phrase(top_safety_keywords)
+        summary_text = f"Community posts show significant concern — people mention {phrase} in this area."
     elif fear_pct >= 25:
-        kw = ", ".join(top_safety_keywords[:2]) if top_safety_keywords else "some concerns"
-        summary_text = f"Mixed community signals — some concerns around {kw}, alongside positive experiences."
+        phrase = keywords_to_phrase(top_safety_keywords)
+        summary_text = f"Mixed signals — some posts mention {phrase}, alongside positive experiences."
     elif fear_pct >= 10:
         summary_text = "Mostly positive community experiences with occasional isolated concerns."
     else:
