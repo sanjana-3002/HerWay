@@ -151,14 +151,22 @@ print(f"  TF-IDF done for {len(tfidf_keywords)} neighborhoods")
 
 # ---- PRIMARY NEIGHBORHOOD FILTER ----
 def is_primary(row, neighborhood):
-    """Only use post if neighborhood is the only or first mentioned"""
+    """Only use post if neighborhood is the ONLY one mentioned
+       AND the neighborhood name appears in the title itself"""
     mentioned = row["neighborhoods_mentioned"]
-    if len(mentioned) == 1:
-        return True
-    if len(mentioned) <= 3 and mentioned[0] == neighborhood:
-        return True
-    return False
+    title = str(row["title"]).lower()
+    neighborhood_lower = neighborhood.lower()
 
+    # must be only neighborhood mentioned
+    if len(mentioned) != 1:
+        return False
+
+    # neighborhood name should appear in title for it to be truly about that area
+    if neighborhood_lower not in title:
+        return False
+
+    return True
+    
 # ---- DATA RELIABILITY BADGE ----
 def reliability_badge(total_posts):
     if total_posts >= 20:
