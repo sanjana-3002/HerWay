@@ -217,38 +217,38 @@ def generate_popup_data(neighborhood, df):
 
     # auto summary text
     # map keywords to readable phrases
-keyword_phrases = {
-    "avoid": "areas people suggest avoiding",
-    "dangerous": "perceived danger",
-    "unsafe": "feelings of unsafety",
-    "alone": "concerns about walking alone",
-    "dark": "poor lighting at night",
-    "mugged": "robbery incidents",
-    "harassed": "street harassment",
-    "scared": "feeling scared",
-    "sketchy": "sketchy conditions",
-    "shooting": "gun violence",
-    "followed": "being followed",
-    "creepy": "threatening behavior",
-    "knife": "weapon-related incidents",
-    "fear": "general fear",
-    "threat": "threatening situations",
-    "aggressive": "aggressive behavior"
-}
+    keyword_phrases = {
+        "avoid": "areas people suggest avoiding",
+        "dangerous": "perceived danger",
+        "unsafe": "feelings of unsafety",
+        "alone": "concerns about walking alone",
+        "dark": "poor lighting at night",
+        "mugged": "robbery incidents",
+        "harassed": "street harassment",
+        "scared": "feeling scared",
+        "sketchy": "sketchy conditions",
+        "shooting": "gun violence",
+        "followed": "being followed",
+        "creepy": "threatening behavior",
+        "knife": "weapon-related incidents",
+        "fear": "general fear",
+        "threat": "threatening situations",
+        "aggressive": "aggressive behavior"
+    }
 
     def keywords_to_phrase(keywords):
         phrases = [keyword_phrases.get(k, k) for k in keywords[:2]]
         return " and ".join(phrases) if phrases else "safety concerns"
-        if fear_pct >= 50:
-            phrase = keywords_to_phrase(top_safety_keywords)
-            summary_text = f"Community posts show significant concern — people mention {phrase} in this area."
-        elif fear_pct >= 25:
-            phrase = keywords_to_phrase(top_safety_keywords)
-            summary_text = f"Mixed signals — some posts mention {phrase}, alongside positive experiences."
-        elif fear_pct >= 10:
-            summary_text = "Mostly positive community experiences with occasional isolated concerns."
-        else:
-            summary_text = "Community posts are largely positive and reassuring about this area."
+    if fear_pct >= 50:
+        phrase = keywords_to_phrase(top_safety_keywords)
+        summary_text = f"Community posts show significant concern — people mention {phrase} in this area."
+    elif fear_pct >= 25:
+        phrase = keywords_to_phrase(top_safety_keywords)
+        summary_text = f"Mixed signals — some posts mention {phrase}, alongside positive experiences."
+    elif fear_pct >= 10:
+        summary_text = "Mostly positive community experiences with occasional isolated concerns."
+    else:
+        summary_text = "Community posts are largely positive and reassuring about this area."
 
     # peak concern time
     if night_fear_pct > day_fear_pct + 15:
