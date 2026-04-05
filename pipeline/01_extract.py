@@ -68,11 +68,11 @@ import time
 # df = df.drop_duplicates(subset=["title"])
 
 # # load existing data and combine
-# existing = pd.read_csv("chicago_safety_reddit.csv")
+# existing = pd.read_csv("data/raw/chicago_safety_reddit.csv")
 # combined = pd.concat([existing, df], ignore_index=True)
 # combined = combined.drop_duplicates(subset=["title"])
 
-# combined.to_csv("chicago_safety_reddit.csv", index=False)
+# combined.to_csv("data/raw/chicago_safety_reddit.csv", index=False)
 # print(f"\nDone! Total posts now: {len(combined)}")
 
 # print(f"\nDone! Collected {len(df)} total posts")

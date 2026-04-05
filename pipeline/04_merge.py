@@ -13,9 +13,9 @@ import numpy as np
 # ================================================
 
 # ---- LOAD ALL THREE DATASETS ----
-reddit = pd.read_csv("neighborhood_sentiment_summary.csv")
-data_311 = pd.read_csv("neighbourhood_311.csv", encoding="utf-8-sig")
-crime = pd.read_csv("community_crime_profile.csv")
+reddit = pd.read_csv("data/processed/neighborhood_sentiment_summary.csv")
+data_311 = pd.read_csv("data/raw/neighbourhood_311.csv", encoding="utf-8-sig")
+crime = pd.read_csv("data/raw/community_crime_profile.csv")
 
 # ---- CLEAN COLUMN NAMES ----
 data_311 = data_311.rename(columns={"Neighbourhoods": "neighborhood"})
@@ -235,7 +235,7 @@ merged["final_risk"] = merged.apply(assign_risk, axis=1)
 merged = merged.sort_values("combined_score", ascending=False)
 
 # ---- SAVE ----
-merged.to_csv("hersafe_final_merged.csv", index=False)
+merged.to_csv("data/processed/hersafe_final_merged.csv", index=False)
 
 # ---- PRINT SUMMARY ----
 print("\n========== ALL 3 SOURCES — TOP 15 ==========\n")

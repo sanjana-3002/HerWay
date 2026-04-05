@@ -12,7 +12,7 @@ from transformers import pipeline
 from collections import Counter
 
 # ---- LOAD LOCATED DATA ----
-df = pd.read_csv("chicago_safety_located.csv")
+df = pd.read_csv("data/processed/chicago_safety_located.csv")
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 df["combined"] = df["title"].fillna("") + " " + df["text"].fillna("")
@@ -51,7 +51,7 @@ for i, text in enumerate(df["combined"]):
 
 df["sentiment"] = sentiments
 df["confidence"] = confidences
-df.to_csv("chicago_safety_sentiment.csv", index=False)
+df.to_csv("data/processed/chicago_safety_sentiment.csv", index=False)
 print("Sentiment analysis complete!\n")
 
 # ---- NEIGHBORHOOD SUMMARY ----
@@ -103,7 +103,7 @@ for n, c in summary.items():
 
 summary_df = pd.DataFrame(rows)
 summary_df = summary_df.sort_values("negative_ratio", ascending=False)
-summary_df.to_csv("neighborhood_sentiment_summary.csv", index=False)
+summary_df.to_csv("data/processed/neighborhood_sentiment_summary.csv", index=False)
 
 print("========== NEIGHBORHOOD SENTIMENT BREAKDOWN ==========\n")
 print(summary_df[["neighborhood", "total_posts", "negative_fear",
@@ -244,7 +244,7 @@ legend_html = """
 </div>
 """
 m.get_root().html.add_child(folium.Element(legend_html))
-m.save("hersafe_chicago_map.html")
+m.save("outputs/maps/hersafe_chicago_map.html")
 
 print("Map saved! Open hersafe_chicago_map.html in your browser.")
 print("\nDone! Files updated:")

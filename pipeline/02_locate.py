@@ -7,7 +7,7 @@ import pandas as pd
 import re
 
 # ---- LOAD DATA ----
-df = pd.read_csv("chicago_safety_reddit.csv")
+df = pd.read_csv("data/raw/chicago_safety_reddit.csv")
 df["combined"] = df["title"].fillna("") + " " + df["text"].fillna("")
 print(f"Total posts loaded: {len(df)}")
 
@@ -98,7 +98,7 @@ df_located = df[df["neighborhoods_mentioned"].apply(len) > 0].copy()
 df_located = df_located.sort_values("safety_score", ascending=False)
 
 # ---- SAVE ----
-df_located.to_csv("chicago_safety_located.csv", index=False)
+df_located.to_csv("data/processed/chicago_safety_located.csv", index=False)
 
 print(f"\nTotal posts: {len(df)}")
 print(f"Posts with Chicago neighborhoods: {len(df_located)}")
