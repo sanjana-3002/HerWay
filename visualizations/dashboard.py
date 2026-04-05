@@ -5,7 +5,7 @@
 
 import pandas as pd
 
-df = pd.read_csv("neighborhood_sentiment_summary.csv")
+df = pd.read_csv("data/processed/neighborhood_sentiment_summary.csv")
 df = df[df["risk_rating"] != "Insufficient Data"]
 df = df.sort_values("negative_ratio", ascending=False)
 
@@ -103,8 +103,8 @@ html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-with open("hersafe_dashboard.html", "w", encoding="utf-8") as f:
+with open("outputs/charts/hersafe_dashboard.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-print("Dashboard saved as hersafe_dashboard.html")
+print("Dashboard saved as outputs/charts/hersafe_dashboard.html")
 print("Open it in your browser!")

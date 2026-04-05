@@ -4,7 +4,7 @@ from plotly.subplots import make_subplots
 import ast
 
 # ---- LOAD DATA ----
-df = pd.read_csv("chicago_safety_sentiment.csv")
+df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 df["date_parsed"] = pd.to_datetime(df["date"], unit="s")
 df["year"] = df["date_parsed"].dt.year
 df["month"] = df["date_parsed"].dt.month
@@ -217,7 +217,7 @@ for i in range(1, 4):
         fig.update_xaxes(gridcolor="#333333", linecolor="#333", row=i, col=j)
         fig.update_yaxes(gridcolor="#333333", linecolor="#333", row=i, col=j)
 
-fig.write_html("trend_analysis.html")
+fig.write_html("outputs/charts/trend_analysis.html")
 print("Saved trend_analysis.html!")
 
 # ---- KEY INSIGHTS ----

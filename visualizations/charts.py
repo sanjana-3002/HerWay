@@ -14,7 +14,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # ---- LOAD DATA ----
-df = pd.read_csv("chicago_safety_sentiment.csv")
+df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 df["combined"] = df["title"].fillna("") + " " + df["text"].fillna("")
@@ -23,7 +23,7 @@ df["hour"] = df["date"].dt.hour
 df["day_of_week"] = df["date"].dt.day_name()
 df["is_night"] = df["hour"].apply(lambda h: "Night (8pm-4am)" if (h >= 20 or h < 4) else "Evening (4pm-8pm)" if h >= 16 else "Day (4am-4pm)")
 
-summary = pd.read_csv("neighborhood_sentiment_summary.csv")
+summary = pd.read_csv("data/processed/neighborhood_sentiment_summary.csv")
 summary = summary[summary["risk_rating"] != "Insufficient Data"]
 
 print("Data loaded! Building visualizations...\n")
@@ -91,7 +91,7 @@ for text, title, colormap, ax in configs:
 plt.suptitle("HerSafe Chicago — What People Are Saying",
              color="white", fontsize=20, fontweight="bold", y=1.02)
 plt.tight_layout()
-plt.savefig("wordclouds.png", dpi=150, bbox_inches="tight",
+plt.savefig("outputs/charts/wordclouds.png", dpi=150, bbox_inches="tight",
             facecolor="#0f0f1a", edgecolor="none")
 plt.close()
 print("  wordclouds.png saved!")
@@ -185,7 +185,7 @@ for i, (bar, val) in enumerate(zip(bars, night_fear)):
 plt.suptitle("HerSafe Chicago — Time Analysis of Safety Concerns",
              color="white", fontsize=18, fontweight="bold", y=1.01)
 plt.tight_layout()
-plt.savefig("time_analysis.png", dpi=150, bbox_inches="tight",
+plt.savefig("outputs/charts/time_analysis.png", dpi=150, bbox_inches="tight",
             facecolor="#0f0f1a", edgecolor="none")
 plt.close()
 print("  time_analysis.png saved!")
@@ -224,7 +224,7 @@ fig_bubble.update_layout(
     font=dict(color="white"),
     title_font_size=16
 )
-fig_bubble.write_html("chart_bubble.html")
+fig_bubble.write_html("outputs/charts/chart_bubble.html")
 print("  chart_bubble.html saved!")
 
 # --- Chart B: Stacked Bar — Sentiment breakdown for top 20 neighborhoods ---
@@ -254,7 +254,7 @@ fig_bar.update_layout(
     legend=dict(bgcolor="#1a1a2e"),
     title_font_size=16
 )
-fig_bar.write_html("chart_sentiment_breakdown.html")
+fig_bar.write_html("outputs/charts/chart_sentiment_breakdown.html")
 print("  chart_sentiment_breakdown.html saved!")
 
 # --- Chart C: Heatmap — Hour vs Day of Week fear density ---
@@ -281,7 +281,7 @@ fig_heat.update_layout(
     font=dict(color="white"),
     title_font_size=16
 )
-fig_heat.write_html("chart_heatmap.html")
+fig_heat.write_html("outputs/charts/chart_heatmap.html")
 print("  chart_heatmap.html saved!")
 
 # --- Chart D: Fear ratio trend line across neighborhoods ---
@@ -316,7 +316,7 @@ fig_line.update_layout(
     yaxis_title="Fear Rate %",
     title_font_size=16
 )
-fig_line.write_html("chart_fearrate.html")
+fig_line.write_html("outputs/charts/chart_fearrate.html")
 print("  chart_fearrate.html saved!")
 
 print("\n✓ All visualizations complete! Open these files in your browser:")

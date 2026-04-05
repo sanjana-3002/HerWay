@@ -6,7 +6,7 @@ from collections import Counter
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # ---- LOAD DATA ----
-df = pd.read_csv("chicago_safety_sentiment.csv")
+df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 df["hour"] = pd.to_datetime(df["date"], unit="s").dt.hour
@@ -16,7 +16,7 @@ df["title"] = df["title"].fillna("")
 df["text"] = df["text"].fillna("")
 df["combined"] = df["title"] + " " + df["text"]
 
-summary = pd.read_csv("neighborhood_sentiment_summary.csv")
+summary = pd.read_csv("data/processed/neighborhood_sentiment_summary.csv")
 summary = summary[summary["risk_rating"] != "Insufficient Data"]
 
 # ---- NEIGHBORHOOD COORDINATES ----
@@ -545,6 +545,6 @@ legend_html = """
 """
 m.get_root().html.add_child(folium.Element(legend_html))
 
-m.save("hersafe_upgraded_map_v2.html")
+m.save("outputs/maps/hersafe_upgraded_map_v2.html")
 print(f"\nDone! {processed} neighborhoods mapped")
 print("Open hersafe_upgraded_map_v2.html in your browser!")

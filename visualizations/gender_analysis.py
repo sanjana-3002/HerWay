@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # ---- LOAD DATA ----
-df = pd.read_csv("chicago_safety_sentiment.csv")
+df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 df["combined"] = df["title"].fillna("") + " " + df["text"].fillna("")
@@ -131,7 +131,7 @@ for _, row in female_fearful.iterrows():
     print()
 
 # ---- SAVE FEMALE FOCUSED CSV ----
-female_df.to_csv("chicago_female_safety.csv", index=False)
+female_df.to_csv("data/processed/chicago_female_safety.csv", index=False)
 
 # ---- BUILD VISUALIZATIONS ----
 print("Building gender analysis charts...")
@@ -248,6 +248,6 @@ for i in range(1, 3):
         fig.update_xaxes(gridcolor="#333333", linecolor="#333", row=i, col=j)
         fig.update_yaxes(gridcolor="#333333", linecolor="#333", row=i, col=j)
 
-fig.write_html("gender_analysis.html")
+fig.write_html("outputs/charts/gender_analysis.html")
 print("Saved gender_analysis.html!")
 print("Also saved chicago_female_safety.csv")

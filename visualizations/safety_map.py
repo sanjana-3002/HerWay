@@ -3,7 +3,7 @@ import folium
 import ast
 from collections import Counter
 
-df = pd.read_csv("chicago_safety_located.csv")
+df = pd.read_csv("data/processed/chicago_safety_located.csv")
 
 # convert string lists back to actual lists-
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
@@ -28,7 +28,7 @@ summary = summary.sort_values("total_safety_score", ascending=False)
 
 print("Top 15 neighborhoods by safety concern:\n")
 print(summary.head(15).to_string(index=False))
-summary.to_csv("neighborhood_safety_summary.csv", index=False)
+summary.to_csv("data/processed/neighborhood_safety_summary.csv", index=False)
 
 # ---- CHICAGO NEIGHBORHOOD COORDINATES ----
 neighborhood_coords = {
@@ -153,6 +153,6 @@ legend_html = """
 """
 m.get_root().html.add_child(folium.Element(legend_html))
 
-m.save("hersafe_chicago_map.html")
+m.save("outputs/maps/hersafe_chicago_map.html")
 print("\nMap saved as hersafe_chicago_map.html")
 print("Open it in your browser to see the interactive map!")

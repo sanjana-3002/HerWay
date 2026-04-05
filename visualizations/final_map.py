@@ -9,8 +9,8 @@ from collections import Counter
 # ================================================
 
 # ---- LOAD DATA ----
-merged = pd.read_csv("hersafe_final_merged.csv")
-sentiment_df = pd.read_csv("chicago_safety_sentiment.csv")
+merged = pd.read_csv("data/processed/hersafe_final_merged.csv")
+sentiment_df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 sentiment_df["neighborhoods_mentioned"] = sentiment_df["neighborhoods_mentioned"].apply(ast.literal_eval)
 sentiment_df["safety_flags"] = sentiment_df["safety_flags"].apply(ast.literal_eval)
 sentiment_df["hour"] = pd.to_datetime(sentiment_df["date"], unit="s").dt.hour
@@ -803,6 +803,6 @@ legend_html = """
 """
 m.get_root().html.add_child(folium.Element(legend_html))
 
-m.save("hersafe_final_map.html")
+m.save("outputs/maps/hersafe_final_map.html")
 print(f"Done! {processed} neighborhoods mapped")
 print("Open hersafe_final_map.html in your browser!")
