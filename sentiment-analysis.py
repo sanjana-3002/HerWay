@@ -1,3 +1,9 @@
+# Step 2 of the pipeline — sentiment analysis
+# Runs each Reddit post through a RoBERTa model to classify it as:
+# Negative/Fear, Neutral/Concern, or Positive/Reassuring.
+# Then builds a per-neighborhood summary and saves it to CSV.
+# Author: Sanjana Waghray
+
 import pandas as pd
 import ast
 import re

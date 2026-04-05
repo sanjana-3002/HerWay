@@ -1,3 +1,8 @@
+# Step 1 of the pipeline — neighborhood extraction
+# Reads each Reddit post and checks which Chicago neighborhoods are mentioned.
+# Also scores each post by how many safety-related keywords it contains.
+# Author: Sanjana Waghray
+
 import pandas as pd
 import re
 
