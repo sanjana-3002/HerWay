@@ -1,0 +1,11 @@
+pandas
+numpy
+folium
+requests
+transformers
+torch
+plotly
+scikit-learn
+matplotlib
+seaborn
+wordcloud
