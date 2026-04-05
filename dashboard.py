@@ -1,3 +1,8 @@
+# Generates the HTML safety dashboard.
+# Shows neighborhoods sorted by risk level (High / Medium / Lower)
+# with post counts and fear percentages in a clean table layout.
+# Author: Sanjana Waghray
+
 import pandas as pd
 
 df = pd.read_csv("neighborhood_sentiment_summary.csv")

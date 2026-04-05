@@ -1,3 +1,9 @@
+# Step 3 of the pipeline — data merge
+# Combines Reddit sentiment, city crime data, and 311 service requests
+# into one dataset. Computes a combined safety score per neighborhood
+# and assigns risk labels based on data coverage.
+# Author: Sanjana Waghray
+
 import pandas as pd
 import numpy as np
 
