@@ -488,8 +488,8 @@ for _, row in merged.iterrows():
     lat, lon = neighborhood_coords[official_name]
 
     # reddit post count for circle size
-    reddit_posts = int(row.get("reddit_total_posts") or 0)
-    crime_total = int(row.get("crime_total_incidents") or 0)
+    reddit_posts = int(row.get("reddit_total_posts") or 0) if pd.notna(row.get("reddit_total_posts")) else 0
+    crime_total = int(row.get("crime_total_incidents") or 0) if pd.notna(row.get("crime_total_incidents")) else 0
     radius = max(6, min(20, 6 + reddit_posts / 10)) if reddit_posts > 0 \
              else max(5, min(12, 5 + crime_total / 2000))
 
