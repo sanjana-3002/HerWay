@@ -2,7 +2,7 @@ import pandas as pd
 import ast
 from collections import Counter
 
-df = pd.read_csv("chicago_safety_sentiment.csv")
+df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 df["neighborhoods_mentioned"] = df["neighborhoods_mentioned"].apply(ast.literal_eval)
 df["safety_flags"] = df["safety_flags"].apply(ast.literal_eval)
 df["hour"] = pd.to_datetime(df["date"], unit="s").dt.hour

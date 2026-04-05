@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("chicago_safety_sentiment.csv")
+df = pd.read_csv("data/processed/chicago_safety_sentiment.csv")
 df["year"] = pd.to_datetime(df["date"], unit="s").dt.year
 
 for year in [2023, 2024, 2025]:
