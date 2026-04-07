@@ -38,7 +38,7 @@ female_keywords = [
 ]
 
 # ---- LOAD NEIGHBORHOOD LIST ----
-merged = pd.read_csv("data/processed/herway_final.csv")
+merged = pd.read_csv("data/processed/herway_final_merged.csv")
 all_neighborhoods = merged["neighborhood"].tolist()
 
 print("Building Reddit chatbot data...")
@@ -57,23 +57,23 @@ for official_name in all_neighborhoods:
     if len(n_df) == 0:
         # still add a row so every neighborhood is represented
         rows.append({
-            "neighborhood": official_name,
-            "reddit_has_data": False,
-            "reddit_total_posts": 0,
-            "reddit_fearful_count": 0,
-            "reddit_reassuring_count": 0,
-            "reddit_neutral_count": 0,
-            "reddit_fear_ratio_pct": 0,
-            "reddit_night_posts": 0,
-            "reddit_night_fear_pct": 0,
-            "reddit_female_posts": 0,
-            "reddit_female_fearful_count": 0,
-            "reddit_top_safety_keywords": "",
-            "reddit_fearful_titles": "",
-            "reddit_reassuring_titles": "",
-            "reddit_fearful_text_snippets": "",
-            "reddit_female_fearful_titles": "",
-            "reddit_year_range": "",
+            "neighborhood":                  official_name,
+            "reddit_has_data":               False,
+            "reddit_total_posts":            0,
+            "reddit_fearful_count":          0,
+            "reddit_reassuring_count":       0,
+            "reddit_neutral_count":          0,
+            "reddit_fear_ratio_pct":         0,
+            "reddit_night_posts":            0,
+            "reddit_night_fear_pct":         0,
+            "reddit_female_posts":           0,
+            "reddit_female_fearful_count":   0,
+            "reddit_top_safety_keywords":    "",
+            "reddit_fearful_titles":         "",
+            "reddit_reassuring_titles":      "",
+            "reddit_fearful_text_snippets":  "",
+            "reddit_female_fearful_titles":  "",
+            "reddit_year_range":             "",
             "reddit_summary": f"No Reddit community data available for {official_name}."
         })
         continue
@@ -98,7 +98,7 @@ for official_name in all_neighborhoods:
             return False
         return official_name.lower() in title or reddit_name.lower() in title
 
-    primary_df = n_df[n_df.apply(is_primary, axis=1)]
+    primary_df         = n_df[n_df.apply(is_primary, axis=1)]
     primary_fearful    = primary_df[primary_df["sentiment"] == "Negative/Fear"]
     primary_reassuring = primary_df[primary_df["sentiment"] == "Positive/Reassuring"]
 
@@ -116,7 +116,7 @@ for official_name in all_neighborhoods:
     ))[:3]
     reassuring_titles = " | ".join(reassuring_titles_list)
 
-    # short text snippets from top fearful posts
+    # short text snippets from top fearful posts (highest confidence)
     fearful_texts = " ||| ".join([
         str(text)[:250]
         for text in fearful_df.nlargest(3, "confidence")["combined"].tolist()
@@ -142,7 +142,7 @@ for official_name in all_neighborhoods:
     # fear ratio
     fear_pct = round(len(fearful_df) / len(n_df) * 100, 1)
 
-    # auto summary sentence for chatbot to use
+    # auto summary for chatbot to use directly
     if fear_pct >= 50:
         tone = "frequently express concern"
     elif fear_pct >= 25:
@@ -181,14 +181,20 @@ for official_name in all_neighborhoods:
         "reddit_summary":                summary
     })
 
+# ---- SAVE ----
 chatbot_df = pd.DataFrame(rows)
-chatbot_df = chatbot_df.sort_values("neighborhood")
+chatbot_df = chatbot_df.sort_values("neighborhood").reset_index(drop=True)
 chatbot_df.to_csv("reddit_chatbot_data.csv", index=False)
 
-print(f"\nDone! {len(chatbot_df)} neighborhoods")
-print(f"With Reddit data: {chatbot_df['reddit_has_data'].sum()}")
+print(f"\nDone!")
+print(f"Total neighborhoods: {len(chatbot_df)}")
+print(f"With Reddit data:    {chatbot_df['reddit_has_data'].sum()}")
 print(f"Without Reddit data: {(~chatbot_df['reddit_has_data']).sum()}")
-print("\nSample — Loop:")
+
+print("\n--- Sample: Loop ---")
 loop = chatbot_df[chatbot_df["neighborhood"] == "Loop"].iloc[0]
 for col in chatbot_df.columns:
-    print(f"  {col}: {str(loop[col])[:80]}")
+    print(f"  {col}: {str(loop[col])[:90]}")
+
+print("\nSaved: reddit_chatbot_data.csv")
+print("Share this file with your teammate for the chatbot!")
