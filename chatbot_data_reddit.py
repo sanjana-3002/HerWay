@@ -38,7 +38,7 @@ female_keywords = [
 ]
 
 # ---- LOAD NEIGHBORHOOD LIST ----
-merged = pd.read_csv("herway_final.csv")
+merged = pd.read_csv("data/processed/herway_final.csv")
 all_neighborhoods = merged["neighborhood"].tolist()
 
 print("Building Reddit chatbot data...")
