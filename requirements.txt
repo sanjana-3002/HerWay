@@ -1,3 +1,4 @@
+# Data pipeline & visualizations
 pandas
 numpy
 folium
@@ -9,3 +10,10 @@ scikit-learn
 matplotlib
 seaborn
 wordcloud
+
+# Chatbot / Flask API (see also chatbot/requirements.txt)
+openai>=1.30.0
+python-dotenv>=1.0.0
+flask>=3.0.0
+flask-cors>=4.0.0
+gunicorn>=21.0.0
