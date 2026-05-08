@@ -28,6 +28,13 @@ env/
 .AppleDouble
 .LSOverride
 
+# R
+.Rhistory
+.RData
+
+# Claude Code local settings
+.claude/
+
 # IDE
 .vscode/
 .idea/

@@ -78,14 +78,12 @@ HerWay/
 │   ├── maps/                   ← interactive HTML maps (open in browser)
 │   └── charts/                 ← dashboards, charts, images
 │
-├── notebooks/                  ← crime EDA notebooks
+├── notebooks/                  ← all project notebooks
+│   ├── soremo.ipynb                         ← main exploratory notebook
 │   ├── chicago_crimes_citywide_eda.ipynb
 │   ├── chicago_crimes_neighborhood_eda.ipynb
 │   ├── crime_severity_scoring.ipynb
 │   └── Images/                 ← chart exports from the notebooks
-│
-├── notebook/
-│   └── soremo.ipynb            ← main exploratory notebook
 │
 ├── data/
 │   ├── raw/                    ← original source files
