@@ -14,8 +14,14 @@ venv/
 env/
 .env/
 
+# Environment variables — never commit credentials
+.env
+.env.*
+!.env_example
+
 # Jupyter
 .ipynb_checkpoints/
+*.ipynb_checkpoints/
 
 # macOS
 .DS_Store
@@ -30,3 +36,15 @@ env/
 
 # Large model cache (downloaded by transformers)
 ~/.cache/huggingface/
+
+# Frontend — Node dependencies and build output
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
