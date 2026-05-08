@@ -9,16 +9,6 @@ A full-stack platform that analyzes Reddit posts, city crime records, and 311 se
 
 ---
 
-## Team
-
-| Name | GitHub | Role |
-|------|--------|------|
-| Sanjana Waghray | [@sanjana-3002](https://github.com/sanjana-3002) | Data pipeline, sentiment analysis, visualizations, project structure |
-| Ananya B P Gayathri | [@bananya007](https://github.com/bananya007) | Chatbot backend, Flask API, Azure OpenAI integration, Render deployment |
-| Sharanya Mishra | [@mishrasharanya](https://github.com/mishrasharanya) | Frontend React app, interactive map, Vercel deployment |
-
----
-
 ## What This Project Does
 
 Most safety tools rely only on official crime numbers. HerWay layers in real community voices from Reddit to capture what people — especially women — actually experience on the ground: fear of walking alone at night, street harassment, avoiding certain areas. The result is an interactive map that combines three data sources into a single awareness score per neighborhood, plus an AI chatbot you can ask anything about any Chicago neighborhood.
@@ -211,3 +201,9 @@ Output files land in `outputs/`. Open any `.html` file in a browser — no serve
 Built as part of the Soremo initiative at Illinois Tech. The goal is to understand urban safety from a community perspective, not just through official statistics — and to make that data accessible and understandable for people navigating Chicago.
 
 All data is sourced from public Reddit posts and open city datasets. This project is for research purposes only.
+
+---
+
+## Team
+
+[@sanjana-3002](https://github.com/sanjana-3002) · [@bananya007](https://github.com/bananya007) · [@mishrasharanya](https://github.com/mishrasharanya)
