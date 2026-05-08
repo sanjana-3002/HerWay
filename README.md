@@ -4,9 +4,18 @@ A full-stack platform that analyzes Reddit posts, city crime records, and 311 se
 
 **Live app:** [her-way-soremo.vercel.app](https://her-way-soremo.vercel.app/)
 
-**Author:** Sanjana Waghray  
 **Institution:** Illinois Institute of Technology  
 **Course:** Soremo Initiative
+
+---
+
+## Team
+
+| Name | GitHub | Role |
+|------|--------|------|
+| Sanjana Waghray | [@sanjana-3002](https://github.com/sanjana-3002) | Data pipeline, sentiment analysis, visualizations, project structure |
+| Ananya B P Gayathri | [@bananya007](https://github.com/bananya007) | Chatbot backend, Flask API, Azure OpenAI integration, Render deployment |
+| Sharanya Mishra | [@mishrasharanya](https://github.com/mishrasharanya) | Frontend React app, interactive map, Vercel deployment |
 
 ---
 
