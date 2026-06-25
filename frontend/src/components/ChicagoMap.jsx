@@ -1,3 +1,4 @@
+// Core HerWay map component enabling neighborhood exploration through spatial activity and risk indicators
 import React, { useEffect, useCallback } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';

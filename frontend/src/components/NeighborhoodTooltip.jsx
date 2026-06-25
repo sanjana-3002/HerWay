@@ -1,3 +1,4 @@
+// HerWay hover tooltip delivering at-a-glance neighborhood context and exploration cues
 import React from 'react';
 import { formatNumber } from '../utils/dataLoader';
 

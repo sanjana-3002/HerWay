@@ -1,3 +1,4 @@
+// HerWay legend providing context for neighborhood activity indicators and map navigation
 import React from 'react';
 
 const Legend = () => {

@@ -1,3 +1,4 @@
+// HerWay control panel for exploring neighborhoods through search and activity-based filters
 import React, { useState, useMemo } from 'react';
 import { Search, X } from 'lucide-react';
 import { formatNumber } from '../utils/dataLoader';

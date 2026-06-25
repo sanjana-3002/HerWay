@@ -1,3 +1,4 @@
+// Chatbot panel providing neighborhood-specific insights and recommendations
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, Sparkles, Loader2 } from 'lucide-react';
 

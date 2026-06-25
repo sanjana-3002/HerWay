@@ -1,3 +1,4 @@
+// HerWay insights panel providing contextual neighborhood analysis from crime records, 311 requests and Reddit discussions
 import React from 'react';
 import { X, Clock, AlertTriangle, MapPin, Compass } from 'lucide-react';
 

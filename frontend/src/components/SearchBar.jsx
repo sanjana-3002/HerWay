@@ -1,3 +1,4 @@
+// Neighborhood search component with live filtering, dropdown results and map selection support
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, X } from 'lucide-react';
 
